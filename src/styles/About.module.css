@@ -279,7 +279,8 @@
   }
 
   .heroLead {
-    position: static;
+    position: relative;
+    inset: auto;
     margin-top: 40px;
   }
 
@@ -328,9 +329,12 @@
     line-height: 0.9;
   }
 
+  /* in normal flow below the headline; also drop the desktop right/bottom offsets */
   .heroLead {
     position: relative;
-    margin-top: 20px;
+    inset: auto;
+    max-width: 440px;
+    margin-top: 24px;
     font-size: 16px;
   }
 
