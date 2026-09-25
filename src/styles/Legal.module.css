@@ -1,0 +1,102 @@
+.body {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: 64px;
+  padding: 96px var(--gutter) 128px;
+  background: var(--white);
+  color: var(--midnight);
+}
+
+.operator {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.site {
+  font-size: clamp(30px, 1.33vw + 25px, 44px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.operator p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--slate-2);
+}
+
+.operator a {
+  color: var(--signal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+
+.list div {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: clamp(18px, 0.57vw + 16px, 24px);
+}
+
+.list dt {
+  display: flex;
+  flex: 1;
+  align-items: baseline;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* dotted leader between the label and the value */
+.list dt::after {
+  content: '';
+  flex: 1;
+  border-bottom: 2px dotted var(--dots);
+  transform: translateY(-4px);
+}
+
+.list dd {
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+.list a:hover {
+  color: var(--signal);
+}
+
+@media (max-width: 1023px) {
+  .body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .body {
+    gap: 28px;
+    padding: 40px var(--gutter) 64px;
+  }
+
+  .list div {
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px 0;
+  }
+
+  .list dt::after {
+    display: none;
+  }
+}

@@ -1,0 +1,302 @@
+/* ---------- Index glyph ---------- */
+
+.dots {
+  display: grid;
+  grid-template-columns: repeat(2, 6px);
+  gap: 6px;
+}
+
+.dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--white);
+}
+
+.dots span:last-child {
+  background: var(--ice);
+  opacity: 0.55;
+}
+
+/* ---------- Side rail (desktop) ---------- */
+
+.rail {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 80px;
+  padding: 24px 0 28px;
+  background: var(--midnight);
+  border-right: 1px solid rgba(207, 224, 255, 0.12);
+  color: var(--white);
+}
+
+.railTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.indexButton {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--signal);
+  transition:
+    background-color var(--t-hover) ease,
+    transform 0.3s var(--ease);
+}
+
+.indexButton:hover {
+  background: var(--signal-hover);
+  transform: rotate(45deg);
+}
+
+.railLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ice-60);
+}
+
+.railBrand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: var(--white);
+}
+
+.railBrand img {
+  width: 36px;
+  height: auto;
+}
+
+.railWordmark {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.railBottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.railPage {
+  max-height: 260px;
+  overflow: hidden;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-style: italic;
+  white-space: nowrap;
+  color: var(--ice);
+}
+
+.railNum {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ice-60);
+}
+
+.progress {
+  position: relative;
+  width: 2px;
+  height: 120px;
+  overflow: hidden;
+  background: rgba(207, 224, 255, 0.16);
+}
+
+.progress span {
+  position: absolute;
+  inset: 0;
+  background: var(--signal);
+  transform-origin: top;
+  transition: transform 0.1s linear;
+}
+
+/* ---------- Floating actions (desktop) ---------- */
+
+.actions {
+  --bg: rgba(6, 13, 28, 0.55);
+  --rule: rgba(207, 224, 255, 0.2);
+  --dim: var(--ice-60);
+  --fg: var(--white);
+  --on-bg: var(--white);
+  --on-fg: var(--midnight);
+
+  position: absolute;
+  top: 34px;
+  right: 40px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.actions.light {
+  --bg: rgba(255, 255, 255, 0.8);
+  --rule: rgba(6, 13, 28, 0.12);
+  --dim: var(--slate-2);
+  --fg: var(--midnight);
+  --on-bg: var(--midnight);
+  --on-fg: var(--white);
+}
+
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 48px;
+  padding: 4px;
+  border: 1px solid var(--rule);
+  border-radius: 24px;
+  background: var(--bg);
+  backdrop-filter: blur(12px);
+}
+
+.switcherLabel {
+  padding: 0 10px 0 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.switcherLink {
+  display: flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 19px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg);
+  transition:
+    background-color var(--t-hover) ease,
+    color var(--t-hover) ease;
+}
+
+.switcherLink:hover {
+  background: color-mix(in srgb, var(--on-bg) 12%, transparent);
+}
+
+.switcherLink[aria-current='page'] {
+  background: var(--on-bg);
+  color: var(--on-fg);
+}
+
+/* ---------- Mobile capsule ---------- */
+
+.capsuleWrap {
+  display: none;
+}
+
+.capsule {
+  --bg: rgba(6, 13, 28, 0.72);
+  --fg: var(--white);
+  --rule: rgba(207, 224, 255, 0.18);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  padding: 0 6px 0 16px;
+  border: 1px solid var(--rule);
+  border-radius: 26px;
+  background: var(--bg);
+  color: var(--fg);
+  backdrop-filter: blur(14px);
+}
+
+.capsule.light {
+  --bg: rgba(255, 255, 255, 0.86);
+  --fg: var(--midnight);
+  --rule: rgba(6, 13, 28, 0.1);
+}
+
+.capsuleBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  color: var(--fg);
+}
+
+.capsuleBrand img {
+  width: 28px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.capsuleWordmark {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.capsulePage {
+  overflow: hidden;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0.75;
+}
+
+.capsuleButton {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--signal);
+}
+
+.capsuleButton .dots {
+  grid-template-columns: repeat(2, 5px);
+  gap: 5px;
+}
+
+.capsuleButton .dots span {
+  width: 5px;
+  height: 5px;
+}
+
+/* Below 1024 the rail becomes the floating capsule (Foundations v2). */
+@media (max-width: 1023px) {
+  .rail,
+  .actions {
+    display: none;
+  }
+
+  .capsuleWrap {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    z-index: 90;
+    display: block;
+  }
+}

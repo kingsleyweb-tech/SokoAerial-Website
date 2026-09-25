@@ -1,0 +1,6 @@
+/* Content column beside the fixed 80px rail (the rail becomes the capsule below 1024px). */
+.shell {
+  position: relative;
+  min-width: 0;
+  margin-left: var(--rail);
+}

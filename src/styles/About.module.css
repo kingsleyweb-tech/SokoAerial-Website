@@ -1,0 +1,386 @@
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  min-height: 900px;
+  padding: 150px var(--gutter) 64px;
+  overflow: hidden;
+  background: var(--midnight);
+  color: var(--white);
+}
+
+.heroImage {
+  position: absolute;
+  top: 140px;
+  right: var(--gutter);
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+}
+
+.heroText {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.title {
+  max-width: 1180px;
+  font-size: clamp(58px, 8.76vw + 24px, 150px);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 0.88;
+}
+
+.title em {
+  color: var(--ice);
+}
+
+.heroLead {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 64px;
+  max-width: 440px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--white-80);
+}
+
+/* ---------- Full-bleed image + address ---------- */
+
+.band {
+  position: relative;
+  height: 640px;
+  overflow: visible;
+  border-radius: 0 0 48px 48px;
+}
+
+.band > img {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.band::after {
+  border-radius: inherit;
+}
+
+.addressCard {
+  position: absolute;
+  left: var(--gutter);
+  bottom: -72px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: min(520px, calc(100% - 2 * var(--gutter)));
+  padding: 32px;
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 30px 60px -30px rgba(6, 13, 28, 0.35);
+}
+
+.address {
+  font-size: clamp(24px, 0.76vw + 21px, 32px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Chapters ---------- */
+
+.chapters {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  row-gap: 120px;
+  column-gap: 24px;
+  padding: 176px var(--gutter) 120px;
+  background: var(--white);
+}
+
+.chapter {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.chapter:nth-child(1) {
+  grid-column: 1 / span 7;
+}
+
+.chapter:nth-child(2) {
+  grid-column: 6 / span 7;
+}
+
+.chapter:nth-child(3) {
+  grid-column: 2 / span 7;
+}
+
+.chapter:nth-child(4) {
+  grid-column: 6 / span 7;
+}
+
+.chapter:nth-child(5) {
+  grid-column: 1 / span 8;
+}
+
+.chapterHead {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.chapterNum {
+  font-size: clamp(52px, 4.19vw + 36px, 96px);
+  line-height: 0.8;
+  color: var(--signal);
+}
+
+.chapterTitle {
+  font-size: clamp(28px, 2.29vw + 19px, 52px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+
+.chapterBody {
+  max-width: 620px;
+  font-size: clamp(15px, 0.29vw + 14px, 18px);
+  line-height: 1.65;
+  color: var(--slate);
+}
+
+/* ---------- ISR cycle ---------- */
+
+.isr {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  align-items: center;
+  gap: 40px;
+  padding: 120px var(--gutter);
+  background: var(--midnight);
+  color: var(--white);
+}
+
+.isrText {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.isrTitle {
+  font-size: clamp(44px, 2.67vw + 34px, 72px);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  color: var(--white);
+}
+
+.isrTitle em {
+  color: var(--ice);
+}
+
+.cycle {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  font-family: var(--font-sans);
+}
+
+.orbit {
+  fill: none;
+  stroke: rgba(207, 224, 255, 0.3);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 7;
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: orbit 60s linear infinite;
+}
+
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cycleLabel {
+  fill: var(--white);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.cycleNum {
+  fill: rgba(207, 224, 255, 0.6);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.cycleSmall {
+  width: 100%;
+  height: auto;
+}
+
+.isrList li {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line-dark);
+  font-size: 16px;
+}
+
+.isrList li span {
+  padding-top: 3px;
+  font-size: 11px;
+  color: var(--ice);
+}
+
+/* ---------- Where personnel use Sigtrack ---------- */
+
+.places {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 120px var(--gutter);
+  background: var(--fog);
+}
+
+.placesLabel {
+  margin-bottom: 28px;
+}
+
+.place {
+  display: block;
+  font-size: clamp(46px, 5.52vw + 24px, 104px);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.placeAccent {
+  padding-left: clamp(28px, 12.57vw - 21px, 160px);
+  font-size: clamp(48px, 6.1vw + 24px, 112px);
+  color: var(--signal);
+}
+
+.placeLast {
+  padding-left: clamp(70px, 27.6vw - 38px, 360px);
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 1023px) {
+  .heroImage {
+    width: 280px;
+    height: 280px;
+    opacity: 0.9;
+  }
+
+  .heroLead {
+    position: static;
+    margin-top: 40px;
+  }
+
+  .hero {
+    min-height: 0;
+    padding-top: 120px;
+  }
+
+  .chapters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .chapter:nth-child(n) {
+    grid-column: auto;
+  }
+
+  .chapter:nth-child(2n) {
+    padding-left: 32px;
+  }
+
+  .isr {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Mobile artboard ---------- */
+
+@media (max-width: 767px) {
+  .hero {
+    padding: 108px var(--gutter) 48px;
+  }
+
+  .heroImage {
+    top: 110px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+  }
+
+  .heroText {
+    gap: 20px;
+  }
+
+  .title {
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+  }
+
+  .heroLead {
+    position: relative;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+
+  .band {
+    height: 300px;
+    border-radius: 0 0 32px 32px;
+  }
+
+  .addressCard {
+    right: 60px;
+    bottom: -44px;
+    width: auto;
+    gap: 4px;
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .chapters {
+    row-gap: 44px;
+    padding: 96px var(--gutter) 56px;
+  }
+
+  .chapter {
+    gap: 10px;
+  }
+
+  .chapterHead {
+    gap: 10px;
+  }
+
+  .chapterHead :global(.label) {
+    font-size: 10px;
+  }
+
+  .chapterTitle {
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+
+  .isr {
+    gap: 20px;
+    padding: 56px var(--gutter);
+  }
+
+  .places {
+    gap: 2px;
+    padding: 56px var(--gutter);
+  }
+
+  .place {
+    line-height: 1.02;
+  }
+}

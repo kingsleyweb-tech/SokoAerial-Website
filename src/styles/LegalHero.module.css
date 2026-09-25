@@ -1,0 +1,68 @@
+.hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 150px var(--gutter) 64px;
+  background: var(--fog);
+  color: var(--midnight);
+}
+
+.title {
+  font-size: clamp(72px, 6.48vw + 47px, 140px);
+  font-weight: 600;
+  letter-spacing: -0.065em;
+  line-height: 0.82;
+}
+
+.title em {
+  color: var(--signal);
+  letter-spacing: -0.02em;
+}
+
+.switch {
+  display: flex;
+  flex-shrink: 0;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 30px;
+  background: var(--white);
+}
+
+.switch a {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 22px;
+  border-radius: 24px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--slate-2);
+  transition:
+    background-color var(--t-hover) ease,
+    color var(--t-hover) ease;
+}
+
+.switch a:hover {
+  color: var(--midnight);
+}
+
+.switch a[aria-current='page'] {
+  background: var(--midnight);
+  color: var(--white);
+}
+
+@media (max-width: 767px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 100px var(--gutter) 36px;
+  }
+
+  .switch a {
+    height: 40px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+}

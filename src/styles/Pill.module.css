@@ -1,0 +1,168 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  height: 56px;
+  padding: 0 8px 0 24px;
+  border: 0;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    background-color var(--t-hover) ease,
+    border-color var(--t-hover) ease,
+    color var(--t-hover) ease;
+}
+
+.plain {
+  padding: 0 24px;
+}
+
+.block {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.plain.block {
+  justify-content: center;
+}
+
+.circle {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: transform var(--t-hover) var(--ease);
+}
+
+.circle svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Hover: the arrow circle rotates 45° and the pill darkens. */
+.pill:hover .circle[data-glyph='up-right'] {
+  transform: rotate(45deg);
+}
+
+.pill:hover .circle[data-glyph='down'] {
+  transform: translateY(2px);
+}
+
+.pill:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ---------- Sizes ---------- */
+
+.sm {
+  height: 48px;
+  gap: 10px;
+  padding-left: 20px;
+  padding-right: 6px;
+  font-size: 14px;
+}
+
+.sm .circle {
+  width: 36px;
+  height: 36px;
+}
+
+.sm.plain {
+  padding: 0 20px;
+}
+
+.lg {
+  height: 64px;
+  padding-left: 28px;
+  font-size: 17px;
+}
+
+.lg .circle {
+  width: 48px;
+  height: 48px;
+}
+
+/* ---------- Variants ---------- */
+
+.dark {
+  background: var(--midnight);
+  color: var(--white);
+}
+
+.dark .circle {
+  background: var(--signal);
+  color: var(--white);
+}
+
+.dark:hover {
+  background: #000;
+}
+
+.signal {
+  background: var(--signal);
+  color: var(--white);
+}
+
+.signal .circle {
+  background: var(--white);
+  color: var(--signal);
+}
+
+.signal:hover {
+  background: var(--signal-hover);
+}
+
+.light {
+  background: var(--white);
+  color: var(--midnight);
+}
+
+.light .circle {
+  background: var(--signal);
+  color: var(--white);
+}
+
+.light:hover {
+  background: var(--fog);
+}
+
+.contrast {
+  background: var(--white);
+  color: var(--midnight);
+}
+
+.contrast .circle {
+  background: var(--midnight);
+  color: var(--white);
+}
+
+.contrast:hover {
+  background: var(--fog);
+}
+
+.outline {
+  border: 1px solid var(--midnight);
+  color: var(--midnight);
+}
+
+.outline:hover {
+  background: var(--fog);
+}
+
+.outline-light {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: var(--white);
+}
+
+.outline-light:hover {
+  border-color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+}

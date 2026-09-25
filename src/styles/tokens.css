@@ -1,0 +1,77 @@
+/*
+ * Sigtrack design tokens — Foundations v2.
+ * Midnight-dominant canvas, one signal blue, editorial serif accents.
+ * Fluid sizes interpolate between the 390px mobile and 1440px desktop artboards.
+ */
+:root {
+  /* Colour */
+  --midnight: #060d1c;
+  --deep: #03070f;
+  --topo: #0a1830;
+  --navy: #0f2f5f;
+  --frame: #1b3b70;
+  --frame-dark: #13284d;
+  --signal: #2a5fe8;
+  --signal-hover: #1f4fcf;
+  --signal-tint: #eaf0fd;
+  --ice: #cfe0ff;
+  --fog: #eef2f7;
+  --fog-deep: #e3ebf7;
+  --white: #ffffff;
+
+  --ink: #060d1c;
+  --slate: #33415a;
+  --slate-2: #4a5872;
+  --muted: #7a879d;
+  --ink-soft: #1e2a40;
+
+  --line: #dde3ec;
+  --line-ink: rgba(6, 13, 28, 0.12);
+  --line-ink-2: rgba(6, 13, 28, 0.14);
+  --line-dark: rgba(207, 224, 255, 0.16);
+  --line-dark-2: rgba(207, 224, 255, 0.35);
+  --field: #c9d2df;
+  --dots: #9aa6ba;
+
+  --ice-80: rgba(207, 224, 255, 0.8);
+  --ice-72: rgba(207, 224, 255, 0.72);
+  --ice-60: rgba(207, 224, 255, 0.6);
+  --ice-50: rgba(207, 224, 255, 0.5);
+  --white-80: rgba(255, 255, 255, 0.8);
+
+  /* Type */
+  --font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+
+  /* Layout */
+  --rail: 80px;
+  --gutter: 64px;
+  --radius: 28px;
+  --radius-sm: 20px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --t-hover: 200ms;
+}
+
+/* Responsive table (Foundations v2): 1280 · 1024 rail stays · <1024 floating capsule · 390 20px gutter */
+@media (max-width: 1279px) {
+  :root {
+    --gutter: 48px;
+  }
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --rail: 0px;
+    --gutter: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --gutter: 20px;
+    --radius: 24px;
+  }
+}

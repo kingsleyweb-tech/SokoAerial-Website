@@ -1,0 +1,179 @@
+/* ---------- Conversational inputs ---------- */
+
+.inline {
+  display: inline;
+}
+
+.sentence {
+  width: var(--w);
+  max-width: 100%;
+  padding: 0 4px;
+  border: 0;
+  border-bottom: 2px solid var(--midnight);
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--font-serif);
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--signal);
+  outline: none;
+  transition: border-color var(--t-hover) ease;
+}
+
+.sentence::placeholder {
+  color: color-mix(in srgb, var(--signal) 55%, transparent);
+}
+
+.sentence:focus {
+  border-bottom-color: var(--signal);
+}
+
+.sentenceDark {
+  border-bottom-color: var(--white);
+  color: var(--white);
+}
+
+.sentenceDark::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sentenceDark:focus {
+  border-bottom-color: var(--ice);
+}
+
+@media (max-width: 767px) {
+  .sentence {
+    /* inputs shrink with the type so each sentence wraps into whole phrases */
+    width: min(calc(var(--w) * 0.55), 100%);
+  }
+}
+
+/* ---------- Consent + status ---------- */
+
+.consent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--slate);
+}
+
+.consent input {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--signal);
+}
+
+.consent a {
+  color: var(--signal);
+}
+
+.consentDark {
+  color: var(--white);
+}
+
+.consentDark a {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.note {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  color: var(--slate-2);
+}
+
+.note a {
+  color: var(--signal);
+}
+
+.noteDark {
+  color: var(--white-80);
+}
+
+.noteDark a {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.note:empty {
+  display: none;
+}
+
+/* ---------- Standard fields (plans) ---------- */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  height: 56px;
+  padding: 0 18px;
+  border: 1px solid var(--field);
+  border-radius: 16px;
+  background: var(--white);
+  font-size: 16px;
+  color: var(--midnight);
+  outline: none;
+  transition:
+    border-color var(--t-hover) ease,
+    box-shadow var(--t-hover) ease;
+}
+
+.input:focus {
+  border-color: var(--signal);
+  box-shadow: 0 0 0 3px rgba(42, 95, 232, 0.2);
+}
+
+select.input {
+  appearance: auto;
+}
+
+.softArea {
+  width: 100%;
+  padding: 18px 20px;
+  border: 0;
+  border-radius: 20px;
+  background: var(--fog);
+  font-size: 17px;
+  letter-spacing: 0;
+  line-height: 1.5;
+  color: var(--midnight);
+  resize: vertical;
+  outline: none;
+}
+
+.softArea:focus {
+  box-shadow: 0 0 0 2px var(--signal);
+}
+
+@media (max-width: 767px) {
+  .input {
+    height: 52px;
+    border-radius: 14px;
+  }
+
+  .softArea {
+    padding: 16px;
+    border-radius: 18px;
+    font-size: 16px;
+  }
+
+  .consent {
+    font-size: 14px;
+  }
+}

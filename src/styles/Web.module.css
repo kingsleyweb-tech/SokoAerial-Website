@@ -1,0 +1,404 @@
+/* ---------- Hero ---------- */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 140px var(--gutter) 0;
+  background: var(--fog);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
+  align-items: end;
+  gap: 48px;
+}
+
+.heroTitle {
+  display: flex;
+  flex-direction: column;
+}
+
+.heroTitle :global(.chip) {
+  margin-bottom: 16px;
+}
+
+.heroTitle h1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.word {
+  font-size: clamp(76px, 8.95vw + 41px, 170px);
+  font-weight: 600;
+  letter-spacing: -0.065em;
+  line-height: 0.8;
+}
+
+.accent {
+  padding-left: clamp(110px, 15.2vw + 51px, 260px);
+  font-size: clamp(120px, 10.5vw + 79px, 230px);
+  line-height: 0.78;
+  color: var(--signal);
+}
+
+.heroAside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  padding-bottom: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--slate);
+}
+
+.browser {
+  position: relative;
+  z-index: 2;
+  margin-bottom: -300px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--white);
+  box-shadow: 0 50px 100px -40px rgba(6, 13, 28, 0.45);
+}
+
+.browserBar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 44px;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.address {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  max-width: 360px;
+  height: 26px;
+  padding: 0 12px;
+  border-radius: 13px;
+  background: var(--fog);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--slate-2);
+}
+
+.screen {
+  position: relative;
+  height: 600px;
+}
+
+.screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+}
+
+.hotspot {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--white);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--midnight);
+  box-shadow: 0 6px 18px -6px rgba(6, 13, 28, 0.45);
+  transform: translate(-50%, -50%);
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hotspot:hover {
+  transform: translate(-50%, -50%) scale(1.12);
+}
+
+.hotspot[aria-pressed='true'] {
+  background: var(--signal);
+  color: var(--white);
+  box-shadow: 0 0 0 12px rgba(42, 95, 232, 0.3);
+}
+
+/* ---------- Feature columns ---------- */
+
+.features {
+  padding: 364px var(--gutter) 112px;
+  background: var(--white);
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 0 0;
+  border: 0;
+  border-top: 2px solid var(--line);
+  background: none;
+  color: var(--midnight);
+  text-align: left;
+  transition: border-color 0.3s ease;
+}
+
+.feature:hover,
+.feature[aria-pressed='true'] {
+  border-top-color: var(--signal);
+}
+
+.feature :global(.mono),
+.mobileFeature :global(.mono) {
+  font-size: 12px;
+  color: var(--signal);
+}
+
+.featureTitle {
+  font-size: clamp(22px, 0.76vw + 19px, 30px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.feature .featureTitle {
+  font-size: 22px;
+}
+
+.featureBody {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--slate-2);
+}
+
+.mobileFeature {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mobileFeature .featureTitle {
+  font-size: 30px;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.mobileFeature .featureBody {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--slate);
+}
+
+.bars {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.bars button {
+  position: relative;
+  width: 12px;
+  height: 4px;
+  padding: 0;
+  border: 0;
+  border-radius: 2px;
+  background: var(--line);
+  transition:
+    width 0.3s var(--ease),
+    background-color 0.3s ease;
+}
+
+.bars button::before {
+  content: '';
+  position: absolute;
+  inset: -12px -3px;
+}
+
+.bars button[aria-current] {
+  width: 28px;
+  background: var(--midnight);
+}
+
+/* ---------- Chat without internet ---------- */
+
+.chat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 120px var(--gutter);
+  overflow: hidden;
+  background: var(--midnight);
+  color: var(--white);
+}
+
+.wave {
+  position: absolute;
+  top: 60px;
+  right: -80px;
+  width: 1232px;
+  height: 200px;
+  fill: none;
+  stroke: var(--signal);
+  stroke-width: 1.5;
+  opacity: 0.6;
+}
+
+.waveSoft {
+  stroke: var(--ice);
+  stroke-opacity: 0.4;
+}
+
+.wave path {
+  stroke-dasharray: 1400;
+  animation: wave 6s var(--ease) infinite alternate;
+}
+
+@keyframes wave {
+  from {
+    stroke-dashoffset: 1400;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.chatTitle {
+  position: relative;
+  font-size: clamp(64px, 8.19vw + 32px, 150px);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.86;
+}
+
+.chatTitle em {
+  color: var(--ice);
+}
+
+.chatText {
+  position: relative;
+  max-width: 480px;
+  margin-left: auto;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--white-80);
+}
+
+/* ---------- Tablet / mobile ---------- */
+
+@media (max-width: 1023px) {
+  .hero {
+    padding-top: 110px;
+  }
+
+  .heroGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .featureGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 32px;
+  }
+
+  .screen {
+    height: 440px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    gap: 26px;
+    padding-top: 100px;
+  }
+
+  .heroGrid {
+    gap: 18px;
+  }
+
+  .heroAside {
+    gap: 18px;
+    padding-bottom: 0;
+    font-size: 16px;
+  }
+
+  .browser {
+    margin-bottom: -120px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px -30px rgba(6, 13, 28, 0.5);
+  }
+
+  .browserBar {
+    gap: 5px;
+    height: 26px;
+    padding: 0 12px;
+  }
+
+  .dots span {
+    width: 7px;
+    height: 7px;
+  }
+
+  .screen {
+    height: 240px;
+  }
+
+  .hotspot {
+    width: 34px;
+    height: 34px;
+    font-size: 11px;
+  }
+
+  .hotspot[aria-pressed='true'] {
+    box-shadow: 0 0 0 8px rgba(42, 95, 232, 0.3);
+  }
+
+  .features {
+    padding: 152px var(--gutter) 48px;
+  }
+
+  .chat {
+    gap: 18px;
+    padding: 56px var(--gutter);
+  }
+
+  .wave {
+    display: none;
+  }
+
+  .chatTitle {
+    letter-spacing: -0.055em;
+    line-height: 0.88;
+  }
+
+  .chatText {
+    margin-left: 0;
+    font-size: 15px;
+  }
+}

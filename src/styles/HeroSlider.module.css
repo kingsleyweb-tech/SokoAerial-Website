@@ -1,0 +1,392 @@
+.hero {
+  position: relative;
+  background: var(--midnight);
+  color: var(--white);
+}
+
+/* ---------- Desktop panels ---------- */
+
+.panels {
+  display: flex;
+  gap: 10px;
+  height: clamp(640px, 100svh, 900px);
+  padding: 16px;
+}
+
+.panel {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  border-radius: var(--radius);
+  transition: flex-grow 0.8s var(--ease);
+}
+
+.panel[data-active] {
+  flex-grow: 10;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.panel[data-active]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(0deg, rgba(6, 13, 28, 0.92) 0%, rgba(6, 13, 28, 0.35) 45%, rgba(6, 13, 28, 0) 70%);
+}
+
+.strip {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 24px 0;
+  border: 0;
+  background: rgba(6, 13, 28, 0.62);
+  color: var(--white);
+  transition: background-color 0.3s ease;
+}
+
+.strip:hover {
+  background: rgba(6, 13, 28, 0.45);
+}
+
+.stripNum {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ice);
+}
+
+.stripName {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.stripPlus {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(207, 224, 255, 0.4);
+  border-radius: 50%;
+  transition: transform var(--t-hover) var(--ease);
+}
+
+.stripPlus svg {
+  width: 14px;
+  height: 14px;
+}
+
+.strip:hover .stripPlus {
+  transform: rotate(90deg);
+}
+
+.activeContent {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.progress {
+  position: absolute;
+  top: 16px;
+  left: 40px;
+  right: 40px;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 1px;
+  background: rgba(207, 224, 255, 0.18);
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+  background: var(--white);
+  transform-origin: left;
+  animation: fill linear forwards;
+  /* Keeps real timing even when the global reduced-motion rule shortens animations. */
+  animation-duration: var(--slide) !important;
+  animation-play-state: var(--state);
+}
+
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.copy {
+  position: absolute;
+  left: 40px;
+  right: 300px;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 760px;
+}
+
+.chip {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+  padding: 0 14px;
+  border-radius: 15px;
+  background: rgba(207, 224, 255, 0.14);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.chip::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--signal);
+}
+
+.title {
+  font-size: clamp(64px, 5.2vw + 26px, 104px);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+}
+
+.line {
+  display: block;
+}
+
+.accent {
+  color: var(--ice);
+}
+
+.body {
+  max-width: 540px;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--white-80);
+}
+
+.actions {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.actions > a:first-child {
+  justify-content: space-between;
+}
+
+/* 1280: display type −10% · 1024: hero shows 3 panels (active + 2 strips). */
+@media (max-width: 1279px) {
+  .panel:not([data-near]) {
+    display: none;
+  }
+
+  .copy {
+    right: 40px;
+    bottom: 176px;
+  }
+
+  .actions {
+    left: 40px;
+    right: auto;
+    flex-direction: row;
+  }
+}
+
+/* ---------- Mobile stack ---------- */
+
+.stack {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .panels {
+    display: none;
+  }
+
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 96px 16px 40px;
+  }
+
+  .cards {
+    position: relative;
+    height: 470px;
+    touch-action: pan-y;
+  }
+
+  .back {
+    position: absolute;
+    border-radius: var(--radius);
+  }
+
+  .back2 {
+    left: 36px;
+    right: 36px;
+    top: 0;
+    height: 420px;
+    opacity: 0.45;
+  }
+
+  .back1 {
+    left: 18px;
+    right: 18px;
+    top: 14px;
+    height: 430px;
+    opacity: 0.7;
+  }
+
+  .front {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30px;
+    height: 440px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius);
+    color: var(--white);
+    text-align: left;
+  }
+
+  .frontMedia {
+    position: absolute;
+    inset: 0;
+  }
+
+  .frontShade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(0deg, rgba(6, 13, 28, 0.85), rgba(6, 13, 28, 0) 55%);
+  }
+
+  .frontChip {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 12px;
+    border-radius: 14px;
+    background: rgba(207, 224, 255, 0.16);
+    font-size: 12px;
+    font-weight: 500;
+    backdrop-filter: blur(6px);
+  }
+
+  .frontHint {
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    z-index: 2;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--ice);
+  }
+
+  .dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .dots > span {
+    position: relative;
+    width: 10px;
+    height: 4px;
+    overflow: hidden;
+    border-radius: 2px;
+    background: rgba(207, 224, 255, 0.3);
+    transition: width 0.3s var(--ease);
+  }
+
+  .dots > span[data-active] {
+    width: 28px;
+  }
+
+  .stackTitle {
+    font-size: clamp(48px, 13vw, 64px);
+    font-weight: 600;
+    letter-spacing: -0.045em;
+    line-height: 0.92;
+  }
+
+  .stackTitle em {
+    color: var(--ice);
+  }
+
+  .stackBody {
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--white-80);
+  }
+
+  .stackActions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .down {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    color: var(--white);
+  }
+
+  .down svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .cards {
+    height: 560px;
+  }
+
+  .back2 {
+    height: 510px;
+  }
+
+  .back1 {
+    height: 520px;
+  }
+
+  .front {
+    height: 530px;
+  }
+}
