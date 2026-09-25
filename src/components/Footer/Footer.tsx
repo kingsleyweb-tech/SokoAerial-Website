@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { logo } from '../../data/media'
 import { contact, footerColumns, paths } from '../../data/site'
 import styles from '../../styles/Footer.module.css'
 import { Pill } from '../Pill/Pill'
@@ -7,9 +8,15 @@ export function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.top}>
-        <p className={styles.slogan}>
-          Empowering emergency response <em className="serif">anywhere.</em>
-        </p>
+        <div className={styles.intro}>
+          <Link to={paths.home} className={styles.brand} aria-label="Sigtrack home">
+            <img src={logo} alt="" width={56} height={58} />
+            <span>Sigtrack</span>
+          </Link>
+          <p className={styles.slogan}>
+            Empowering emergency response <em className="serif">anywhere.</em>
+          </p>
+        </div>
         <Pill to={paths.contact} variant="light" className="hide-mobile">
           Talk to Sigtrack
         </Pill>
