@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { DemoForm } from '../../components/Forms/DemoForm'
 import { PlayIcon } from '../../components/Icons/Icons'
+import { LaptopFrame } from '../../components/LaptopFrame/LaptopFrame'
 import { Pill } from '../../components/Pill/Pill'
 import { desktopModes } from '../../data/content'
 import { images, videos } from '../../data/media'
@@ -56,17 +57,18 @@ export function DesktopPage() {
           </div>
         </div>
         <motion.div
-          className={`${styles.screen} topo`}
+          className={styles.heroDevice}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.2, 0.7, 0.2, 1] }}
         >
-          <img src={images.desktopTracking} alt="Sigtrack Desktop tracking team members on a map" />
-          {hud.map((h) => (
-            <span key={h} className={`${styles.hud} hide-mobile`}>
-              {h}
-            </span>
-          ))}
+          <LaptopFrame src={images.desktopTracking} alt="Sigtrack Desktop tracking team members on a map" loading="eager">
+            {hud.map((h, i) => (
+              <span key={h} className={`${styles.hud} hide-mobile`} data-pos={i}>
+                {h}
+              </span>
+            ))}
+          </LaptopFrame>
         </motion.div>
       </section>
 
@@ -107,9 +109,7 @@ export function DesktopPage() {
                 </div>
               ))}
             </div>
-            <div className={`${styles.modeShot} topo photo--zoom`}>
-              <img src={cur.image} alt={`Sigtrack Desktop — ${cur.label}`} loading="lazy" />
-            </div>
+            <LaptopFrame className={styles.modeShot} src={cur.image} alt={`Sigtrack Desktop — ${cur.label}`} loading="lazy" />
           </motion.div>
         </AnimatePresence>
       </section>

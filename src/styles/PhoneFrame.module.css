@@ -1,0 +1,179 @@
+/*
+ * Phone mockup. The frame is a size container, so every detail is expressed in cqw
+ * (1cqw = 1% of the phone's width) and scales with whatever width the page gives it.
+ */
+.phone {
+  container-type: inline-size;
+  position: relative;
+  aspect-ratio: 9 / 19.5;
+  flex-shrink: 0;
+}
+
+.body {
+  position: absolute;
+  inset: 0;
+  display: block;
+  padding: 3.6cqw;
+  border-radius: 16cqw;
+  /* titanium edge: a lit rim around a near-black bezel */
+  background:
+    linear-gradient(#05070c, #05070c) padding-box,
+    linear-gradient(150deg, #5d6678 0%, #1b2130 22%, #0c1019 50%, #2a3242 78%, #6a7386 100%) border-box;
+  border: 1.1cqw solid transparent;
+  box-shadow:
+    0 0 0 0.35cqw #0a0d14,
+    0 12cqw 22cqw -8cqw rgba(6, 13, 28, 0.55),
+    0 3cqw 6cqw -2cqw rgba(6, 13, 28, 0.35);
+}
+
+/* ---------- Side buttons ---------- */
+
+.button {
+  position: absolute;
+  width: 1.2cqw;
+  border-radius: 0.6cqw;
+  background: linear-gradient(90deg, #3a4254, #6a7386 60%, #2a3140);
+}
+
+.action,
+.volUp,
+.volDown {
+  left: -2.1cqw;
+}
+
+.power {
+  right: -2.1cqw;
+  top: 33%;
+  height: 16%;
+}
+
+.action {
+  top: 18%;
+  height: 5%;
+}
+
+.volUp {
+  top: 26%;
+  height: 9%;
+}
+
+.volDown {
+  top: 37%;
+  height: 9%;
+}
+
+/* ---------- Screen ---------- */
+
+.screen {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 12.4cqw;
+  background: #000;
+  isolation: isolate;
+}
+
+.screen img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: auto;
+  max-width: none;
+  transition: scale 0.6s var(--ease);
+}
+
+.phone:hover .screen img {
+  scale: 1.03;
+}
+
+/* keeps the white status bar readable over bright screenshots */
+.shade {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 16cqw;
+  background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+  pointer-events: none;
+}
+
+.status {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 12.5cqw;
+  padding: 1.2cqw 7.5cqw 0 9.5cqw;
+  color: #fff;
+  pointer-events: none;
+}
+
+.time {
+  font-family: var(--font-sans);
+  font-size: 4.6cqw;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 1.4cqw;
+}
+
+.icons svg {
+  height: 3.3cqw;
+  width: auto;
+  fill: currentColor;
+}
+
+.island {
+  position: absolute;
+  top: 3cqw;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 32cqw;
+  height: 9.4cqw;
+  padding-right: 2.6cqw;
+  border-radius: 5cqw;
+  background: #000;
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 0.3cqw rgba(255, 255, 255, 0.04);
+}
+
+.lens {
+  width: 3.4cqw;
+  height: 3.4cqw;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #3b4a7a 0 18%, #11172a 45%, #05070d 70%);
+}
+
+.home {
+  position: absolute;
+  bottom: 2.2cqw;
+  left: 50%;
+  width: 36cqw;
+  height: 1.4cqw;
+  border-radius: 1cqw;
+  background: rgba(255, 255, 255, 0.85);
+  transform: translateX(-50%);
+  box-shadow: 0 0 1.5cqw rgba(0, 0, 0, 0.35);
+}
+
+/* soft reflection across the glass */
+.glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.04) 28%, rgba(255, 255, 255, 0) 42%);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone:hover .screen img {
+    scale: 1;
+  }
+}

@@ -4,8 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 44px;
-  min-height: 940px;
-  padding: 140px var(--gutter) 0;
+  padding: 140px var(--gutter) 96px;
   overflow: hidden;
   background: var(--midnight);
   color: var(--white);
@@ -60,23 +59,10 @@
   color: rgba(255, 255, 255, 0.78);
 }
 
-.screen {
-  position: relative;
-  flex-grow: 1;
-  min-height: 480px;
-  overflow: hidden;
-  border: 10px solid var(--frame-dark);
-  border-bottom: 0;
-  border-radius: 24px 24px 0 0;
-}
-
-.screen img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
+/* the laptop mockup lives in LaptopFrame; the page only sets its width */
+.heroDevice {
+  width: min(100%, 1120px);
+  margin: 0 auto;
 }
 
 .hud {
@@ -104,24 +90,24 @@
   box-shadow: 0 0 0 5px rgba(42, 95, 232, 0.25);
 }
 
-.hud:nth-of-type(1) {
-  left: 28px;
-  top: 28px;
+.hud[data-pos='0'] {
+  left: 20px;
+  top: 20px;
 }
 
-.hud:nth-of-type(2) {
-  right: 28px;
-  top: 28px;
+.hud[data-pos='1'] {
+  right: 20px;
+  top: 20px;
 }
 
-.hud:nth-of-type(3) {
-  left: 28px;
-  bottom: 28px;
+.hud[data-pos='2'] {
+  left: 20px;
+  bottom: 20px;
 }
 
-.hud:nth-of-type(4) {
-  right: 28px;
-  bottom: 28px;
+.hud[data-pos='3'] {
+  right: 20px;
+  bottom: 20px;
 }
 
 /* ---------- Modes ---------- */
@@ -206,15 +192,8 @@
 }
 
 .modeShot {
-  min-height: 420px;
-  overflow: hidden;
-  border-radius: 24px;
-}
-
-.modeShot img {
+  align-self: center;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* ---------- Replay ---------- */
@@ -551,10 +530,6 @@
     align-items: flex-start;
   }
 
-  .screen {
-    min-height: 420px;
-  }
-
   .panel,
   .videos {
     grid-template-columns: minmax(0, 1fr);
@@ -573,17 +548,11 @@
 @media (max-width: 767px) {
   .hero {
     gap: 28px;
-    padding: 96px var(--gutter) 0;
+    padding: 96px var(--gutter) 48px;
   }
 
   .heroHead {
     gap: 22px;
-  }
-
-  .screen {
-    min-height: 260px;
-    border-width: 6px;
-    border-radius: 18px 18px 0 0;
   }
 
   .modes,
@@ -617,11 +586,6 @@
 
   .item span {
     font-size: 19px;
-  }
-
-  .modeShot {
-    min-height: 220px;
-    border-radius: 20px;
   }
 
   .playback {

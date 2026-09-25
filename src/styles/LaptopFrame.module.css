@@ -1,0 +1,101 @@
+/*
+ * Laptop mockup. The whole device is a size container, so details use cqw
+ * (1cqw = 1% of the laptop's width) and scale with the width the page gives it.
+ */
+.laptop {
+  container-type: inline-size;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lid {
+  position: relative;
+  width: 86%;
+  padding: 1.25cqw 1.25cqw 1.9cqw;
+  border-radius: 2.2cqw 2.2cqw 0.5cqw 0.5cqw;
+  background: #07090e;
+  /* thin lit rim around the lid */
+  box-shadow:
+    0 0 0 0.18cqw #2e3645,
+    inset 0 0 0 0.12cqw rgba(255, 255, 255, 0.06);
+}
+
+.screen {
+  position: relative;
+  aspect-ratio: 1366 / 720;
+  overflow: hidden;
+  border-radius: 0.6cqw;
+  background: #000;
+  isolation: isolate;
+}
+
+.screen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: scale 0.6s var(--ease);
+}
+
+.laptop:hover .screen img {
+  scale: 1.02;
+}
+
+.glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 30%, rgba(255, 255, 255, 0) 45%);
+  pointer-events: none;
+}
+
+/* camera notch at the top of the bezel */
+.notch {
+  position: absolute;
+  top: 1.25cqw;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 11cqw;
+  height: 1.5cqw;
+  border-radius: 0 0 0.8cqw 0.8cqw;
+  background: #07090e;
+  transform: translateX(-50%);
+}
+
+.notch span {
+  width: 0.55cqw;
+  height: 0.55cqw;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #3b4a7a 0 20%, #0d1220 60%);
+}
+
+.base {
+  position: relative;
+  width: 100%;
+  height: 2.1cqw;
+  border-radius: 0.3cqw 0.3cqw 1.6cqw 1.6cqw / 0.3cqw 0.3cqw 1.9cqw 1.9cqw;
+  background: linear-gradient(#e9edf3 0%, #c3cad5 45%, #8e97a6 100%);
+  box-shadow:
+    inset 0 0.12cqw 0 rgba(255, 255, 255, 0.9),
+    0 2.4cqw 4cqw -1.2cqw rgba(6, 13, 28, 0.6);
+}
+
+/* thumb groove for opening the lid */
+.groove {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 14cqw;
+  height: 0.9cqw;
+  border-radius: 0 0 1cqw 1cqw;
+  background: linear-gradient(#a3abb8, #c9d0da);
+  transform: translateX(-50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .laptop:hover .screen img {
+    scale: 1;
+  }
+}

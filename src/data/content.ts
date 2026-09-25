@@ -352,12 +352,34 @@ export const webFeatures = [
   { title: 'Track each member in real time', body: 'Real-time tracking of every member through the connected radio systems.', x: 30, y: 70 },
 ]
 
+// Screens are centred in the portrait phone (x/y = focus point as a fraction of the image, default 0.5);
+// zoom trims the bezels and system bars baked into some screenshots.
 export const mobileFeatures = [
-  { title: 'Silvus + Meshtastic radio', body: 'Robust channels in the most challenging environments.', image: images.mobileRadioMap },
-  { title: 'Field Situation Awareness Kit', body: 'Vital information at operatives’ fingertips.', image: images.mobileFieldKit },
-  { title: 'Encrypted chatting', body: 'Secure messaging that safeguards sensitive data.', image: images.mobileWithRadio },
-  { title: 'Custom markers & images', body: 'Drag and drop markers or images onto the map.', image: images.mobileMarkers },
-  { title: 'Waypoint sharing', body: 'Direct teammates to rendezvous points and objectives.', image: images.mobileMapTypes },
+  {
+    title: 'Silvus + Meshtastic radio',
+    body: 'Robust channels in the most challenging environments.',
+    screen: { src: images.mobileRadioMap, zoom: 1.12 },
+  },
+  {
+    title: 'Field Situation Awareness Kit',
+    body: 'Vital information at operatives’ fingertips.',
+    screen: { src: images.mobileFieldKit },
+  },
+  {
+    title: 'Encrypted chatting',
+    body: 'Secure messaging that safeguards sensitive data.',
+    screen: { src: images.mobileWithRadio },
+  },
+  {
+    title: 'Custom markers & images',
+    body: 'Drag and drop markers or images onto the map.',
+    screen: { src: images.mobileMarkers, x: 0.1, y: 0.62, zoom: 1.35 },
+  },
+  {
+    title: 'Waypoint sharing',
+    body: 'Direct teammates to rendezvous points and objectives.',
+    screen: { src: images.mobileMapTypes, x: 0.52, zoom: 1.12 },
+  },
 ]
 
 export const awarenessKit = [

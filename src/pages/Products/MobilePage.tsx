@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { DemoForm } from '../../components/Forms/DemoForm'
 import { ArrowIcon, ArrowLeftIcon } from '../../components/Icons/Icons'
+import { PhoneFrame } from '../../components/PhoneFrame/PhoneFrame'
 import { Pill } from '../../components/Pill/Pill'
 import { Reveal } from '../../components/Reveal/Reveal'
 import { awarenessKit, mobileFeatures } from '../../data/content'
@@ -26,8 +27,16 @@ export function MobilePage() {
         >
           Mobile
         </motion.span>
-        <motion.div className={styles.phone} {...rise} transition={{ duration: 0.6, delay: 0.1, ease: [0.2, 0.7, 0.2, 1] }}>
-          <img src={images.mobileRadioMap} alt="Sigtrack Mobile showing teammates on the map" />
+        <motion.div className={styles.phoneWrap} {...rise} transition={{ duration: 0.6, delay: 0.1, ease: [0.2, 0.7, 0.2, 1] }}>
+          <PhoneFrame
+            className={styles.phone}
+            src={images.mobileRadioMap}
+            x={0.24}
+            y={0.52}
+            zoom={1.16}
+            alt="Sigtrack Mobile on the map, with Silvus and Meshtastic radio options"
+            loading="eager"
+          />
         </motion.div>
         <motion.div className={styles.heroTitle} {...rise} transition={{ duration: 0.5, ease: [0.2, 0.7, 0.2, 1] }}>
           <span className="chip">The Sigtrack Mobile · Android</span>
@@ -72,9 +81,7 @@ export function MobilePage() {
         <div ref={trackRef} className={styles.track} onScroll={onTrackScroll}>
           {mobileFeatures.map((f, i) => (
             <article key={f.title} className={styles.card}>
-              <div className={`${styles.cardShot} topo`}>
-                <img src={f.image} alt="" loading="lazy" />
-              </div>
+              <PhoneFrame className={styles.cardPhone} {...f.screen} alt="" loading="lazy" />
               <span className="mono">
                 {pad(i + 1)} / {pad(mobileFeatures.length)}
               </span>

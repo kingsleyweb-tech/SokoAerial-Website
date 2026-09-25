@@ -1,0 +1,18 @@
+<!doctype html><html><body style="margin:0;background:#000;color:#fff;font:12px monospace">
+<div id="g" style="display:grid;grid-template-columns:repeat(3,480px);gap:4px"></div>
+<script>
+const src = new URLSearchParams(location.search).get('v');
+const g = document.getElementById('g');
+const probe = document.createElement('video'); probe.src = src; probe.preload = 'metadata'; probe.muted = true;
+probe.onloadedmetadata = () => {
+  const d = probe.duration; document.title = 'dur ' + d;
+  for (let k = 1; k <= 9; k++) {
+    const w = document.createElement('div');
+    const v = document.createElement('video'); v.src = src; v.muted = true; v.preload = 'auto'; v.style.width = '480px';
+    v.addEventListener('loadedmetadata', () => { v.currentTime = d * k / 10 });
+    v.addEventListener('seeked', () => { window.done = (window.done || 0) + 1 });
+    const l = document.createElement('div'); l.textContent = (d * k / 10).toFixed(1) + 's';
+    w.append(v, l); g.append(w);
+  }
+};
+</script></body></html>
