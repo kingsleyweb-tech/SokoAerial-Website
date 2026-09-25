@@ -73,3 +73,28 @@ export default defineConfig([
 ])
 
 ```
+
+## Hosting: deep links and refreshes
+
+The site is a single-page app, so the server must answer every route (e.g. `/about`, `/plans?plan=pro`)
+with `index.html`. Fallback rules for common hosts ship with the build:
+
+| Host | File |
+| --- | --- |
+| Netlify, Cloudflare Pages | `public/_redirects` |
+| Vercel | `vercel.json` |
+| Apache / cPanel | `public/.htaccess` |
+| Azure Static Web Apps | `public/staticwebapp.config.json` |
+| Firebase Hosting | `firebase.json` |
+| GitHub Pages | `dist/404.html` (copied from `index.html` at build time, see `vite.config.ts`) |
+
+On nginx, add this to the site's `server` block:
+
+```nginx
+location / {
+  try_files $uri $uri/ /index.html;
+}
+```
+
+Unknown paths redirect to the home page inside the app, and old sigtrackapp.com URLs
+(`/about-us-13`, `/sigtackweb`, `/chooseplan`, `/payment`, `/exhibition`) redirect to their new pages.
