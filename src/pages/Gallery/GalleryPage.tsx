@@ -19,6 +19,7 @@ export function GalleryPage() {
   const viewerRef = useRef<HTMLElement>(null)
 
   const list = useMemo(() => galleryItems.filter((x) => filter === 'all' || x.category === filter), [filter])
+  const viewerItems = useMemo(() => list.map((x) => ({ ...x, label: galleryCategoryLabels[x.category] })), [list])
   const safeIndex = Math.min(index, list.length - 1)
   const current = list[safeIndex]
 
@@ -162,7 +163,7 @@ export function GalleryPage() {
         })}
       </section>
 
-      <Lightbox items={list} open={viewerOpen} index={safeIndex} onChange={setIndex} onClose={() => setViewerOpen(false)} />
+      <Lightbox items={viewerItems} open={viewerOpen} index={safeIndex} onChange={setIndex} onClose={() => setViewerOpen(false)} />
     </>
   )
 }
