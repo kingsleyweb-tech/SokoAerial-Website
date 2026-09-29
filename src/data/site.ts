@@ -10,6 +10,8 @@ export const paths = {
   mobile: '/sigtrack-mobile',
   desktop: '/sigtrack-desktop',
   radios: '/radios',
+  watcher: '/watcher',
+  flash: '/flash',
   legal: '/legal-notice',
   privacy: '/privacy',
   plans: '/plans',
@@ -25,7 +27,7 @@ export const contact = {
   site: 'sigtrackapp.com',
 }
 
-export type ProductId = 'web' | 'mobile' | 'desktop' | 'radios'
+export type ProductId = 'web' | 'mobile' | 'desktop' | 'radios' | 'watcher' | 'flash'
 
 export interface ProductLink {
   id: ProductId
@@ -40,13 +42,15 @@ export const productLinks: ProductLink[] = [
   { id: 'mobile', label: 'Sigtrack Mobile', short: 'Mobile', to: paths.mobile, image: images.mobileRadioMap },
   { id: 'desktop', label: 'Sigtrack Desktop', short: 'Desktop', to: paths.desktop, image: images.desktopTracking },
   { id: 'radios', label: 'Radios', short: 'Radios', to: paths.radios, image: images.silvusRadio },
+  { id: 'watcher', label: 'Watcher', short: 'Watcher', to: paths.watcher, image: images.watcherMap },
+  { id: 'flash', label: 'Flash', short: 'Flash', to: paths.flash, image: images.flashDesktopCall },
 ]
 
 /** Pages listed in the full-screen index, with the preview shown on hover. */
 export const indexPages = [
   { label: 'Home', to: paths.home, image: images.sigtrackRadioTable, blurb: 'Eyes in the sky — the all-in-one response solution.' },
   { label: 'Capabilities', to: paths.capabilities, image: images.desktopSatellite, blurb: 'Dual usage: military ISR and civilian mapping, side by side.' },
-  { label: 'Gallery', to: paths.gallery, image: images.commandSetup, blurb: 'Sigtrack Web, Mobile and Desktop in use.' },
+  { label: 'Gallery', to: paths.gallery, image: images.fieldCommandTruck, blurb: 'Sigtrack Web, Mobile and Desktop in use.' },
   { label: 'About Us', to: paths.about, image: images.fieldTeam, blurb: 'Drones, software and seamless radio connectivity.' },
   { label: 'Contact', to: paths.contact, image: images.webMeshMap, blurb: 'Burma Camp, Accra — call, email or send a message.' },
 ]

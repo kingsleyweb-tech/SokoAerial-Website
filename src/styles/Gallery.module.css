@@ -325,7 +325,8 @@
   }
 
   .filters {
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 8px 20px;
     padding-bottom: 0;
   }
 

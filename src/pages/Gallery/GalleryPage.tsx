@@ -7,8 +7,8 @@ import { galleryCategoryLabels, galleryItems, type GalleryCategory } from '../..
 import styles from '../../styles/Gallery.module.css'
 
 type Filter = 'all' | Exclude<GalleryCategory, 'field'>
-const filters: Filter[] = ['all', 'web', 'mobile', 'desktop']
-const collections: Exclude<GalleryCategory, 'field'>[] = ['web', 'mobile', 'desktop']
+const collections: Exclude<GalleryCategory, 'field'>[] = ['web', 'mobile', 'desktop', 'watcher', 'flash']
+const filters: Filter[] = ['all', ...collections]
 const widths = [420, 300, 520, 360]
 const pad = (n: number) => String(n).padStart(2, '0')
 

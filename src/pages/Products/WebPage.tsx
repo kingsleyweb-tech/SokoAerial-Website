@@ -1,16 +1,31 @@
 import { motion } from 'framer-motion'
 import { useState, type CSSProperties } from 'react'
 import { DemoForm } from '../../components/Forms/DemoForm'
+import { PlayIcon } from '../../components/Icons/Icons'
 import { Pill } from '../../components/Pill/Pill'
 import { webFeatures } from '../../data/content'
-import { images } from '../../data/media'
+import { images, videos } from '../../data/media'
+import desktop from '../../styles/Desktop.module.css'
 import styles from '../../styles/Web.module.css'
 
 const pad = (n: number) => String(n).padStart(2, '0')
+const clips = [
+  { src: videos.webClip1, name: 'Sigtrack Web in the field', cover: images.webCommandWall },
+  { src: videos.webClip2, name: 'Sigtrack Web on the video wall', cover: images.webTacticalSymbols },
+]
 
 export function WebPage() {
   const [active, setActive] = useState(0)
   const cur = webFeatures[active]
+  const [clip, setClip] = useState(0)
+  const [playing, setPlaying] = useState(false)
+  const main = clips[clip]
+  const others = clips.filter((_, i) => i !== clip)
+
+  const play = (src: string) => {
+    setClip(clips.findIndex((c) => c.src === src))
+    setPlaying(true)
+  }
 
   return (
     <>
@@ -121,6 +136,37 @@ export function WebPage() {
             internet connectivity.
           </span>
         </p>
+      </section>
+
+      {/* Same video layout as Sigtrack Desktop's "See it running" section. */}
+      <section className={desktop.videos} aria-label="Videos">
+        <div className={desktop.bigVideo}>
+          {playing ? (
+            <video key={main.src} src={main.src} controls autoPlay playsInline />
+          ) : (
+            <button type="button" className={`${desktop.poster} topo`} onClick={() => setPlaying(true)} aria-label={`Play ${main.name}`}>
+              <img src={main.cover} alt="" loading="lazy" />
+              <span className={desktop.bigPlay}>
+                <PlayIcon />
+              </span>
+              <span className={desktop.caption}>Now playing · {main.name}</span>
+            </button>
+          )}
+        </div>
+        <div className={desktop.side}>
+          <h2>
+            See it <em className="serif">in command.</em>
+          </h2>
+          {others.map((c) => (
+            <button key={c.src} type="button" className={`${desktop.small} topo`} onClick={() => play(c.src)} aria-label={`Play ${c.name}`}>
+              <img src={c.cover} alt="" loading="lazy" />
+              <span className={desktop.smallPlay}>
+                <PlayIcon />
+              </span>
+              <span className={desktop.caption}>Up next · {c.name}</span>
+            </button>
+          ))}
+        </div>
       </section>
 
       <DemoForm

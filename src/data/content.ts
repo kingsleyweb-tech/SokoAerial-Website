@@ -52,7 +52,7 @@ export const heroSlides: HeroSlide[] = [
     accent: 'response.',
     body: 'Connect radios, command trailers and drones seamlessly. Empowering emergency response anywhere.',
     mobileBody: 'Connect radios, command trailers and drones — anywhere.',
-    media: { type: 'image', src: images.sigtrackRadioTable, alt: 'Sigtrack radio deployed in the field' },
+    media: { type: 'image', src: images.webCommandWall, alt: 'Briefing at a command-centre video wall running Sigtrack Web' },
   },
 ]
 
@@ -121,6 +121,28 @@ export const systemProducts: {
     frame: 'round',
     tone: 'signal',
   },
+  {
+    name: 'Soko',
+    sub: 'Watcher',
+    platform: 'Windows',
+    to: paths.watcher,
+    desc: 'Drone payload ground control — live gimbal camera, a geospatial operations map and full telemetry in one cockpit.',
+    short: 'Gimbal camera, ops map, telemetry.',
+    image: images.watcherMap,
+    frame: 'laptop',
+    tone: 'navy',
+  },
+  {
+    name: 'The',
+    sub: 'Flash',
+    platform: 'Windows · Android',
+    to: paths.flash,
+    desc: 'Encrypted chat, video calls and file transfers between nearby devices over the local network.',
+    short: 'Chat, calls and files over LAN.',
+    image: images.flashMobileCall,
+    frame: 'phone',
+    tone: 'ice',
+  },
 ]
 
 export const usage = {
@@ -156,14 +178,14 @@ export const uses = [
   {
     title: 'Military exercises',
     body: 'Situational awareness and decision-making support for defense organizations.',
-    image: images.fieldBriefing,
-    alt: 'Military personnel at a Sigtrack briefing',
+    image: images.webCommandWall,
+    alt: 'Soldier briefing from Sigtrack Web on a command-centre video wall',
   },
   {
     title: 'Emergency response',
     body: 'Radios, command trailers and drones connected — anywhere.',
-    image: images.commandSetup,
-    alt: 'Radios connected to a laptop running Sigtrack',
+    image: images.fieldCommandTruck,
+    alt: 'Operators working beside a 93 Signal Regiment command-centre truck',
   },
   {
     title: 'Remote team coordination',
@@ -184,8 +206,8 @@ export const fieldRows = [
   [
     { src: images.fieldBriefing, w: 460 },
     { src: images.sigtrackRadioCloseup, w: 300 },
-    { src: images.webMarkers, w: 520 },
-    { src: images.meshtasticSetup, w: 300 },
+    { src: images.fieldCommandTruck, w: 520 },
+    { src: images.webCommandWall, w: 300 },
   ],
   [
     { src: images.mobileWithRadio, w: 360 },
@@ -309,7 +331,7 @@ export const dualUse = [
 
 // ---------- Gallery ----------
 
-export type GalleryCategory = 'field' | 'web' | 'mobile' | 'desktop'
+export type GalleryCategory = 'field' | 'web' | 'mobile' | 'desktop' | 'watcher' | 'flash'
 
 export interface GalleryItem {
   src: string
@@ -321,6 +343,9 @@ export interface GalleryItem {
 /** Gallery images from sigtrackapp.com; categories follow the live gallery. */
 export const galleryItems: GalleryItem[] = [
   { src: images.fieldBriefing, alt: 'Military personnel at a Sigtrack briefing', caption: 'Sigtrack in the field', category: 'field' },
+  { src: images.fieldCommandTruck, alt: 'Operators beside a 93 Signal Regiment command-centre truck', caption: 'Mobile command centre', category: 'field' },
+  { src: images.webCommandWall, alt: 'Briefing from Sigtrack Web on a command-centre video wall', caption: 'Sigtrack Web on the video wall', category: 'web' },
+  { src: images.webTacticalSymbols, alt: 'Sigtrack Web tactical symbols picker beside a team list', caption: 'Tactical symbols', category: 'web' },
   { src: images.webDashboard, alt: 'Sigtrack Web team dashboard', caption: 'Sigtrack Web', category: 'web' },
   { src: images.webMeshMap, alt: 'Mesh radio network on the Sigtrack Web map', caption: 'Mesh radio network on the map', category: 'web' },
   { src: images.webMeshChat, alt: 'Sigtrack Web Meshtastic chat', caption: 'Chat without internet', category: 'web' },
@@ -333,6 +358,12 @@ export const galleryItems: GalleryItem[] = [
   { src: images.desktopWestAfrica, alt: 'Sigtrack Desktop map of West Africa', caption: 'Sigtrack Desktop', category: 'desktop' },
   { src: images.desktopGlobe, alt: 'Sigtrack Desktop globe view', caption: 'Sigtrack Desktop globe', category: 'desktop' },
   { src: images.commandSetup, alt: 'Radios connected to a laptop running Sigtrack', caption: 'Field deployment', category: 'desktop' },
+  { src: images.watcherMap, alt: 'Watcher geospatial operations map with the gimbal feed panel', caption: 'Geospatial operations map', category: 'watcher' },
+  { src: images.watcherCockpit, alt: 'Watcher cockpit with camera, map and recording panels', caption: 'Watcher cockpit', category: 'watcher' },
+  { src: images.watcherTelemetry, alt: 'Watcher telemetry and avionics diagnostics', caption: 'Telemetry and avionics', category: 'watcher' },
+  { src: images.flashDesktopCall, alt: 'Flash video call on Windows', caption: 'Flash video call', category: 'flash' },
+  { src: images.flashMobileCall, alt: 'Flash video call on Android', caption: 'Flash on Android', category: 'flash' },
+  { src: images.flashShare, alt: 'Sharing a file to paired devices in Flash', caption: 'Share with nearby devices', category: 'flash' },
 ]
 
 export const galleryCategoryLabels: Record<GalleryCategory, string> = {
@@ -340,6 +371,8 @@ export const galleryCategoryLabels: Record<GalleryCategory, string> = {
   web: 'Web',
   mobile: 'Mobile',
   desktop: 'Desktop',
+  watcher: 'Watcher',
+  flash: 'Flash',
 }
 
 // ---------- Products ----------
@@ -415,6 +448,66 @@ export const desktopModes = [
       { t: 'Versatile marker system', b: 'Drop markers anywhere to highlight points of interest, hazards or waypoints.' },
       { t: 'Marker customization', b: 'Notes, icons and colors convey detailed information at a glance.' },
       { t: 'Sharing and collaboration', b: 'Share markers in real time so joint teams stay synchronized.' },
+    ],
+  },
+]
+
+export const watcherModes = [
+  {
+    label: 'Map',
+    image: images.watcherMap,
+    items: [
+      { t: 'Geospatial operations map', b: 'Satellite imagery with the aircraft position, heading and camera field of view drawn on the map.' },
+      { t: 'Picture-in-picture feed', b: 'Keep the gimbal camera, tilt and zoom controls on screen while you work the map.' },
+      { t: 'Ground-station fix', b: 'Ground-station and payload coordinates alongside live link status.' },
+    ],
+  },
+  {
+    label: 'Camera',
+    image: images.watcherCockpit,
+    items: [
+      { t: 'Live EO camera', b: 'The payload gimbal feed front and centre, with heading and tilt scales.' },
+      { t: 'Recording', b: 'Record to local storage and SD, and capture stills, from the same cockpit.' },
+      { t: 'Payload control', b: 'Gimbal, camera and sensor controls in a dedicated panel.' },
+    ],
+  },
+  {
+    label: 'Telemetry',
+    image: images.watcherTelemetry,
+    items: [
+      { t: 'Attitude and altitude', b: 'Roll, pitch and heading, altitude AGL and MSL, and tether deployed.' },
+      { t: 'Environment and power', b: 'Wind speed, payload temperature and battery reserve.' },
+      { t: 'Laser ranging and targeting', b: 'Laser distance, field-of-view angle, AI detections and target position estimates.' },
+    ],
+  },
+]
+
+export const flashModes = [
+  {
+    label: 'Call',
+    image: images.flashDesktopCall,
+    items: [
+      { t: 'Video calls', b: 'Face-to-face calls between Windows laptops and Android phones.' },
+      { t: 'Live link quality', b: 'Latency, resolution, frame rate and bitrate shown on every call.' },
+      { t: 'In-call controls', b: 'Mute, message and snapshot without leaving the call.' },
+    ],
+  },
+  {
+    label: 'Chat',
+    image: images.flashChat,
+    items: [
+      { t: 'Encrypted chat', b: 'Every conversation is encrypted, with the connection state always visible.' },
+      { t: 'Photos and files', b: 'Send images and files in the conversation; the recipient accepts or declines.' },
+      { t: 'Groups', b: 'Group conversations alongside one-to-one chats.' },
+    ],
+  },
+  {
+    label: 'Share',
+    image: images.flashShare,
+    items: [
+      { t: 'Paired devices', b: 'Send straight to paired devices online on the local network.' },
+      { t: 'Large files', b: 'Share video and other large files without the internet.' },
+      { t: 'Verified transfers', b: 'Transfer history with every received file verified.' },
     ],
   },
 ]

@@ -12,5 +12,7 @@ export const PrivacyPage = lazy(() => import('./Privacy/PrivacyPage').then((m) =
 export const DesktopPage = lazy(() => import('./Products/DesktopPage').then((m) => ({ default: m.DesktopPage })))
 export const MobilePage = lazy(() => import('./Products/MobilePage').then((m) => ({ default: m.MobilePage })))
 export const RadiosPage = lazy(() => import('./Products/RadiosPage').then((m) => ({ default: m.RadiosPage })))
+export const WatcherPage = lazy(() => import('./Products/WatcherPage').then((m) => ({ default: m.WatcherPage })))
+export const FlashPage = lazy(() => import('./Products/FlashPage').then((m) => ({ default: m.FlashPage })))
 export const WebPage = lazy(() => import('./Products/WebPage').then((m) => ({ default: m.WebPage })))
 export const PlansPage = lazy(() => import('./Plans/PlansPage').then((m) => ({ default: m.PlansPage })))

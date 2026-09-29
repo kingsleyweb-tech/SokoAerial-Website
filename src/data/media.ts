@@ -28,6 +28,20 @@ import webMarkers from '../assets/images/web-markers.jpg'
 import webMeshChat from '../assets/images/web-mesh-chat.jpg'
 import webMeshMap from '../assets/images/web-mesh-map.jpg'
 import webMeshtasticConnect from '../assets/images/web-meshtastic-connect.jpg'
+// Newer field photos and product screenshots supplied directly by the Sigtrack team.
+import fieldCommandTruck from '../assets/images/field-command-truck.jpg'
+import flashChat from '../assets/images/flash-chat.jpg'
+import flashDesktopCall from '../assets/images/flash-desktop-call.jpg'
+import flashMobileCall from '../assets/images/flash-mobile-call.jpg'
+import flashShare from '../assets/images/flash-share.jpg'
+import flashTransfers from '../assets/images/flash-transfers.jpg'
+import watcherCockpit from '../assets/images/watcher-cockpit.jpg'
+import watcherMap from '../assets/images/watcher-map.jpg'
+import watcherTelemetry from '../assets/images/watcher-telemetry.jpg'
+import webCommandWall from '../assets/images/web-command-wall.jpg'
+import webTacticalSymbols from '../assets/images/web-tactical-symbols.jpg'
+import webClip1 from '../assets/videos/web-clip-1.mp4'
+import webClip2 from '../assets/videos/web-clip-2.mp4'
 
 /** Sigtrack "Eyes in the Sky" emblem, shown beside the wordmark. */
 export const logo = sigtrackEmblem
@@ -41,7 +55,13 @@ export const images = {
   desktopWestAfrica,
   desktopWorldMap,
   fieldBriefing,
+  fieldCommandTruck,
   fieldTeam,
+  flashChat,
+  flashDesktopCall,
+  flashMobileCall,
+  flashShare,
+  flashTransfers,
   meshtasticDevice,
   meshtasticSetup,
   mobileFieldKit,
@@ -56,11 +76,16 @@ export const images = {
   sigtrackRadiosPair,
   silvusPromo,
   silvusRadio,
+  watcherCockpit,
+  watcherMap,
+  watcherTelemetry,
+  webCommandWall,
   webDashboard,
   webMarkers,
   webMeshChat,
   webMeshMap,
   webMeshtasticConnect,
+  webTacticalSymbols,
 }
 
 // Videos are too large to bundle (15–120 MB), so they stream from the existing Sigtrack media host.
@@ -71,4 +96,7 @@ export const videos = {
   sigtrackDemo1: `${VIDEO_HOST}/9122219/SigtrackVideo1.mp4`,
   sigtrackDemo2: `${VIDEO_HOST}/9122213/SigtrackVideo2.mp4`,
   sigtrackDemo3: `${VIDEO_HOST}/9122210/SigtrackVideo3.mov`,
+  // Short Sigtrack Web clips (2–3 MB) are small enough to bundle.
+  webClip1,
+  webClip2,
 }
