@@ -10,8 +10,8 @@ import styles from '../../styles/Web.module.css'
 
 const pad = (n: number) => String(n).padStart(2, '0')
 const clips = [
-  { src: videos.webClip1, name: 'Sigtrack Web in the field', cover: images.webCommandWall },
-  { src: videos.webClip2, name: 'Sigtrack Web on the video wall', cover: images.webTacticalSymbols },
+  { src: videos.webClip1, name: 'Team members and range rings', cover: images.webCommandWall },
+  { src: videos.webClip2, name: 'Drawing routes on the map', cover: images.webTacticalSymbols },
 ]
 
 export function WebPage() {
