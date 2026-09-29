@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { DemoForm } from '../../components/Forms/DemoForm'
+import { useScreenViewer } from '../../components/Lightbox/useScreenViewer'
 import { LaptopFrame } from '../../components/LaptopFrame/LaptopFrame'
 import { Pill } from '../../components/Pill/Pill'
 import { watcherModes } from '../../data/content'
@@ -9,12 +10,14 @@ import styles from '../../styles/Desktop.module.css'
 
 const pad = (n: number) => String(n).padStart(2, '0')
 const hud = ['Gimbal camera', 'Heading · FOV', 'Telemetry', 'Local + SD recording']
+const shots = watcherModes.map((m) => ({ src: m.image, alt: `Watcher — ${m.label}`, caption: m.items[0].t, label: 'Watcher' }))
 const uses = ['Aerial surveillance', 'Tethered overwatch', 'Target estimation', 'Search and rescue']
 
 // Shares the Sigtrack Desktop layout: Watcher is also a dark, Windows cockpit app.
 export function WatcherPage() {
   const [mode, setMode] = useState(0)
   const cur = watcherModes[mode]
+  const screens = useScreenViewer(shots)
 
   return (
     <>
@@ -48,7 +51,7 @@ export function WatcherPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.2, 0.7, 0.2, 1] }}
         >
-          <LaptopFrame src={images.watcherMap} alt="Watcher geospatial operations map with the gimbal feed panel" loading="eager">
+          <LaptopFrame src={images.watcherMap} alt="Watcher geospatial operations map with the gimbal feed panel" loading="eager" onOpen={() => screens.open(images.watcherMap)}>
             {hud.map((h, i) => (
               <span key={h} className={`${styles.hud} hide-mobile`} data-pos={i}>
                 {h}
@@ -95,7 +98,7 @@ export function WatcherPage() {
                 </div>
               ))}
             </div>
-            <LaptopFrame className={styles.modeShot} src={cur.image} alt={`Watcher — ${cur.label}`} loading="lazy" />
+            <LaptopFrame className={styles.modeShot} src={cur.image} alt={`Watcher — ${cur.label}`} loading="lazy" onOpen={() => screens.open(cur.image)} />
           </motion.div>
         </AnimatePresence>
       </section>
@@ -114,6 +117,7 @@ export function WatcherPage() {
         </div>
       </section>
 
+      {screens.viewer}
       <DemoForm product="Watcher" feedbackLead="On Watcher," mobileFeedbackLabel="My feedback" button="dark" />
     </>
   )

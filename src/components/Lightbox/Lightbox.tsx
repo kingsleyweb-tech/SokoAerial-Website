@@ -1,11 +1,18 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useEffectEvent, useRef, type PointerEvent } from 'react'
-import { galleryCategoryLabels, type GalleryItem } from '../../data/content'
 import styles from '../../styles/Lightbox.module.css'
 import { ArrowIcon, ArrowLeftIcon, CloseIcon } from '../Icons/Icons'
 
+export interface LightboxItem {
+  src: string
+  alt: string
+  caption: string
+  /** Small uppercase label above the caption, e.g. the gallery category or product name. */
+  label: string
+}
+
 interface LightboxProps {
-  items: GalleryItem[]
+  items: LightboxItem[]
   open: boolean
   index: number
   onChange: (index: number) => void
@@ -97,7 +104,7 @@ export function Lightbox({ items, open, index, onChange, onClose }: LightboxProp
               </button>
             </div>
             <div className={styles.info}>
-              <span className={styles.category}>{galleryCategoryLabels[current.category]}</span>
+              <span className={styles.category}>{current.label}</span>
               <span className={styles.caption}>{current.caption}</span>
             </div>
             <div className={styles.thumbs}>

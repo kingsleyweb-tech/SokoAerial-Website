@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import styles from '../../styles/PhoneFrame.module.css'
+import { ExpandIcon } from '../Icons/Icons'
 
 export interface PhoneScreen {
   src: string
@@ -15,13 +16,15 @@ interface PhoneFrameProps extends PhoneScreen {
   alt: string
   className?: string
   loading?: 'lazy' | 'eager'
+  /** Makes the screen a button that opens the screenshot full size. */
+  onOpen?: () => void
 }
 
 /**
  * A modern phone: titanium edge, side buttons, dynamic island, status bar and home indicator.
  * Size comes from the width of the element (set `width` via className); everything scales with it.
  */
-export function PhoneFrame({ src, alt, x = 0.5, y = 0.5, zoom = 1, className, loading }: PhoneFrameProps) {
+export function PhoneFrame({ src, alt, x = 0.5, y = 0.5, zoom = 1, className, loading, onOpen }: PhoneFrameProps) {
   // The image keeps its own proportions; translate(%) is relative to the image, so the focus point lands mid-screen.
   const imageStyle = { height: `${zoom * 100}%`, transform: `translate(${-x * 100}%, ${-y * 100}%)` } as CSSProperties
   return (
@@ -60,6 +63,13 @@ export function PhoneFrame({ src, alt, x = 0.5, y = 0.5, zoom = 1, className, lo
           </span>
           <span className={styles.home} aria-hidden="true" />
           <span className={styles.glare} aria-hidden="true" />
+          {onOpen && (
+            <button type="button" className={styles.open} onClick={onOpen} aria-label={`View full size${alt ? `: ${alt}` : ''}`}>
+              <span className={styles.openBadge}>
+                <ExpandIcon />
+              </span>
+            </button>
+          )}
         </span>
       </span>
     </div>

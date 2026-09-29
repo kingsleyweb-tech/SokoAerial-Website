@@ -1,18 +1,62 @@
-import { lazy } from 'react'
+import { createElement, lazy, type ComponentType } from 'react'
 
-// Home ships in the main bundle; other pages load on first visit.
-export const AboutPage = lazy(() => import('./About/AboutPage').then((m) => ({ default: m.AboutPage })))
-export const CapabilitiesPage = lazy(() =>
-  import('./Capabilities/CapabilitiesPage').then((m) => ({ default: m.CapabilitiesPage })),
-)
-export const ContactPage = lazy(() => import('./Contact/ContactPage').then((m) => ({ default: m.ContactPage })))
-export const GalleryPage = lazy(() => import('./Gallery/GalleryPage').then((m) => ({ default: m.GalleryPage })))
-export const LegalPage = lazy(() => import('./Legal/LegalPage').then((m) => ({ default: m.LegalPage })))
-export const PrivacyPage = lazy(() => import('./Privacy/PrivacyPage').then((m) => ({ default: m.PrivacyPage })))
-export const DesktopPage = lazy(() => import('./Products/DesktopPage').then((m) => ({ default: m.DesktopPage })))
-export const MobilePage = lazy(() => import('./Products/MobilePage').then((m) => ({ default: m.MobilePage })))
-export const RadiosPage = lazy(() => import('./Products/RadiosPage').then((m) => ({ default: m.RadiosPage })))
-export const WatcherPage = lazy(() => import('./Products/WatcherPage').then((m) => ({ default: m.WatcherPage })))
-export const FlashPage = lazy(() => import('./Products/FlashPage').then((m) => ({ default: m.FlashPage })))
-export const WebPage = lazy(() => import('./Products/WebPage').then((m) => ({ default: m.WebPage })))
-export const PlansPage = lazy(() => import('./Plans/PlansPage').then((m) => ({ default: m.PlansPage })))
+type PageModule<K extends string> = Record<K, ComponentType>
+
+/**
+ * A code-split page that can be fetched ahead of time. Once its chunk is in, the page renders
+ * directly instead of through React.lazy, so navigating to it never shows the Suspense fallback.
+ */
+function lazyPage<K extends string>(load: () => Promise<PageModule<K>>, name: K) {
+  let Loaded: ComponentType | undefined
+  let pending: Promise<{ default: ComponentType }> | undefined
+  const preload = () =>
+    (pending ??= load().then(
+      (m) => {
+        Loaded = m[name]
+        return { default: m[name] }
+      },
+      (error: unknown) => {
+        pending = undefined // let a later visit retry, e.g. after a dropped connection
+        throw error
+      },
+    ))
+  const Lazy = lazy(preload)
+  const Page = () => createElement(Loaded ?? Lazy)
+  return Object.assign(Page, { preload })
+}
+
+// Home ships in the main bundle; other pages load on first visit, or earlier via preloadPages.
+export const AboutPage = lazyPage(() => import('./About/AboutPage'), 'AboutPage')
+export const CapabilitiesPage = lazyPage(() => import('./Capabilities/CapabilitiesPage'), 'CapabilitiesPage')
+export const ContactPage = lazyPage(() => import('./Contact/ContactPage'), 'ContactPage')
+export const GalleryPage = lazyPage(() => import('./Gallery/GalleryPage'), 'GalleryPage')
+export const LegalPage = lazyPage(() => import('./Legal/LegalPage'), 'LegalPage')
+export const PrivacyPage = lazyPage(() => import('./Privacy/PrivacyPage'), 'PrivacyPage')
+export const DesktopPage = lazyPage(() => import('./Products/DesktopPage'), 'DesktopPage')
+export const MobilePage = lazyPage(() => import('./Products/MobilePage'), 'MobilePage')
+export const RadiosPage = lazyPage(() => import('./Products/RadiosPage'), 'RadiosPage')
+export const WatcherPage = lazyPage(() => import('./Products/WatcherPage'), 'WatcherPage')
+export const FlashPage = lazyPage(() => import('./Products/FlashPage'), 'FlashPage')
+export const WebPage = lazyPage(() => import('./Products/WebPage'), 'WebPage')
+export const PlansPage = lazyPage(() => import('./Plans/PlansPage'), 'PlansPage')
+
+const pages = [
+  AboutPage,
+  CapabilitiesPage,
+  ContactPage,
+  GalleryPage,
+  LegalPage,
+  PrivacyPage,
+  DesktopPage,
+  MobilePage,
+  RadiosPage,
+  WatcherPage,
+  FlashPage,
+  WebPage,
+  PlansPage,
+]
+
+/** Fetches every page chunk (a few KB each) so later navigation is instant. */
+export function preloadPages() {
+  for (const page of pages) page.preload().catch(() => {})
+}

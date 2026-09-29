@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { DemoForm } from '../../components/Forms/DemoForm'
 import { ArrowIcon, ArrowLeftIcon } from '../../components/Icons/Icons'
+import { useScreenViewer } from '../../components/Lightbox/useScreenViewer'
 import { PhoneFrame } from '../../components/PhoneFrame/PhoneFrame'
 import { Pill } from '../../components/Pill/Pill'
 import { Reveal } from '../../components/Reveal/Reveal'
@@ -10,9 +11,11 @@ import { useSnapCarousel } from '../../hooks/useSnapCarousel'
 import styles from '../../styles/Mobile.module.css'
 
 const pad = (n: number) => String(n).padStart(2, '0')
+const shots = mobileFeatures.map((f) => ({ src: f.screen.src, alt: `Sigtrack Mobile — ${f.title}`, caption: f.title, label: 'Sigtrack Mobile' }))
 const rise = { initial: { opacity: 0, y: 12 }, animate: { opacity: 1, y: 0 } }
 
 export function MobilePage() {
+  const screens = useScreenViewer(shots)
   const { trackRef, current: trackIndex, onScroll: onTrackScroll, scrollTo: scrollTrackTo } = useSnapCarousel<HTMLDivElement>(mobileFeatures.length)
 
   return (
@@ -36,6 +39,7 @@ export function MobilePage() {
             zoom={1.16}
             alt="Sigtrack Mobile on the map, with Silvus and Meshtastic radio options"
             loading="eager"
+            onOpen={() => screens.open(images.mobileRadioMap)}
           />
         </motion.div>
         <motion.div className={styles.heroTitle} {...rise} transition={{ duration: 0.5, ease: [0.2, 0.7, 0.2, 1] }}>
@@ -81,7 +85,7 @@ export function MobilePage() {
         <div ref={trackRef} className={styles.track} onScroll={onTrackScroll}>
           {mobileFeatures.map((f, i) => (
             <article key={f.title} className={styles.card}>
-              <PhoneFrame className={styles.cardPhone} {...f.screen} alt="" loading="lazy" />
+              <PhoneFrame className={styles.cardPhone} {...f.screen} alt="" loading="lazy" onOpen={() => screens.open(f.screen.src)} />
               <span className="mono">
                 {pad(i + 1)} / {pad(mobileFeatures.length)}
               </span>
@@ -121,6 +125,7 @@ export function MobilePage() {
         </div>
       </section>
 
+      {screens.viewer}
       <DemoForm
         product="Sigtrack Mobile"
         tone="signal"

@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { DemoForm } from '../../components/Forms/DemoForm'
 import { PlayIcon } from '../../components/Icons/Icons'
+import { useScreenViewer } from '../../components/Lightbox/useScreenViewer'
 import { LaptopFrame } from '../../components/LaptopFrame/LaptopFrame'
 import { Pill } from '../../components/Pill/Pill'
 import { desktopModes } from '../../data/content'
@@ -15,6 +16,10 @@ const clips = [
   { src: videos.sigtrackDemo2, name: 'Sigtrack video 2', cover: images.desktopSatellite },
   { src: videos.sigtrackDemo3, name: 'Sigtrack video 3', cover: images.desktopGlobe },
 ]
+const shots = [
+  { src: images.desktopTracking, alt: 'Sigtrack Desktop tracking team members on a map', caption: 'Live tracking', label: 'Sigtrack Desktop' },
+  ...desktopModes.map((m) => ({ src: m.image, alt: `Sigtrack Desktop — ${m.label}`, caption: m.label, label: 'Sigtrack Desktop' })),
+]
 const uses = ['Search and rescue', 'Military exercises', 'Outdoor adventures', 'Remote team coordination']
 
 export function DesktopPage() {
@@ -22,6 +27,7 @@ export function DesktopPage() {
   const [clip, setClip] = useState(0)
   const [playing, setPlaying] = useState(false)
   const cur = desktopModes[mode]
+  const screens = useScreenViewer(shots)
   const main = clips[clip]
   const others = clips.filter((_, i) => i !== clip)
 
@@ -62,7 +68,7 @@ export function DesktopPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.2, 0.7, 0.2, 1] }}
         >
-          <LaptopFrame src={images.desktopTracking} alt="Sigtrack Desktop tracking team members on a map" loading="eager">
+          <LaptopFrame src={images.desktopTracking} alt="Sigtrack Desktop tracking team members on a map" loading="eager" onOpen={() => screens.open(images.desktopTracking)}>
             {hud.map((h, i) => (
               <span key={h} className={`${styles.hud} hide-mobile`} data-pos={i}>
                 {h}
@@ -109,7 +115,7 @@ export function DesktopPage() {
                 </div>
               ))}
             </div>
-            <LaptopFrame className={styles.modeShot} src={cur.image} alt={`Sigtrack Desktop — ${cur.label}`} loading="lazy" />
+            <LaptopFrame className={styles.modeShot} src={cur.image} alt={`Sigtrack Desktop — ${cur.label}`} loading="lazy" onOpen={() => screens.open(cur.image)} />
           </motion.div>
         </AnimatePresence>
       </section>
@@ -183,6 +189,7 @@ export function DesktopPage() {
         </div>
       </section>
 
+      {screens.viewer}
       <DemoForm product="Sigtrack Desktop" feedbackLead="On Sigtrack Desktop," mobileFeedbackLabel="My feedback" button="dark" />
     </>
   )
