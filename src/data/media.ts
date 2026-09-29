@@ -40,8 +40,6 @@ import watcherMap from '../assets/images/watcher-map.jpg'
 import watcherTelemetry from '../assets/images/watcher-telemetry.jpg'
 import webCommandWall from '../assets/images/web-command-wall.jpg'
 import webTacticalSymbols from '../assets/images/web-tactical-symbols.jpg'
-import webClip1 from '../assets/videos/web-clip-1.mp4'
-import webClip2 from '../assets/videos/web-clip-2.mp4'
 
 /** Sigtrack "Eyes in the Sky" emblem, shown beside the wordmark. */
 export const logo = sigtrackEmblem
@@ -88,15 +86,15 @@ export const images = {
   webTacticalSymbols,
 }
 
-// Videos are too large to bundle (15–120 MB), so they stream from the existing Sigtrack media host.
-const VIDEO_HOST = 'https://sigtrackapp.com/images/0'
+// Videos stream from Cloudinary's CDN; f_auto,q_auto picks the codec and quality per browser.
+// The cloud name is public (it is in every delivery URL); API keys live in .env for uploads only.
+const VIDEO_HOST = 'https://res.cloudinary.com/lxjudwn8/video/upload/f_auto,q_auto/sigtrack'
 
 export const videos = {
-  droneFootage: `${VIDEO_HOST}/8865252/WhatsAppVideo2024-05-17at11.26.34.mp4`,
-  sigtrackDemo1: `${VIDEO_HOST}/9122219/SigtrackVideo1.mp4`,
-  sigtrackDemo2: `${VIDEO_HOST}/9122213/SigtrackVideo2.mp4`,
-  sigtrackDemo3: `${VIDEO_HOST}/9122210/SigtrackVideo3.mov`,
-  // Short Sigtrack Web clips (2–3 MB) are small enough to bundle.
-  webClip1,
-  webClip2,
+  droneFootage: `${VIDEO_HOST}/drone-footage.mp4`,
+  sigtrackDemo1: `${VIDEO_HOST}/demo-1.mp4`,
+  sigtrackDemo2: `${VIDEO_HOST}/demo-2.mp4`,
+  sigtrackDemo3: `${VIDEO_HOST}/demo-3.mp4`,
+  webClip1: `${VIDEO_HOST}/web-clip-1.mp4`,
+  webClip2: `${VIDEO_HOST}/web-clip-2.mp4`,
 }
