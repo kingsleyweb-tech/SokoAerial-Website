@@ -50,11 +50,17 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className={styles.chapters} aria-label="About Sigtrack">
+      <section className={styles.chapters} aria-labelledby="chapters-title">
+        <div className={styles.chaptersIntro}>
+          <span className="chip">At a glance</span>
+          <h2 id="chapters-title">
+            Sigtrack in <em className="serif">five points.</em>
+          </h2>
+        </div>
         {aboutChapters.map((c, i) => (
           <Reveal key={c.kicker} className={styles.chapter}>
             <span className={styles.chapterHead}>
-              <span className={`serif ${styles.chapterNum}`}>{pad(i + 1)}</span>
+              <span className={styles.chapterNum}>{pad(i + 1)}</span>
               <span className="label">{c.kicker}</span>
             </span>
             <h2 className={styles.chapterTitle}>{c.title}</h2>
@@ -81,7 +87,7 @@ export function AboutPage() {
           <text x="400" y="344" textAnchor="middle" fill="#FFFFFF" fontSize="24" fontWeight="600">
             Sigtrack
           </text>
-          <text x="400" y="374" textAnchor="middle" fill="#CFE0FF" fontSize="22" fontStyle="italic" fontFamily="Instrument Serif, serif">
+          <text x="400" y="374" textAnchor="middle" fill="#CFE0FF" fontSize="22" fontFamily="Geist, sans-serif">
             post-mission
           </text>
           {cycle.map((c, i) => (
@@ -103,7 +109,7 @@ export function AboutPage() {
         <svg className={`${styles.cycleSmall} show-mobile`} viewBox="0 0 350 250" role="img" aria-label="Seven ISR post-mission roles in a cycle">
           <circle className={styles.orbit} cx="175" cy="125" r="100" />
           <circle cx="175" cy="125" r="46" fill="#0F2F5F" />
-          <text x="175" y="130" textAnchor="middle" fill="#CFE0FF" fontSize="15" fontStyle="italic" fontFamily="Instrument Serif, serif">
+          <text x="175" y="130" textAnchor="middle" fill="#CFE0FF" fontSize="15" fontFamily="Geist, sans-serif">
             post-mission
           </text>
           {cycle.map((c, i) => {

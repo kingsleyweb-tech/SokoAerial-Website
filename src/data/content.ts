@@ -378,11 +378,11 @@ export const galleryCategoryLabels: Record<GalleryCategory, string> = {
 // ---------- Products ----------
 
 export const webFeatures = [
-  { title: 'Group and display team members', body: 'Organize operatives into groups and visualize team structures directly in the platform.', x: 14, y: 22 },
-  { title: 'Each member as a marker', body: 'Pinpoint the location of every team member as a distinct marker on the map.', x: 46, y: 40 },
-  { title: 'Connect to Meshtastic radio', body: 'Direct communication between operatives without traditional internet connectivity.', x: 78, y: 18 },
-  { title: 'Chat without internet', body: 'Offline messaging over Meshtastic radio.', x: 84, y: 66 },
-  { title: 'Track each member in real time', body: 'Real-time tracking of every member through the connected radio systems.', x: 30, y: 70 },
+  { title: 'Group and display team members', body: 'Organize operatives into groups and visualize team structures directly in the platform.' },
+  { title: 'Each member as a marker', body: 'Pinpoint the location of every team member as a distinct marker on the map.' },
+  { title: 'Connect to Meshtastic radio', body: 'Direct communication between operatives without traditional internet connectivity.' },
+  { title: 'Chat without internet', body: 'Offline messaging over Meshtastic radio.' },
+  { title: 'Track each member in real time', body: 'Real-time tracking of every member through the connected radio systems.' },
 ]
 
 // Screens are centred in the portrait phone (x/y = focus point as a fraction of the image, default 0.5);

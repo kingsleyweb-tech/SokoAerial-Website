@@ -14,7 +14,6 @@
   background: transparent;
   font-family: var(--font-serif);
   font-size: 1em;
-  font-style: italic;
   font-weight: 400;
   letter-spacing: -0.01em;
   color: var(--signal);
@@ -149,7 +148,7 @@ select.input {
   border: 0;
   border-radius: 20px;
   background: var(--fog);
-  font-size: 17px;
+  font-size: 15px;
   letter-spacing: 0;
   line-height: 1.5;
   color: var(--midnight);

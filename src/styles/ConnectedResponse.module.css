@@ -17,7 +17,7 @@
 }
 
 .title {
-  font-size: clamp(36px, 2.67vw + 26px, 64px);
+  font-size: clamp(29px, 2.14vw + 21px, 51px);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 0.98;
@@ -28,7 +28,7 @@
 }
 
 .body {
-  font-size: 17px;
+  font-size: 15px;
   line-height: 1.6;
   color: var(--white-80);
 }

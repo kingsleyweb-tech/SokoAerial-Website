@@ -1,15 +1,15 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { DemoForm } from '../../components/Forms/DemoForm'
 import { PlayIcon } from '../../components/Icons/Icons'
 import { useScreenViewer } from '../../components/Lightbox/useScreenViewer'
 import { LaptopFrame } from '../../components/LaptopFrame/LaptopFrame'
+import { ModeTabs } from '../../components/ModeTabs/ModeTabs'
 import { Pill } from '../../components/Pill/Pill'
 import { desktopModes } from '../../data/content'
 import { images, videos } from '../../data/media'
 import styles from '../../styles/Desktop.module.css'
 
-const pad = (n: number) => String(n).padStart(2, '0')
 const hud = ['Live updates', 'History playback', 'Silvus · Meshtastic', 'Custom markers']
 const clips = [
   { src: videos.sigtrackDemo1, name: 'Sigtrack video 1', cover: images.desktopWorldMap },
@@ -23,10 +23,8 @@ const shots = [
 const uses = ['Search and rescue', 'Military exercises', 'Outdoor adventures', 'Remote team coordination']
 
 export function DesktopPage() {
-  const [mode, setMode] = useState(0)
   const [clip, setClip] = useState(0)
   const [playing, setPlaying] = useState(false)
-  const cur = desktopModes[mode]
   const screens = useScreenViewer(shots)
   const main = clips[clip]
   const others = clips.filter((_, i) => i !== clip)
@@ -78,72 +76,8 @@ export function DesktopPage() {
         </motion.div>
       </section>
 
-      <section className={styles.modes} aria-label="Feature modes">
-        <div className={styles.tabs} role="tablist" aria-label="Feature modes">
-          {desktopModes.map((m, i) => (
-            <button
-              key={m.label}
-              type="button"
-              role="tab"
-              id={`mode-${i}`}
-              aria-selected={i === mode}
-              aria-controls="mode-panel"
-              onClick={() => setMode(i)}
-            >
-              {m.label}
-              <sup className="mono">{pad(i + 1)}</sup>
-            </button>
-          ))}
-        </div>
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={cur.label}
-            id="mode-panel"
-            role="tabpanel"
-            aria-labelledby={`mode-${mode}`}
-            className={styles.panel}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className={styles.items}>
-              {cur.items.map((it) => (
-                <div key={it.t} className={styles.item}>
-                  <span>{it.t}</span>
-                  <p>{it.b}</p>
-                </div>
-              ))}
-            </div>
-            <LaptopFrame className={styles.modeShot} src={cur.image} alt={`Sigtrack Desktop — ${cur.label}`} loading="lazy" onOpen={() => screens.open(cur.image)} />
-          </motion.div>
-        </AnimatePresence>
-      </section>
+      <ModeTabs modes={desktopModes} label="Feature modes" product="Sigtrack Desktop" onOpenImage={screens.open} />
 
-      <section className={styles.replay}>
-        <div className={styles.replayHead}>
-          <h2>
-            Replay every <em className="serif">movement.</em>
-          </h2>
-          <p>
-            History playback and movement analysis for post-operation review — useful for training, debriefing and
-            improving future operations.
-          </p>
-        </div>
-        <div className={styles.playback} aria-hidden="true">
-          <span className={styles.playBtn}>
-            <PlayIcon />
-          </span>
-          <span className={styles.timeline}>
-            <span className={styles.fill} />
-            <span className={styles.tick} style={{ left: '18%' }} data-label="Marker" />
-            <span className={styles.tick} style={{ left: '41%' }} data-label="Waypoint" />
-            <span className={`${styles.tick} ${styles.tickDim}`} style={{ left: '73%' }} />
-            <span className={styles.head} />
-          </span>
-          <span className={`${styles.illus} hide-mobile`}>Illustrative playback UI</span>
-        </div>
-      </section>
 
       <section className={styles.videos} aria-label="Videos">
         <div className={styles.bigVideo}>

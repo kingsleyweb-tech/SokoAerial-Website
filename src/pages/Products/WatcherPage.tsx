@@ -1,22 +1,19 @@
-import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { DemoForm } from '../../components/Forms/DemoForm'
 import { useScreenViewer } from '../../components/Lightbox/useScreenViewer'
 import { LaptopFrame } from '../../components/LaptopFrame/LaptopFrame'
+import { ModeTabs } from '../../components/ModeTabs/ModeTabs'
 import { Pill } from '../../components/Pill/Pill'
 import { watcherModes } from '../../data/content'
 import { images } from '../../data/media'
 import styles from '../../styles/Desktop.module.css'
 
-const pad = (n: number) => String(n).padStart(2, '0')
 const hud = ['Gimbal camera', 'Heading · FOV', 'Telemetry', 'Local + SD recording']
 const shots = watcherModes.map((m) => ({ src: m.image, alt: `Watcher — ${m.label}`, caption: m.items[0].t, label: 'Watcher' }))
 const uses = ['Aerial surveillance', 'Tethered overwatch', 'Target estimation', 'Search and rescue']
 
 // Shares the Sigtrack Desktop layout: Watcher is also a dark, Windows cockpit app.
 export function WatcherPage() {
-  const [mode, setMode] = useState(0)
-  const cur = watcherModes[mode]
   const screens = useScreenViewer(shots)
 
   return (
@@ -61,47 +58,7 @@ export function WatcherPage() {
         </motion.div>
       </section>
 
-      <section className={styles.modes} aria-label="Feature modes">
-        <div className={styles.tabs} role="tablist" aria-label="Feature modes">
-          {watcherModes.map((m, i) => (
-            <button
-              key={m.label}
-              type="button"
-              role="tab"
-              id={`mode-${i}`}
-              aria-selected={i === mode}
-              aria-controls="mode-panel"
-              onClick={() => setMode(i)}
-            >
-              {m.label}
-              <sup className="mono">{pad(i + 1)}</sup>
-            </button>
-          ))}
-        </div>
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={cur.label}
-            id="mode-panel"
-            role="tabpanel"
-            aria-labelledby={`mode-${mode}`}
-            className={styles.panel}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className={styles.items}>
-              {cur.items.map((it) => (
-                <div key={it.t} className={styles.item}>
-                  <span>{it.t}</span>
-                  <p>{it.b}</p>
-                </div>
-              ))}
-            </div>
-            <LaptopFrame className={styles.modeShot} src={cur.image} alt={`Watcher — ${cur.label}`} loading="lazy" onOpen={() => screens.open(cur.image)} />
-          </motion.div>
-        </AnimatePresence>
-      </section>
+      <ModeTabs modes={watcherModes} label="Feature modes" product="Watcher" onOpenImage={screens.open} />
 
       <section className={styles.marquee} aria-label="Uses">
         <div className={styles.marqueeTrack}>

@@ -2,8 +2,8 @@
 
 .hero {
   position: relative;
-  min-height: 900px;
-  padding: 150px var(--gutter) 64px;
+  min-height: 760px;
+  padding: 128px var(--gutter) 56px;
   overflow: hidden;
   background: var(--midnight);
   color: var(--white);
@@ -26,8 +26,9 @@
 }
 
 .title {
-  max-width: 1180px;
-  font-size: clamp(58px, 8.76vw + 24px, 150px);
+  /* stops short of the round photo on the right */
+  max-width: calc(100% - 420px - 40px);
+  font-size: clamp(46px, 5vw + 19px, 104px);
   font-weight: 600;
   letter-spacing: -0.055em;
   line-height: 0.88;
@@ -42,7 +43,7 @@
   right: var(--gutter);
   bottom: 64px;
   max-width: 440px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--white-80);
 }
@@ -51,7 +52,7 @@
 
 .band {
   position: relative;
-  height: 640px;
+  height: 520px;
   overflow: visible;
   border-radius: 0 0 48px 48px;
 }
@@ -82,7 +83,7 @@
 }
 
 .address {
-  font-size: clamp(24px, 0.76vw + 21px, 32px);
+  font-size: clamp(19px, 0.61vw + 17px, 26px);
   font-weight: 600;
   letter-spacing: -0.02em;
 }
@@ -91,62 +92,61 @@
 
 .chapters {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  row-gap: 120px;
-  column-gap: 24px;
-  padding: 176px var(--gutter) 120px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 48px 40px;
+  padding: 136px var(--gutter) 80px;
   background: var(--white);
+}
+
+.chaptersIntro {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.chaptersIntro h2 {
+  font-size: clamp(30px, 2vw + 18px, 48px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.chaptersIntro em {
+  color: var(--signal);
 }
 
 .chapter {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-}
-
-.chapter:nth-child(1) {
-  grid-column: 1 / span 7;
-}
-
-.chapter:nth-child(2) {
-  grid-column: 6 / span 7;
-}
-
-.chapter:nth-child(3) {
-  grid-column: 2 / span 7;
-}
-
-.chapter:nth-child(4) {
-  grid-column: 6 / span 7;
-}
-
-.chapter:nth-child(5) {
-  grid-column: 1 / span 8;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
 }
 
 .chapterHead {
   display: flex;
   align-items: baseline;
-  gap: 16px;
+  gap: 12px;
 }
 
 .chapterNum {
-  font-size: clamp(52px, 4.19vw + 36px, 96px);
-  line-height: 0.8;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
   color: var(--signal);
 }
 
 .chapterTitle {
-  font-size: clamp(28px, 2.29vw + 19px, 52px);
+  font-size: clamp(20px, 0.6vw + 16px, 26px);
   font-weight: 600;
-  letter-spacing: -0.035em;
-  line-height: 1.02;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
 .chapterBody {
-  max-width: 620px;
-  font-size: clamp(15px, 0.29vw + 14px, 18px);
-  line-height: 1.65;
+  font-size: 15px;
+  line-height: 1.6;
   color: var(--slate);
 }
 
@@ -157,7 +157,7 @@
   grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
   align-items: center;
   gap: 40px;
-  padding: 120px var(--gutter);
+  padding: 72px var(--gutter);
   background: var(--midnight);
   color: var(--white);
 }
@@ -166,13 +166,13 @@
   display: flex;
   flex-direction: column;
   gap: 22px;
-  font-size: 17px;
+  font-size: 15px;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.78);
 }
 
 .isrTitle {
-  font-size: clamp(44px, 2.67vw + 34px, 72px);
+  font-size: clamp(35px, 2.14vw + 27px, 58px);
   font-weight: 600;
   letter-spacing: -0.045em;
   line-height: 0.95;
@@ -243,7 +243,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 120px var(--gutter);
+  padding: 72px var(--gutter);
   background: var(--fog);
 }
 
@@ -253,7 +253,7 @@
 
 .place {
   display: block;
-  font-size: clamp(46px, 5.52vw + 24px, 104px);
+  font-size: clamp(37px, 4.42vw + 19px, 83px);
   font-weight: 600;
   letter-spacing: -0.05em;
   line-height: 1;
@@ -261,7 +261,7 @@
 
 .placeAccent {
   padding-left: clamp(28px, 12.57vw - 21px, 160px);
-  font-size: clamp(48px, 6.1vw + 24px, 112px);
+  font-size: clamp(38px, 4.88vw + 19px, 90px);
   color: var(--signal);
 }
 
@@ -278,6 +278,10 @@
     opacity: 0.9;
   }
 
+  .title {
+    max-width: calc(100% - 280px - 24px);
+  }
+
   .heroLead {
     position: relative;
     inset: auto;
@@ -290,15 +294,7 @@
   }
 
   .chapters {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .chapter:nth-child(n) {
-    grid-column: auto;
-  }
-
-  .chapter:nth-child(2n) {
-    padding-left: 32px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .isr {
@@ -325,6 +321,7 @@
   }
 
   .title {
+    max-width: none;
     letter-spacing: -0.05em;
     line-height: 0.9;
   }
@@ -353,7 +350,8 @@
   }
 
   .chapters {
-    row-gap: 44px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
     padding: 96px var(--gutter) 56px;
   }
 

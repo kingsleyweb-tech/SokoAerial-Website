@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { useState, type CSSProperties } from 'react'
+import { useState } from 'react'
 import { DemoForm } from '../../components/Forms/DemoForm'
 import { PlayIcon } from '../../components/Icons/Icons'
 import { Pill } from '../../components/Pill/Pill'
@@ -15,8 +15,6 @@ const clips = [
 ]
 
 export function WebPage() {
-  const [active, setActive] = useState(0)
-  const cur = webFeatures[active]
   const [clip, setClip] = useState(0)
   const [playing, setPlaying] = useState(false)
   const main = clips[clip]
@@ -68,50 +66,26 @@ export function WebPage() {
           </div>
           <div className={`${styles.screen} topo`}>
             <img src={images.webDashboard} alt="The Sigtrack Web interface with team members on the map" />
-            {webFeatures.map((f, i) => (
-              <button
-                key={f.title}
-                type="button"
-                className={styles.hotspot}
-                style={{ left: `${f.x}%`, top: `${f.y}%` } as CSSProperties}
-                aria-label={`Feature ${i + 1}: ${f.title}`}
-                aria-pressed={i === active}
-                onClick={() => setActive(i)}
-              >
-                {pad(i + 1)}
-              </button>
-            ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.features} aria-label="Features">
-        <div className={`${styles.featureGrid} hide-mobile`}>
+      <section className={styles.features} aria-labelledby="features-title">
+        <div className={styles.featuresHead}>
+          <h2 id="features-title">
+            Everything your team <em className="serif">needs.</em>
+          </h2>
+          <p>Five core tools, built into one browser window.</p>
+        </div>
+        <ul className={styles.featureGrid}>
           {webFeatures.map((f, i) => (
-            <button key={f.title} type="button" className={styles.feature} aria-pressed={i === active} onClick={() => setActive(i)}>
+            <li key={f.title} className={styles.feature}>
               <span className="mono">{pad(i + 1)}</span>
-              <span className={styles.featureTitle}>{f.title}</span>
-              <span className={styles.featureBody}>{f.body}</span>
-            </button>
+              <h3 className={styles.featureTitle}>{f.title}</h3>
+              <p className={styles.featureBody}>{f.body}</p>
+            </li>
           ))}
-        </div>
-
-        <div className={`${styles.mobileFeature} show-mobile`} aria-live="polite">
-          <span className="mono">{pad(active + 1)} / 05</span>
-          <span className={styles.featureTitle}>{cur.title}</span>
-          <span className={styles.featureBody}>{cur.body}</span>
-          <span className={styles.bars}>
-            {webFeatures.map((f, i) => (
-              <button
-                key={f.title}
-                type="button"
-                aria-label={`Feature ${i + 1}`}
-                aria-current={i === active ? 'true' : undefined}
-                onClick={() => setActive(i)}
-              />
-            ))}
-          </span>
-        </div>
+        </ul>
       </section>
 
       <section className={styles.chat}>

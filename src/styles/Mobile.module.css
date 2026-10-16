@@ -3,26 +3,28 @@
 .hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  grid-template-rows: auto 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
+  /* the text block (rows 2–5) sits vertically centred beside the phone */
+  grid-template-rows: 1fr auto auto auto auto 1fr;
   column-gap: 32px;
-  min-height: 920px;
-  padding: 130px var(--gutter) 64px;
+  padding: 120px var(--gutter) 56px;
   overflow: hidden;
+  container-type: inline-size;
   background: var(--ice);
   color: var(--midnight);
 }
 
 .giant {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: clamp(170px, 25.7vw + 70px, 440px);
-  line-height: 0.8;
+  position: relative;
+  grid-column: 1;
+  grid-row: 3;
+  margin: 8px 0 28px -0.04em;
+  /* fills the space left of the phone (320px + gap) so the word is never covered */
+  font-size: clamp(80px, calc((100cqw - 352px) / 3.1), 440px);
+  line-height: 0.95;
   letter-spacing: -0.03em;
   white-space: nowrap;
   color: var(--signal);
-  translate: -50% -50%;
   pointer-events: none;
 }
 
@@ -31,6 +33,7 @@
   grid-column: 2;
   grid-row: 1 / -1;
   align-self: center;
+  justify-self: end;
 }
 
 /* frame details live in PhoneFrame; pages only set the width */
@@ -41,14 +44,14 @@
 .heroTitle {
   position: relative;
   grid-column: 1;
-  grid-row: 1;
+  grid-row: 2;
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
 .heroTitle h1 {
-  font-size: 72px;
+  font-size: 58px;
   font-weight: 600;
   letter-spacing: -0.06em;
   line-height: 0.9;
@@ -57,19 +60,19 @@
 .heroText {
   position: relative;
   grid-column: 1;
-  grid-row: 3;
+  grid-row: 4;
   max-width: 320px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.55;
   color: var(--slate);
 }
 
 .heroCta {
   position: relative;
-  grid-column: 3;
-  grid-row: 3;
-  justify-self: end;
-  align-self: end;
+  grid-column: 1;
+  grid-row: 5;
+  justify-self: start;
+  margin-top: 28px;
 }
 
 /* ---------- Five things ---------- */
@@ -78,7 +81,7 @@
   display: flex;
   flex-direction: column;
   gap: 48px;
-  padding: 112px 0;
+  padding: 72px 0;
   background: var(--midnight);
   color: var(--white);
 }
@@ -92,7 +95,7 @@
 }
 
 .pocketHead h2 {
-  font-size: clamp(44px, 4.19vw + 28px, 88px);
+  font-size: clamp(35px, 3.35vw + 22px, 70px);
   font-weight: 600;
   letter-spacing: -0.05em;
   line-height: 0.92;
@@ -171,7 +174,7 @@
 }
 
 .card h3 {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -189,7 +192,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding: 112px var(--gutter);
+  padding: 72px var(--gutter);
   background: var(--white);
   color: var(--midnight);
 }
@@ -217,7 +220,7 @@
 }
 
 .kitWord {
-  font-size: clamp(48px, 5.33vw + 27px, 104px);
+  font-size: clamp(38px, 4.26vw + 22px, 83px);
   font-weight: 600;
   letter-spacing: -0.055em;
   line-height: 0.95;
@@ -235,7 +238,7 @@
   grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
   align-items: center;
   gap: 64px;
-  padding: 112px var(--gutter);
+  padding: 72px var(--gutter);
   background: var(--fog);
   color: var(--midnight);
 }
@@ -271,7 +274,7 @@
 }
 
 .radiosText p {
-  font-size: clamp(26px, 1.71vw + 19px, 44px);
+  font-size: clamp(21px, 1.37vw + 15px, 35px);
   font-weight: 500;
   letter-spacing: -0.035em;
   line-height: 1.12;
@@ -293,9 +296,10 @@
     position: relative;
     top: auto;
     left: auto;
+    grid-row: auto;
     order: 1;
     margin: -8px 0 -24px;
-    font-size: min(36vw, 300px);
+    font-size: min(28.8vw, 240px);
     line-height: 0.9;
     translate: none;
   }
@@ -320,6 +324,7 @@
   .heroCta {
     order: 4;
     justify-self: start;
+    margin-top: 0;
   }
 
   .radios {
@@ -334,7 +339,7 @@
   }
 
   .heroTitle h1 {
-    font-size: 52px;
+    font-size: 42px;
   }
 
   .phone {

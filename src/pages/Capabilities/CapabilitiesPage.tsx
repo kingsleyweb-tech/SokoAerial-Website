@@ -1,12 +1,10 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowIcon, ArrowLeftIcon } from '../../components/Icons/Icons'
 import { Reveal } from '../../components/Reveal/Reveal'
 import { capabilityAreas, dualUse, isrRoles, stanagTopics } from '../../data/content'
 import { images } from '../../data/media'
 import { paths } from '../../data/site'
-import { useSnapCarousel } from '../../hooks/useSnapCarousel'
 import styles from '../../styles/Capabilities.module.css'
 
 const pad = (n: number) => String(n).padStart(2, '0')
@@ -14,8 +12,9 @@ const palettes = ['midnight', 'white', 'signal', 'ice', 'navy', 'white', 'midnig
 
 export function CapabilitiesPage() {
   const [area, setArea] = useState(0)
+  const [paused, setPaused] = useState(false)
   const cur = capabilityAreas[area]
-  const { trackRef, current: trackIndex, onScroll: onTrackScroll, scrollTo: scrollTrackTo } = useSnapCarousel<HTMLDivElement>(isrRoles.length)
+  const next = () => setArea((a) => (a + 1) % capabilityAreas.length)
 
   const pick = (i: number) => {
     setArea(i)
@@ -41,13 +40,44 @@ export function CapabilitiesPage() {
           </h1>
           <span className={`serif ${styles.tag}`}>dual usage</span>
         </motion.div>
-        <nav className={`${styles.areaNav} hide-mobile`} aria-label="Capability areas">
-          {capabilityAreas.map((c, i) => (
-            <button key={c.label} type="button" aria-pressed={i === area} onClick={() => pick(i)}>
-              <span className="mono">{pad(i + 1)}</span>
-              {c.label}
-            </button>
-          ))}
+        {/* Scrolling row of the six areas; the second copy only completes the loop, so it is hidden from assistive tech. */}
+        {/* The selection also advances every 7s, timed by the active pill's progress bar; hovering pauses both. */}
+        <nav
+          className={`${styles.areaMarquee} hide-mobile`}
+          aria-label="Capability areas"
+          data-paused={paused || undefined}
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocus={() => setPaused(true)}
+          onBlur={(e) => {
+            if (!e.currentTarget.contains(e.relatedTarget)) setPaused(false)
+          }}
+        >
+          <div className={styles.areaNav}>
+            {[0, 1].map((copy) =>
+              capabilityAreas.map((c, i) => (
+                <button
+                  key={`${copy}-${c.label}`}
+                  type="button"
+                  aria-pressed={i === area}
+                  aria-hidden={copy === 1 || undefined}
+                  tabIndex={copy === 1 ? -1 : undefined}
+                  onClick={() => pick(i)}
+                >
+                  <span className="mono">{pad(i + 1)}</span>
+                  {c.label}
+                  {i === area && (
+                    <i
+                      key={area}
+                      className={styles.areaProgress}
+                      aria-hidden="true"
+                      onAnimationEnd={copy === 0 ? next : undefined}
+                    />
+                  )}
+                </button>
+              )),
+            )}
+          </div>
         </nav>
       </section>
 
@@ -139,33 +169,23 @@ export function CapabilitiesPage() {
           <h2 id="roles-title" className={styles.rolesTitle}>
             Seven roles <em className="serif">after the mission.</em>
           </h2>
-          <div className={`${styles.rolesControls} hide-mobile`}>
-            <span className="label">ISR post-mission</span>
-            <button type="button" aria-label="Previous role" onClick={() => scrollTrackTo(Math.max(0, trackIndex - 1))}>
-              <ArrowLeftIcon />
-            </button>
-            <button
-              type="button"
-              aria-label="Next role"
-              onClick={() => scrollTrackTo(Math.min(isrRoles.length - 1, trackIndex + 1))}
-            >
-              <ArrowIcon />
-            </button>
-          </div>
+          <span className="label hide-mobile">ISR post-mission</span>
         </div>
-        <div ref={trackRef} className={styles.roleTrack} onScroll={onTrackScroll}>
-          {isrRoles.map((r, i) => (
-            <div key={r.title} className={styles.role} data-tone={palettes[i]}>
-              <span className="serif">{pad(i + 1)}</span>
-              <span className={styles.roleText}>
-                <span className={styles.roleTitle}>
-                  <span className="hide-mobile">{r.title}</span>
-                  <span className="show-mobile">{r.short}</span>
-                </span>
-                <span className={`${styles.roleBody} hide-mobile`}>{r.body}</span>
-              </span>
-            </div>
-          ))}
+        {/* Two copies of the cards scroll as one loop; the second copy is hidden from screen readers. */}
+        <div className={styles.roleMarquee}>
+          <div className={styles.roleTrack}>
+            {[0, 1].map((copy) =>
+              isrRoles.map((r, i) => (
+                <div key={`${copy}-${r.title}`} className={styles.role} data-tone={palettes[i]} aria-hidden={copy === 1 || undefined}>
+                  <span className={styles.roleNum}>{pad(i + 1)}</span>
+                  <span className={styles.roleText}>
+                    <span className={styles.roleTitle}>{r.title}</span>
+                    <span className={styles.roleBody}>{r.body}</span>
+                  </span>
+                </div>
+              )),
+            )}
+          </div>
         </div>
       </section>
 

@@ -3,63 +3,141 @@
 .hero {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 48px;
-  min-height: 640px;
-  padding: 150px var(--gutter) 56px;
+  gap: 40px;
+  padding: 128px var(--gutter) 48px;
   overflow: hidden;
   background: var(--fog);
 }
 
 .titleWrap {
-  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 24px;
 }
 
 .title {
-  font-size: clamp(64px, 14.1vw + 9px, 212px);
+  font-size: clamp(51px, 11.28vw + 7px, 170px);
   font-weight: 600;
   letter-spacing: -0.065em;
   line-height: 0.82;
 }
 
 .tag {
-  position: absolute;
-  top: -36px;
-  right: 24px;
-  font-size: clamp(38px, 5.5vw + 17px, 96px);
+  font-size: clamp(22px, 1.5vw + 14px, 36px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
   color: var(--signal);
-  transform: rotate(-4deg);
+}
+
+/* Full-bleed marquee of the six areas; hover pauses it so an area can be picked. */
+.areaMarquee {
+  margin: 0 calc(-1 * var(--gutter));
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
 }
 
 .areaNav {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 12px;
+  display: flex;
+  width: max-content;
+  animation: areaMarquee 36s linear infinite;
+}
+
+.areaMarquee:hover .areaNav,
+.areaMarquee:focus-within .areaNav {
+  animation-play-state: paused;
+}
+
+@keyframes areaMarquee {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .areaNav button {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 14px 0 0;
-  border: 0;
-  border-top: 2px solid rgba(6, 13, 28, 0.2);
-  background: none;
-  font-size: 17px;
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 12px;
+  margin-right: 12px;
+  padding: 12px 22px;
+  border: 1px solid rgba(6, 13, 28, 0.18);
+  border-radius: 999px;
+  background: var(--white);
+  font-size: 16px;
   font-weight: 500;
+  white-space: nowrap;
   color: var(--midnight);
-  text-align: left;
-  transition: border-color var(--t-hover) ease;
+  transition:
+    border-color var(--t-hover) ease,
+    background-color var(--t-hover) ease,
+    color var(--t-hover) ease;
 }
 
 .areaNav button span {
-  font-size: 11px;
-  color: var(--slate-2);
+  font-size: 12px;
+  color: var(--signal);
 }
 
-.areaNav button[aria-pressed='true'],
 .areaNav button:hover {
-  border-top-color: var(--signal);
+  border-color: var(--signal);
+}
+
+.areaNav button[aria-pressed='true'] {
+  border-color: var(--midnight);
+  background: var(--midnight);
+  color: var(--white);
+}
+
+.areaNav button[aria-pressed='true'] span {
+  color: var(--ice);
+}
+
+/* fills across the selected pill over 7s, then the next area is selected */
+.areaProgress {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 7px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--signal);
+  transform-origin: left;
+  animation: areaProgress 7s linear forwards;
+}
+
+.areaMarquee[data-paused] .areaProgress {
+  animation-play-state: paused;
+}
+
+@keyframes areaProgress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .areaMarquee {
+    overflow-x: auto;
+    mask-image: none;
+  }
+
+  .areaNav {
+    animation: none !important;
+    padding: 0 var(--gutter);
+  }
+
+  .areaNav button[aria-hidden] {
+    display: none;
+  }
+
+  .areaProgress {
+    animation-duration: 7s !important;
+  }
 }
 
 /* ---------- Explorer ---------- */
@@ -68,8 +146,7 @@
   display: grid;
   grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
   gap: 56px;
-  min-height: 900px;
-  padding: 96px var(--gutter);
+  padding: 72px var(--gutter);
   background: var(--midnight);
   color: var(--white);
   scroll-margin-top: 0;
@@ -95,7 +172,7 @@
   padding: 10px 0;
   border: 0;
   background: none;
-  font-size: clamp(28px, 1vw + 24px, 38px);
+  font-size: clamp(22px, 0.8vw + 19px, 30px);
   font-weight: 500;
   letter-spacing: -0.03em;
   color: rgba(207, 224, 255, 0.5);
@@ -140,7 +217,7 @@
 }
 
 .explorerTitle {
-  font-size: clamp(36px, 2.67vw + 26px, 64px);
+  font-size: clamp(29px, 2.14vw + 21px, 51px);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 0.98;
@@ -152,7 +229,7 @@
 
 .explorerText {
   max-width: 700px;
-  font-size: 17px;
+  font-size: 15px;
   line-height: 1.6;
   color: var(--white-80);
 }
@@ -168,7 +245,7 @@
   gap: 16px;
   padding: 16px 0;
   border-top: 1px solid var(--line-dark);
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.4;
 }
 
@@ -190,23 +267,24 @@
 
 .stanag {
   display: grid;
-  grid-template-columns: minmax(0, 620px) minmax(0, 1fr);
-  min-height: 640px;
+  grid-template-columns: minmax(0, 560px) minmax(0, 1fr);
   overflow: hidden;
   background: var(--white);
 }
 
 .stanagBlock {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 56px;
   overflow: hidden;
   background: var(--signal);
   color: var(--white);
 }
 
 .stanagLabel {
-  position: absolute;
-  top: 64px;
-  left: 56px;
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.14em;
@@ -214,12 +292,11 @@
 }
 
 .stanagNumber {
-  position: absolute;
-  left: 36px;
-  bottom: -40px;
-  font-size: clamp(150px, 17.1vw + 83px, 330px);
-  line-height: 1;
-  letter-spacing: -0.04em;
+  margin-left: -0.04em;
+  font-size: clamp(96px, 8vw + 50px, 190px);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
 }
 
 .stanagText {
@@ -233,7 +310,7 @@
 }
 
 .stanagTitle {
-  font-size: clamp(32px, 1.14vw + 28px, 44px);
+  font-size: clamp(26px, 0.91vw + 22px, 35px);
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.02;
@@ -249,7 +326,7 @@
   align-items: baseline;
   gap: 12px;
   padding: 11px 0;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 500;
   color: var(--midnight);
 }
@@ -271,8 +348,8 @@
 .roles {
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  padding: 96px 0;
+  gap: 32px;
+  padding: 72px 0;
   overflow: hidden;
   background: var(--fog);
 }
@@ -286,7 +363,7 @@
 }
 
 .rolesTitle {
-  font-size: clamp(36px, 2.67vw + 26px, 64px);
+  font-size: clamp(29px, 2.14vw + 21px, 51px);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 0.98;
@@ -296,64 +373,49 @@
   color: var(--signal);
 }
 
-.rolesControls {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.rolesControls button {
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  padding: 0;
-  border: 1px solid var(--midnight);
-  border-radius: 50%;
-  background: none;
-  color: var(--midnight);
-  transition: background-color var(--t-hover) ease;
-}
-
-.rolesControls button:last-child {
-  background: var(--midnight);
-  color: var(--white);
-}
-
-.rolesControls button svg {
-  width: 14px;
-  height: 14px;
+/* Endless, slow marquee; the edges fade so cards glide in and out. Hover pauses it for reading. */
+.roleMarquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
 
 .roleTrack {
   display: flex;
-  gap: 16px;
-  padding: 0 var(--gutter);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: var(--gutter);
-  scrollbar-width: none;
+  width: max-content;
+  animation: roleMarquee 48s linear infinite;
 }
 
-.roleTrack::-webkit-scrollbar {
-  display: none;
+.roleMarquee:hover .roleTrack {
+  animation-play-state: paused;
+}
+
+@keyframes roleMarquee {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .role {
   display: flex;
   flex-shrink: 0;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 36px;
-  width: 280px;
-  padding: 28px;
+  justify-content: flex-start;
+  gap: 20px;
+  width: 260px;
+  margin-right: 14px;
+  padding: 22px;
   border-radius: 24px;
-  scroll-snap-align: start;
+  transition: transform 0.35s var(--ease);
 }
 
-.role > .serif {
-  font-size: 56px;
-  line-height: 1;
+.role:hover {
+  transform: translateY(-4px);
+}
+
+.roleNum {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  opacity: 0.7;
 }
 
 .role[data-tone='midnight'] {
@@ -388,7 +450,7 @@
 }
 
 .roleTitle {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -400,13 +462,30 @@
   opacity: 0.78;
 }
 
+/* Without motion the cards become a normal swipeable row. */
+@media (prefers-reduced-motion: reduce) {
+  .roleMarquee {
+    overflow-x: auto;
+    mask-image: none;
+  }
+
+  .roleTrack {
+    animation: none !important;
+    padding: 0 var(--gutter);
+  }
+
+  .role[aria-hidden] {
+    display: none;
+  }
+}
+
 /* ---------- Mirror ---------- */
 
 .mirror {
   display: flex;
   flex-direction: column;
   gap: 48px;
-  padding: 112px var(--gutter);
+  padding: 72px var(--gutter);
   background: var(--white);
 }
 
@@ -421,14 +500,16 @@
 }
 
 .mirrorHead > span:first-child {
-  font-size: clamp(26px, 4.38vw + 9px, 72px);
+  font-size: clamp(21px, 3.5vw + 7px, 58px);
   font-weight: 600;
   letter-spacing: -0.045em;
   text-align: right;
 }
 
 .mirrorHead em {
-  font-size: clamp(30px, 4.76vw + 11px, 80px);
+  font-size: clamp(21px, 3.5vw + 7px, 58px);
+  font-weight: 600;
+  letter-spacing: -0.045em;
   color: var(--signal);
 }
 
@@ -443,7 +524,7 @@
   align-items: center;
   padding: 20px 0;
   border-top: 1px solid var(--line-ink);
-  font-size: clamp(13px, 0.67vw + 10px, 20px);
+  font-size: clamp(12px, 0.6vw + 9px, 18px);
   line-height: 1.4;
 }
 
@@ -465,14 +546,14 @@
   display: flex;
   flex-direction: column;
   gap: 56px;
-  padding: 112px var(--gutter);
+  padding: 72px var(--gutter);
   background: var(--midnight);
   color: var(--white);
 }
 
 .versionsTitle {
   max-width: 900px;
-  font-size: clamp(32px, 3.05vw + 20px, 64px);
+  font-size: clamp(26px, 2.44vw + 16px, 51px);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 0.98;
@@ -547,7 +628,7 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -570,11 +651,6 @@
     padding-top: 120px;
   }
 
-  .areaNav {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    row-gap: 20px;
-  }
-
   .explorer {
     grid-template-columns: minmax(0, 1fr);
     min-height: 0;
@@ -585,7 +661,7 @@
   }
 
   .stanagBlock {
-    min-height: 320px;
+    padding: 48px var(--gutter);
   }
 
   .devices {
@@ -599,11 +675,6 @@
   .hero {
     gap: 20px;
     padding: 108px var(--gutter) 32px;
-  }
-
-  .tag {
-    top: 4px;
-    right: 0;
   }
 
   .explorer {
@@ -683,16 +754,7 @@
   }
 
   .stanagLabel {
-    position: static;
-    display: block;
-    margin-bottom: 14px;
     font-size: 10px;
-  }
-
-  .stanagNumber {
-    position: static;
-    display: block;
-    line-height: 0.8;
   }
 
   .stanagText {
@@ -709,23 +771,16 @@
     padding: 48px 0;
   }
 
-  .roleTrack {
-    gap: 10px;
-  }
-
   .role {
-    gap: 24px;
-    width: 200px;
+    gap: 14px;
+    width: 220px;
+    margin-right: 10px;
     padding: 20px;
     border-radius: 22px;
   }
 
-  .role > .serif {
-    font-size: 40px;
-  }
-
   .roleTitle {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .mirror {
@@ -739,7 +794,8 @@
   }
 
   .mirrorRule {
-    display: none;
+    width: 1px;
+    height: 28px;
   }
 
   .mirrorRow {
@@ -770,7 +826,7 @@
   }
 
   .deviceName {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 500;
   }
 }

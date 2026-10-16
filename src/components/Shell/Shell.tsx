@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { logo } from '../../data/media'
 import { paths, productLinks, type ProductId } from '../../data/site'
@@ -31,17 +32,52 @@ interface RailProps {
 /** Desktop: fixed 80px midnight rail — Index button, vertical wordmark, page name and scroll progress. */
 export function SideRail({ page, num, total, indexOpen, onOpenIndex }: RailProps) {
   const progress = useScrollProgress()
+  const hoverTimer = useRef<number | undefined>(undefined)
+  // After the menu closes the pointer is often still over the button; wait until it leaves before hover can reopen.
+  const hoverArmed = useRef(true)
+  const wasOpen = useRef(indexOpen)
+
+  const buttonRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    const justClosed = wasOpen.current && !indexOpen
+    wasOpen.current = indexOpen
+    if (!justClosed) return
+    hoverArmed.current = false
+    const onMove = (e: PointerEvent) => {
+      if (buttonRef.current?.contains(e.target as Node)) return
+      hoverArmed.current = true
+      document.removeEventListener('pointermove', onMove)
+    }
+    document.addEventListener('pointermove', onMove)
+    return () => document.removeEventListener('pointermove', onMove)
+  }, [indexOpen])
+
+  useEffect(() => () => window.clearTimeout(hoverTimer.current), [])
+
+  const onHoverStart = () => {
+    if (!hoverArmed.current || indexOpen) return
+    hoverTimer.current = window.setTimeout(onOpenIndex, 120)
+  }
+
+  const onHoverEnd = () => {
+    window.clearTimeout(hoverTimer.current)
+    hoverArmed.current = true
+  }
 
   return (
     <aside className={styles.rail} aria-label="Site rail">
       <div className={styles.railTop}>
         <button
+          ref={buttonRef}
           type="button"
           className={styles.indexButton}
           aria-label="Open index"
           aria-expanded={indexOpen}
           aria-controls="site-index"
           onClick={onOpenIndex}
+          onMouseEnter={onHoverStart}
+          onMouseLeave={onHoverEnd}
         >
           <Dots />
         </button>

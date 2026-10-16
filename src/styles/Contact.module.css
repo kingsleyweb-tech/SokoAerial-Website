@@ -4,14 +4,14 @@
   display: flex;
   flex-direction: column;
   gap: 64px;
-  padding: 140px 0 96px;
+  padding: 128px 0 64px;
   background: var(--midnight);
   color: var(--white);
 }
 
 .title {
   padding: 0 var(--gutter);
-  font-size: clamp(92px, 13.1vw + 41px, 230px);
+  font-size: clamp(74px, 10.48vw + 33px, 184px);
   font-weight: 600;
   letter-spacing: -0.07em;
   line-height: 0.8;
@@ -60,7 +60,7 @@
 
 .rowValue {
   overflow-wrap: anywhere;
-  font-size: clamp(28px, 3.05vw + 16px, 60px);
+  font-size: clamp(22px, 2.44vw + 13px, 48px);
   font-weight: 500;
   letter-spacing: -0.04em;
   line-height: 1.05;
@@ -98,7 +98,7 @@
   flex-direction: column;
   gap: 40px;
   margin-top: -48px;
-  padding: 96px var(--gutter) 112px;
+  padding: 64px var(--gutter) 72px;
   border-radius: 48px 48px 0 0;
   background: var(--white);
   color: var(--midnight);
@@ -163,7 +163,7 @@
 /* ---------- Map ---------- */
 
 .mapSection {
-  padding: 0 var(--gutter) 112px;
+  padding: 0 var(--gutter) 72px;
   background: var(--white);
   scroll-margin-top: 24px;
 }
@@ -202,7 +202,7 @@
 }
 
 .mapAddress {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
@@ -298,6 +298,6 @@
   }
 
   .mapAddress {
-    font-size: 20px;
+    font-size: 18px;
   }
 }

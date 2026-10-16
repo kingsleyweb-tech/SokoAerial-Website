@@ -55,21 +55,16 @@ export function RadiosPage() {
           </motion.div>
           <p>Efficient burst messages — reliable coverage in challenging terrain and remote locations.</p>
         </div>
-        <motion.div
-          className={styles.both}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.25, ease: [0.2, 0.7, 0.2, 1] }}
-        >
-          <span className={styles.plus}>+</span>
-          <span className="mono">Sigtrack integrates both</span>
-        </motion.div>
       </section>
 
       <section className={styles.spectrum} aria-labelledby="spectrum-title">
-        <h2 id="spectrum-title">
-          Two ends of the <em className="serif">spectrum.</em>
-        </h2>
+        <div className={styles.spectrumHead}>
+          <span className="chip">Sigtrack integrates both</span>
+          <h2 id="spectrum-title">
+            Two ends of the <em className="serif">spectrum.</em>
+          </h2>
+          <p>Use Silvus when you need bandwidth, Meshtastic when you need range — Sigtrack works with either.</p>
+        </div>
         <Reveal className={styles.scale}>
           <div className={styles.bar}>
             <span className={styles.markMesh}>Meshtastic</span>
@@ -79,7 +74,6 @@ export function RadiosPage() {
             <span>Lower frequency · burst messages · range</span>
             <span>Higher frequency · multimedia · bandwidth</span>
           </div>
-          <span className={styles.note}>Qualitative — not to scale</span>
         </Reveal>
       </section>
 

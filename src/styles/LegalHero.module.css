@@ -3,13 +3,13 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 32px;
-  padding: 150px var(--gutter) 64px;
+  padding: 128px var(--gutter) 48px;
   background: var(--fog);
   color: var(--midnight);
 }
 
 .title {
-  font-size: clamp(72px, 6.48vw + 47px, 140px);
+  font-size: clamp(58px, 5.18vw + 38px, 112px);
   font-weight: 600;
   letter-spacing: -0.065em;
   line-height: 0.82;
