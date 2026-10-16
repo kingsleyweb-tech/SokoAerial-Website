@@ -5,7 +5,7 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 36px;
-  padding: 100px var(--gutter) 132px;
+  padding: 100px var(--gutter) 40px;
   background: var(--midnight);
   color: var(--white);
 }
@@ -13,14 +13,14 @@
 .heroHead {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 18px;
 }
 
 .title {
   font-size: var(--fs-display);
   font-weight: 600;
   letter-spacing: -0.065em;
-  line-height: 0.82;
+  line-height: 0.9;
 }
 
 .title em {
@@ -30,9 +30,8 @@
 .heroAside {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   max-width: 360px;
-  padding-bottom: 12px;
   font-size: 15px;
   line-height: 1.6;
   color: var(--white-80);
@@ -40,6 +39,7 @@
 
 .steps {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   font-family: var(--font-mono);
   font-size: 11px;
@@ -75,41 +75,66 @@
 /* ---------- Plan cards ---------- */
 
 .choose {
-  padding: 0 var(--gutter) 56px;
+  padding: var(--section-y) var(--gutter) 0;
   background: var(--fog);
+}
+
+.chooseHead,
+.cards,
+.how,
+.detailsGrid,
+.done {
+  max-width: 1080px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.chooseHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--slate-2);
+}
+
+.chooseHead b {
+  font-weight: 600;
+  color: var(--midnight);
 }
 
 .cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-  max-width: 1000px;
-  margin: -96px auto 0;
+  gap: 16px;
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 30px;
-  border: 0;
-  border-radius: 24px;
+  gap: 22px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
   text-align: left;
-  box-shadow: 0 40px 80px -40px rgba(6, 13, 28, 0.35);
   transition:
     transform 0.35s var(--ease),
+    border-color 0.2s ease,
     box-shadow 0.35s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
+  box-shadow: 0 24px 48px -32px rgba(6, 13, 28, 0.4);
 }
 
 .card[aria-checked='true'] {
+  border-color: var(--signal);
   box-shadow:
-    0 0 0 4px var(--signal),
-    0 40px 80px -40px rgba(6, 13, 28, 0.35);
+    0 0 0 2px var(--signal),
+    0 24px 48px -32px rgba(6, 13, 28, 0.4);
 }
 
 .basic {
@@ -118,9 +143,9 @@
 }
 
 .pro {
+  border-color: var(--navy);
   background: var(--navy);
   color: var(--white);
-  box-shadow: 0 40px 80px -40px rgba(6, 13, 28, 0.5);
 }
 
 .cardHead {
@@ -144,11 +169,11 @@
 .tick {
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border: 2px solid var(--field);
   border-radius: 50%;
-  font-size: 15px;
+  font-size: 14px;
   color: var(--white);
 }
 
@@ -161,72 +186,72 @@
   background: var(--signal);
 }
 
-.priceRow {
+.priceBlock {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .price {
   display: flex;
-  align-items: flex-start;
+  align-items: baseline;
   gap: 8px;
   font-size: var(--fs-h2);
   font-weight: 600;
-  letter-spacing: -0.06em;
-  line-height: 0.85;
+  letter-spacing: -0.05em;
+  line-height: 1;
 }
 
-.currency {
-  padding-top: 6px;
+.price small {
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 0;
-}
-
-.price em {
-  align-self: flex-end;
-  font-size: 20px;
-  letter-spacing: 0;
-  color: var(--ice);
-}
-
-.priceSide {
-  font-size: 13px;
-  line-height: 1.5;
-  text-align: right;
-  color: var(--slate-2);
-}
-
-.pro .priceSide {
   color: var(--ice-80);
 }
 
-.rates {
+.priceNote {
+  font-size: 14px;
+  color: var(--slate-2);
+}
+
+.pro .priceNote {
+  color: var(--ice-80);
+}
+
+.points {
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid var(--line-ink-2);
-}
-
-.pro .rates {
-  border-bottom-color: rgba(207, 224, 255, 0.2);
-}
-
-.rates span {
-  display: flex;
-  justify-content: space-between;
-  padding: 11px 0;
-  border-top: 1px solid var(--line-ink-2);
+  flex-grow: 1;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-ink);
   font-size: 15px;
+  line-height: 1.45;
 }
 
-.pro .rates span {
-  border-top-color: rgba(207, 224, 255, 0.2);
+.pro .points {
+  border-top-color: var(--line-dark);
 }
 
-.rates b {
-  font-weight: 600;
+.points span {
+  position: relative;
+  padding-left: 26px;
+}
+
+.points span::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 2px;
+  width: 11px;
+  height: 6px;
+  border-bottom: 2px solid var(--signal);
+  border-left: 2px solid var(--signal);
+  transform: rotate(-45deg);
+}
+
+.pro .points span::before {
+  border-color: var(--ice);
 }
 
 .fakePill {
@@ -234,9 +259,9 @@
   align-self: flex-start;
   align-items: center;
   gap: 14px;
-  height: 48px;
-  padding: 0 6px 0 20px;
-  border-radius: 24px;
+  height: 46px;
+  padding: 0 5px 0 20px;
+  border-radius: 23px;
   font-size: 15px;
   font-weight: 600;
 }
@@ -273,43 +298,63 @@
 /* ---------- Details ---------- */
 
 .details {
-  padding: clamp(40px, 2vw + 24px, 64px) var(--gutter) clamp(48px, 3vw + 24px, 72px);
-  background: var(--white);
+  padding: 24px var(--gutter) var(--section-y);
+  background: var(--fog);
   scroll-margin-top: 24px;
 }
 
-.empty {
+/* shown before a plan is picked */
+.how {
   display: grid;
-  place-items: center;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 40px 24px;
-  border: 1.5px dashed var(--field);
-  border-radius: 24px;
-  font-size: 16px;
-  text-align: center;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.how li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 22px;
+  border-top: 2px solid var(--midnight);
+  font-size: 14px;
+  line-height: 1.5;
   color: var(--slate-2);
+}
+
+.how li span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--signal);
+}
+
+.how li b {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--midnight);
 }
 
 .detailsGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
-  gap: 40px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
+  gap: 32px;
   align-items: start;
+  padding: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--white);
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .formHead {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 8px;
-  font-size: 16px;
+  gap: 8px;
+  font-size: 15px;
   color: var(--slate-2);
 }
 
@@ -325,7 +370,7 @@
   font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.045em;
-  line-height: 0.98;
+  line-height: 1;
   color: var(--midnight);
 }
 
@@ -346,11 +391,11 @@
 }
 
 .billing button {
-  height: 64px;
+  height: 56px;
   border: 2px solid var(--field);
-  border-radius: 16px;
+  border-radius: 14px;
   background: var(--white);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--midnight);
   transition:
@@ -366,15 +411,15 @@
 .stepper {
   display: flex;
   align-items: center;
-  width: 220px;
-  height: 56px;
+  width: 200px;
+  height: 52px;
   overflow: hidden;
   border: 1px solid var(--field);
-  border-radius: 28px;
+  border-radius: 26px;
 }
 
 .stepper button {
-  width: 64px;
+  width: 58px;
   height: 100%;
   border: 0;
   background: var(--fog);
@@ -398,9 +443,9 @@
   top: 32px;
   display: flex;
   flex-direction: column;
-  gap: 22px;
-  padding: 36px;
-  border-radius: 32px;
+  gap: 18px;
+  padding: 28px;
+  border-radius: var(--radius-sm);
   background: var(--fog);
 }
 
@@ -423,7 +468,7 @@
 
 .summaryRows {
   border-bottom: 1px solid var(--line-ink);
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .summaryDark .summaryRows {
@@ -434,7 +479,7 @@
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  padding: 12px 0;
+  padding: 11px 0;
   border-top: 1px solid var(--line-ink);
 }
 
@@ -458,7 +503,7 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .total strong {
@@ -471,10 +516,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
-  padding: 0 8px 0 28px;
+  height: 58px;
+  padding: 0 6px 0 24px;
   border: 0;
-  border-radius: 32px;
+  border-radius: 29px;
   background: var(--signal);
   font-size: 15px;
   font-weight: 600;
@@ -489,8 +534,8 @@
 .payButton span {
   display: grid;
   place-items: center;
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   background: var(--white);
   color: var(--signal);
@@ -532,8 +577,10 @@
 .done {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  max-width: 720px;
+  gap: 16px;
+  padding: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--white);
   font-size: 15px;
   line-height: 1.6;
   color: var(--slate);
@@ -547,7 +594,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 /* ---------- Tablet / mobile ---------- */
@@ -556,6 +603,7 @@
   .hero {
     flex-direction: column;
     align-items: flex-start;
+    gap: 20px;
     padding-top: 110px;
   }
 
@@ -571,39 +619,42 @@
 @media (max-width: 767px) {
   .hero {
     gap: 16px;
-    padding: 104px var(--gutter) 112px;
+    padding: 100px var(--gutter) 28px;
   }
 
-  .heroAside {
-    padding-bottom: 0;
-    font-size: 15px;
+  .steps li {
+    height: 28px;
+    padding: 0 10px;
+    font-size: 10px;
   }
 
   .choose {
-    padding: 0 16px 32px;
+    padding-top: 24px;
+  }
+
+  .chooseHead {
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 12px;
+    font-size: 13px;
   }
 
   .cards {
     grid-template-columns: minmax(0, 1fr);
     gap: 12px;
-    margin-top: -96px;
   }
 
   .card {
-    gap: 14px;
-    min-height: 0;
-    padding: 24px;
-    border-radius: 26px;
+    gap: 16px;
+    padding: 22px;
   }
 
-  .card[aria-checked='true'] {
-    box-shadow:
-      0 0 0 3px var(--signal),
-      0 20px 40px -24px rgba(6, 13, 28, 0.35);
+  .card:hover {
+    transform: none;
   }
 
   .cardLabel {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .tick {
@@ -612,36 +663,31 @@
     font-size: 13px;
   }
 
-  .price {
-    letter-spacing: -0.055em;
-  }
-
-  /* On phones the card action reads as a text link. */
-  .fakePill {
-    height: auto;
-    padding: 0;
-    background: none;
+  .points {
+    gap: 8px;
+    padding-top: 16px;
     font-size: 14px;
-    color: var(--signal);
-  }
-
-  .pro .fakePill {
-    color: var(--ice);
-  }
-
-  .fakePill span {
-    width: auto;
-    height: auto;
-    background: none;
-    color: inherit;
   }
 
   .details {
-    padding-top: 40px;
+    padding-top: 16px;
   }
 
-  .detailsGrid {
+  .how {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .how li {
+    padding: 14px 0;
+    border-top-width: 1px;
+    border-top-color: var(--line-ink-2);
+  }
+
+  .detailsGrid,
+  .done {
     gap: 18px;
+    padding: 20px;
   }
 
   .form {
@@ -658,8 +704,7 @@
   }
 
   .billing button {
-    height: 56px;
-    border-radius: 14px;
+    height: 52px;
     font-size: 14px;
   }
 
@@ -670,28 +715,27 @@
   }
 
   .stepper {
-    width: 160px;
-    height: 50px;
+    width: 156px;
+    height: 48px;
   }
 
   .stepper button {
-    width: 50px;
+    width: 48px;
   }
 
   .summary {
     gap: 14px;
     padding: 20px;
-    border-radius: 22px;
   }
 
   .payButton {
-    height: 58px;
+    height: 56px;
     padding-left: 22px;
     font-size: 16px;
   }
 
   .payButton span {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
   }
 }

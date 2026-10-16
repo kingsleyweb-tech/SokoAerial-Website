@@ -61,13 +61,12 @@ export function PlansPage() {
         <div className={styles.heroHead}>
           <span className="chip chip--dark">Get Sigtrack</span>
           <h1 className={styles.title}>
-            Pick your <br className="show-mobile" />
-            <em className="serif">plan.</em>
+            Pick your <em className="serif">plan.</em>
           </h1>
         </div>
         <div className={styles.heroAside}>
           <p>Unlock the full potential of Sigtrack by selecting a plan that suits your needs.</p>
-          <ol className={`${styles.steps} hide-mobile`} aria-label="Progress">
+          <ol className={styles.steps} aria-label="Progress">
             <li data-state="done">01 Plan</li>
             <li data-state={plan ? (submitted ? 'done' : 'current') : 'todo'}>02 Details</li>
             <li data-state={submitted ? 'current' : 'todo'}>03 {step3}</li>
@@ -76,6 +75,13 @@ export function PlansPage() {
       </section>
 
       <section className={styles.choose}>
+        <div className={styles.chooseHead}>
+          <span className={styles.stepLabel}>01 · Choose a plan</span>
+          <p>
+            Available for <b>{softwareOptions.join(' · ')}</b>
+          </p>
+        </div>
+
         <div className={styles.cards} role="radiogroup" aria-label="Choose a plan">
           <button
             type="button"
@@ -90,21 +96,14 @@ export function PlansPage() {
                 {plan === 'basic' && '✓'}
               </span>
             </span>
-            <span className={styles.priceRow}>
+            <span className={styles.priceBlock}>
               <span className={styles.price}>Free</span>
-              <span className={`${styles.priceSide} show-mobile`}>
-                USD 0 / Monthly
-                <br />
-                USD 0 / Yearly
-              </span>
+              <span className={styles.priceNote}>USD 0 monthly · USD 0 yearly</span>
             </span>
-            <span className={`${styles.rates} hide-mobile`}>
-              <span>
-                Monthly <b>USD 0</b>
-              </span>
-              <span>
-                Yearly <b>USD 0</b>
-              </span>
+            <span className={styles.points}>
+              <span>No payment needed</span>
+              <span>Request the download with your contact details</span>
+              <span>Sigtrack replies with your download</span>
             </span>
             <span className={`${styles.fakePill} ${styles.fakeDark}`}>
               Download <span>↓</span>
@@ -124,24 +123,16 @@ export function PlansPage() {
                 {plan === 'pro' && '✓'}
               </span>
             </span>
-            <span className={styles.priceRow}>
+            <span className={styles.priceBlock}>
               <span className={styles.price}>
-                <span className={`${styles.currency} hide-mobile`}>USD</span>$50
-                <em className="serif hide-mobile">.00</em>
+                USD 50<small>/ month</small>
               </span>
-              <span className={`${styles.priceSide} show-mobile`}>
-                USD 50 / Monthly
-                <br />
-                USD 6K / Yearly
-              </span>
+              <span className={styles.priceNote}>or USD 6K billed yearly</span>
             </span>
-            <span className={`${styles.rates} hide-mobile`}>
-              <span>
-                Monthly <b>USD 50</b>
-              </span>
-              <span>
-                Yearly <b>USD 6K</b>
-              </span>
+            <span className={styles.points}>
+              <span>Monthly or yearly billing</span>
+              <span>Order one or more licences</span>
+              <span>Sigtrack replies with payment details and your license key</span>
             </span>
             <span className={`${styles.fakePill} ${styles.fakeLight}`}>
               Choose plan <span>↗</span>
@@ -153,9 +144,30 @@ export function PlansPage() {
       <section id="details" ref={detailsRef} className={styles.details} aria-live="polite">
         <AnimatePresence mode="wait" initial={false}>
           {!plan && (
-            <motion.div key="none" className={styles.empty} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              Select a plan above to continue.
-            </motion.div>
+            <motion.ol
+              key="none"
+              className={styles.how}
+              aria-label="How it works"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <li>
+                <span>01</span>
+                <b>Choose a plan</b>
+                Basic is free. Professional is billed monthly or yearly.
+              </li>
+              <li>
+                <span>02</span>
+                <b>Add your details</b>
+                Your name, email, phone and the Sigtrack software you want.
+              </li>
+              <li>
+                <span>03</span>
+                <b>Send the request</b>
+                Your email app opens with it addressed to Sigtrack, who replies with the next step.
+              </li>
+            </motion.ol>
           )}
 
           {plan && submitted && (
