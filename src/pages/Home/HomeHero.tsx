@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowUpRightIcon } from '../../components/Icons/Icons'
 import { Pill } from '../../components/Pill/Pill'
-import heroBg from '../../assets/images/hero-coast-night.jpg'
+import heroPhoto from '../../assets/images/hero-field-command.jpg'
 import { productLinks, type ProductId } from '../../data/site'
 import styles from '../../styles/HomeSections.module.css'
 
@@ -17,13 +17,13 @@ const platforms: Record<ProductId, string> = {
 }
 
 /**
- * Home hero: one message, two actions, and every product one click away, over a full-bleed night aerial.
- * The background is an AI-generated stock-style image of a coastline (not Sigtrack footage), so it is decorative.
+ * Home hero: one message, two actions, and every product one click away, over a full-bleed photo of a
+ * Sigtrack field deployment (operators beside a mobile command vehicle at dusk).
  */
 export function HomeHero() {
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
-      <div className={styles.heroBg} style={{ backgroundImage: `url(${heroBg})` }} aria-hidden="true" />
+      <div className={styles.heroBg} style={{ backgroundImage: `url(${heroPhoto})` }} aria-hidden="true" />
       <div className={styles.heroGrid}>
         <motion.div
           className={styles.heroText}

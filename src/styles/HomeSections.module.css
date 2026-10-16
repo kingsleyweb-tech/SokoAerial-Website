@@ -30,22 +30,34 @@
 /* full-bleed background, darkened towards the text (left) and the product panel (bottom) */
 .heroBg {
   position: absolute;
-  inset: 0;
+  inset: 0 0 0 36%;
   z-index: -1;
   background-color: var(--midnight);
-  background-position: 62% 50%;
+  background-position: 30% 78%;
   background-size: cover;
   animation: heroDrift 18s var(--ease) both;
 }
 
+/* the photo fades into the navy on its left, so the headline sits on a clean background */
 .heroBg::after {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(6, 13, 28, 0.92) 0%, rgba(6, 13, 28, 0.7) 38%, rgba(6, 13, 28, 0.15) 75%),
-    linear-gradient(0deg, rgba(6, 13, 28, 0.95) 0%, rgba(6, 13, 28, 0) 38%),
-    linear-gradient(180deg, rgba(6, 13, 28, 0.6) 0%, rgba(6, 13, 28, 0) 22%);
+    linear-gradient(90deg, var(--midnight) 0%, rgba(6, 13, 28, 0.55) 26%, rgba(6, 13, 28, 0.1) 60%),
+    linear-gradient(0deg, rgba(6, 13, 28, 0.9) 0%, rgba(6, 13, 28, 0) 34%),
+    linear-gradient(180deg, rgba(6, 13, 28, 0.55) 0%, rgba(6, 13, 28, 0) 20%);
+}
+
+@media (max-width: 1023px) {
+  .heroBg {
+    inset: 0;
+    background-position: 38% 72%;
+  }
+
+  .heroBg::after {
+    background: linear-gradient(180deg, rgba(6, 13, 28, 0.78) 0%, rgba(6, 13, 28, 0.62) 45%, rgba(6, 13, 28, 0.94) 100%);
+  }
 }
 
 @keyframes heroDrift {
@@ -643,15 +655,6 @@
     gap: 28px;
     min-height: 0;
     padding: 104px var(--gutter) 28px;
-  }
-
-  .heroBg {
-    background-position: 70% 50%;
-  }
-
-  .heroBg::after {
-    background:
-      linear-gradient(180deg, rgba(6, 13, 28, 0.75) 0%, rgba(6, 13, 28, 0.6) 45%, rgba(6, 13, 28, 0.92) 100%);
   }
 
   .strip {
