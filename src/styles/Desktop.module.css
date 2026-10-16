@@ -117,6 +117,7 @@
   flex-direction: column;
   gap: 56px;
   padding: 72px var(--gutter);
+  overflow-x: clip;
   background: var(--topo);
   color: var(--white);
 }

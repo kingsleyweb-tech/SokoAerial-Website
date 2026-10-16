@@ -24,7 +24,8 @@
 
 .filters {
   display: flex;
-  gap: 32px;
+  flex-wrap: wrap;
+  gap: 8px clamp(16px, 2vw, 32px);
   padding-bottom: 12px;
 }
 

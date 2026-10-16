@@ -114,11 +114,9 @@
   color: var(--ice-72) !important;
 }
 
+/* in flow (not absolute) so it always sits below the links, cropped by the footer's bottom edge */
 .wordmark {
-  position: absolute;
-  left: 48px;
-  right: 0;
-  bottom: -64px;
+  margin: auto 0 -0.3em;
   font-size: clamp(83px, 14.16vw + 28px, 232px);
   font-weight: 700;
   letter-spacing: -0.06em;
@@ -152,6 +150,19 @@
 }
 
 @media (max-width: 1023px) {
+  .footer {
+    min-height: 0;
+  }
+
+  /* above the wordmark instead of laid over it */
+  .copyright {
+    position: static;
+  }
+
+  .wordmark {
+    order: 1;
+  }
+
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -162,7 +173,6 @@
 @media (max-width: 767px) {
   .footer {
     gap: 28px;
-    min-height: 640px;
     padding-top: 48px;
   }
 
@@ -203,8 +213,4 @@
     width: 44px;
   }
 
-  .wordmark {
-    left: 12px;
-    bottom: -34px;
-  }
 }

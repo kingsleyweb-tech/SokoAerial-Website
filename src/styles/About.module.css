@@ -309,11 +309,9 @@
     padding: 108px var(--gutter) 48px;
   }
 
+  /* no room beside the headline on phones; the band photo below carries the image */
   .heroImage {
-    top: 110px;
-    right: -60px;
-    width: 220px;
-    height: 220px;
+    display: none;
   }
 
   .heroText {
