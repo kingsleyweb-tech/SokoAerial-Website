@@ -2,8 +2,8 @@
 
 .hero {
   position: relative;
-  min-height: 760px;
-  padding: 128px var(--gutter) 56px;
+  min-height: 540px;
+  padding: 100px var(--gutter) 40px;
   overflow: hidden;
   background: var(--midnight);
   color: var(--white);
@@ -11,10 +11,10 @@
 
 .heroImage {
   position: absolute;
-  top: 140px;
+  top: 110px;
   right: var(--gutter);
   width: 420px;
-  height: 420px;
+  height: 315px;
   border-radius: 50%;
 }
 
@@ -28,7 +28,7 @@
 .title {
   /* stops short of the round photo on the right */
   max-width: calc(100% - 420px - 40px);
-  font-size: clamp(46px, 5vw + 19px, 104px);
+  font-size: var(--fs-display);
   font-weight: 600;
   letter-spacing: -0.055em;
   line-height: 0.88;
@@ -41,7 +41,7 @@
 .heroLead {
   position: absolute;
   right: var(--gutter);
-  bottom: 64px;
+  bottom: 40px;
   max-width: 440px;
   font-size: 16px;
   line-height: 1.6;
@@ -83,7 +83,7 @@
 }
 
 .address {
-  font-size: clamp(19px, 0.61vw + 17px, 26px);
+  font-size: var(--fs-h3);
   font-weight: 600;
   letter-spacing: -0.02em;
 }
@@ -93,8 +93,8 @@
 .chapters {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 48px 40px;
-  padding: 136px var(--gutter) 80px;
+  gap: 36px 32px;
+  padding: 104px var(--gutter) 56px;
   background: var(--white);
 }
 
@@ -105,7 +105,7 @@
 }
 
 .chaptersIntro h2 {
-  font-size: clamp(30px, 2vw + 18px, 48px);
+  font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1;
@@ -138,7 +138,7 @@
 }
 
 .chapterTitle {
-  font-size: clamp(20px, 0.6vw + 16px, 26px);
+  font-size: var(--fs-h3);
   font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.1;
@@ -157,7 +157,7 @@
   grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
   align-items: center;
   gap: 40px;
-  padding: 72px var(--gutter);
+  padding: var(--section-y) var(--gutter);
   background: var(--midnight);
   color: var(--white);
 }
@@ -172,7 +172,7 @@
 }
 
 .isrTitle {
-  font-size: clamp(35px, 2.14vw + 27px, 58px);
+  font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.045em;
   line-height: 0.95;
@@ -243,7 +243,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 72px var(--gutter);
+  padding: var(--section-y) var(--gutter);
   background: var(--fog);
 }
 
@@ -253,7 +253,7 @@
 
 .place {
   display: block;
-  font-size: clamp(37px, 4.42vw + 19px, 83px);
+  font-size: var(--fs-display);
   font-weight: 600;
   letter-spacing: -0.05em;
   line-height: 1;
@@ -261,7 +261,7 @@
 
 .placeAccent {
   padding-left: clamp(28px, 12.57vw - 21px, 160px);
-  font-size: clamp(38px, 4.88vw + 19px, 90px);
+  font-size: var(--fs-display);
   color: var(--signal);
 }
 
@@ -285,12 +285,12 @@
   .heroLead {
     position: relative;
     inset: auto;
-    margin-top: 40px;
+    margin-top: 28px;
   }
 
   .hero {
     min-height: 0;
-    padding-top: 120px;
+    padding-top: 104px;
   }
 
   .chapters {
@@ -350,7 +350,7 @@
   .chapters {
     grid-template-columns: minmax(0, 1fr);
     gap: 32px;
-    padding: 96px var(--gutter) 56px;
+    padding: 80px var(--gutter) 40px;
   }
 
   .chapter {
@@ -382,5 +382,41 @@
 
   .place {
     line-height: 1.02;
+  }
+}
+
+/* ---------- Images size their own boxes: shown whole, no empty bands ---------- */
+
+.heroImage {
+  height: auto;
+}
+
+.heroImage img,
+.band > img {
+  position: static;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.band {
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.band > img {
+  width: auto;
+  max-width: 100%;
+  max-height: 520px;
+}
+
+@media (max-width: 767px) {
+  .band {
+    height: auto;
+  }
+
+  .band > img {
+    max-height: 320px;
   }
 }

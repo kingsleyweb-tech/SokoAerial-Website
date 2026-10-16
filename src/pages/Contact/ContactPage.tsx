@@ -117,7 +117,7 @@ export function ContactPage() {
       <section id="map" className={styles.mapSection} aria-label="Map">
         <Reveal className={styles.map}>
           <iframe
-            title="Sigtrack location — Burma Camp, Accra"
+            title="Sigtrack location: Burma Camp, Accra"
             src={`https://maps.google.com/maps?q=${mapQuery}&z=14&output=embed`}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

@@ -2,11 +2,13 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { DemoForm } from '../../components/Forms/DemoForm'
 import { PlayIcon } from '../../components/Icons/Icons'
+import { SymbolDemoSection } from '../../components/SymbolDemo/SymbolDemoSection'
 import { Pill } from '../../components/Pill/Pill'
 import { webFeatures } from '../../data/content'
 import { images, videos } from '../../data/media'
 import desktop from '../../styles/Desktop.module.css'
 import styles from '../../styles/Web.module.css'
+import { SimSection } from '../../components/Sim/SimSection'
 
 const pad = (n: number) => String(n).padStart(2, '0')
 const clips = [
@@ -45,7 +47,7 @@ export function WebPage() {
           </motion.div>
           <div className={styles.heroAside}>
             <p>
-              <span className="hide-mobile">A formidable tool for modern operations — a</span>
+              <span className="hide-mobile">A formidable tool for modern operations: a</span>
               <span className="show-mobile">A</span> robust suite of features designed to streamline coordination and
               enhance situational awareness.
             </p>
@@ -65,7 +67,7 @@ export function WebPage() {
             <span className={`${styles.address} hide-mobile`}>Sigtrack Web</span>
           </div>
           <div className={`${styles.screen} topo`}>
-            <img src={images.webDashboard} alt="The Sigtrack Web interface with team members on the map" />
+            <img src={images.webGhanaTeams} alt="Sigtrack Web: the map of Ghana with its border traced, and the Teams panel" />
           </div>
         </div>
       </section>
@@ -103,7 +105,7 @@ export function WebPage() {
         <p className={styles.chatText}>
           <span className="hide-mobile">
             Sigtrack Web integrates with Meshtastic radio, enabling direct communication between operatives without
-            relying on traditional internet connectivity — and real-time tracking over the same link.
+            relying on traditional internet connectivity, and real time tracking over the same link.
           </span>
           <span className="show-mobile">
             Meshtastic radio integration enables direct communication between operatives without relying on traditional
@@ -142,6 +144,26 @@ export function WebPage() {
           ))}
         </div>
       </section>
+
+      <SymbolDemoSection />
+
+      <SimSection
+        sim="web"
+        chip="See it work"
+        title={
+          <>
+            Sigtrack Web <em className="serif">in the browser.</em>
+          </>
+        }
+        lead="Watch a team come together on the map: grouped, tracked live, linked by Meshtastic radio and chatting without internet. Hover over or tap a label for details."
+        summary={[
+          'Group operatives into teams in the Teams panel.',
+          'Each member appears on the map as a marker.',
+          'Markers move with members in real time.',
+          'Meshtastic radio connects operatives without the internet.',
+          'Chat continues offline over Meshtastic.',
+        ]}
+      />
 
       <DemoForm
         product="Sigtrack Web"

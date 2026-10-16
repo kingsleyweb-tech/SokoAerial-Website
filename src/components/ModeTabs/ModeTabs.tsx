@@ -121,7 +121,7 @@ export function ModeTabs({ modes, label, product, onOpenImage }: ModeTabsProps) 
           <motion.div className={styles.modeShot} variants={shot}>
             <LaptopFrame
               src={cur.image}
-              alt={`${product} — ${cur.label}`}
+              alt={`${product}: ${cur.label}`}
               onOpen={() => onOpenImage(cur.image)}
             />
           </motion.div>

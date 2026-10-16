@@ -3,8 +3,8 @@
 .hero {
   display: flex;
   flex-direction: column;
-  gap: 48px;
-  padding: 128px var(--gutter) 0;
+  gap: 36px;
+  padding: 100px var(--gutter) 0;
   background: var(--fog);
 }
 
@@ -12,7 +12,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
   align-items: end;
-  gap: 48px;
+  gap: 36px;
 }
 
 .heroTitle {
@@ -30,15 +30,15 @@
 }
 
 .word {
-  font-size: clamp(61px, 7.16vw + 33px, 136px);
+  font-size: var(--fs-display);
   font-weight: 600;
   letter-spacing: -0.065em;
   line-height: 0.8;
 }
 
 .accent {
-  padding-left: clamp(110px, 15.2vw + 51px, 260px);
-  font-size: clamp(96px, 8.4vw + 63px, 184px);
+  padding-left: clamp(40px, 5vw, 96px);
+  font-size: var(--fs-display);
   line-height: 0.78;
   color: var(--signal);
 }
@@ -59,7 +59,6 @@
   z-index: 2;
   margin-bottom: -300px;
   overflow: hidden;
-  border-radius: 20px;
   background: var(--white);
   box-shadow: 0 50px 100px -40px rgba(6, 13, 28, 0.45);
 }
@@ -101,20 +100,19 @@
 
 .screen {
   position: relative;
-  height: 600px;
 }
 
+/* the screenshot sets the height, so all of it shows */
 .screen img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: left top;
+  height: auto;
 }
 
 /* ---------- Feature columns ---------- */
 
 .features {
-  padding: 356px var(--gutter) 72px;
+  padding: calc(300px + var(--section-y)) var(--gutter) var(--section-y);
   background: var(--white);
 }
 
@@ -123,11 +121,11 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: 40px;
+  margin-bottom: 28px;
 }
 
 .featuresHead h2 {
-  font-size: clamp(30px, 2.4vw + 18px, 52px);
+  font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1;
@@ -202,7 +200,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  padding: 72px var(--gutter);
+  padding: var(--section-y) var(--gutter);
   overflow: hidden;
   background: var(--midnight);
   color: var(--white);
@@ -242,7 +240,7 @@
 
 .chatTitle {
   position: relative;
-  font-size: clamp(51px, 6.55vw + 26px, 120px);
+  font-size: var(--fs-display);
   font-weight: 600;
   letter-spacing: -0.06em;
   line-height: 0.86;
@@ -275,10 +273,6 @@
   .featureGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .screen {
-    height: 440px;
-  }
 }
 
 @media (max-width: 767px) {
@@ -299,7 +293,7 @@
 
   .browser {
     margin-bottom: -120px;
-    border-radius: 16px;
+    border-radius: 0;
     box-shadow: 0 30px 60px -30px rgba(6, 13, 28, 0.5);
   }
 
@@ -314,12 +308,8 @@
     height: 7px;
   }
 
-  .screen {
-    height: 240px;
-  }
-
   .features {
-    padding: 152px var(--gutter) 48px;
+    padding: calc(120px + var(--section-y)) var(--gutter) var(--section-y);
   }
 
   .featuresHead {

@@ -1,0 +1,560 @@
+/* The tactical-symbol replay (SymbolSim): Sigtrack Web's dialogs, laid out in design pixels and scaled to fit. */
+
+.fit {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background: #e8eaed;
+  font-family: var(--font-sans);
+  color: #111827;
+  transform-origin: 0 0;
+}
+
+.app > * {
+  position: absolute;
+}
+
+.bar {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  background: #f7f8fb;
+  border-bottom: 1px solid #dfe5ee;
+}
+
+.bar i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d6dbe4;
+}
+
+.bar span {
+  margin-left: 10px;
+  padding: 3px 12px;
+  border-radius: 10px;
+  background: #eceff4;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #6b7890;
+}
+
+.rail {
+  top: 30px;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-top: 12px;
+  background: #1f2633;
+}
+
+.rail span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  color: #c3cad6;
+}
+
+.rail span[data-on] {
+  background: #2a5fe8;
+  color: #fff;
+}
+
+.rail svg {
+  width: 18px;
+  height: 18px;
+}
+
+.map {
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.map img {
+  position: absolute;
+  max-width: none;
+}
+
+.attribution {
+  position: absolute;
+  right: 6px;
+  bottom: 4px;
+  padding: 1px 5px;
+  background: rgba(255, 255, 255, 0.75);
+  font-size: 9px;
+  color: #444;
+}
+
+.symbolsBtn {
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #2a5fe8;
+  box-shadow: 0 6px 16px -8px rgba(3, 7, 15, 0.6);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+
+
+.app [data-active] {
+  filter: brightness(0.85);
+}
+
+.backdrop {
+  inset: 30px 0 0;
+  z-index: 3;
+  background: rgba(3, 7, 15, 0.45);
+}
+
+.dialog {
+  z-index: 4;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 30px 80px -20px rgba(3, 7, 15, 0.6);
+  animation: rise 0.25s ease both;
+}
+
+.dialog > * {
+  position: absolute;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.dialogHead {
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.dialogHead strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.dialogHead span {
+  font-size: 20px;
+  color: #6b7280;
+}
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  height: 26px;
+  overflow: hidden;
+}
+
+.tabs span {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  padding: 0 10px;
+  border-radius: 6px;
+  background: #e5e7eb;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.tabs span[data-on] {
+  background: #000;
+  color: #fff;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.reports {
+  display: flex;
+  gap: 8px;
+  height: 34px;
+  animation: rise 0.2s ease both;
+}
+
+.reports span {
+  display: grid;
+  flex: 1;
+  place-items: center;
+  border-radius: 8px;
+  background: #1f2633;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.reports span[data-primary] {
+  background: #2a5fe8;
+}
+
+.tile {
+  display: grid;
+  place-items: center;
+  padding: 5px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  background: #f9fafb;
+}
+
+.tile svg {
+  width: 100%;
+  height: 100%;
+}
+
+.tile[data-on] {
+  border: 2px solid #2a5fe8;
+  background: #eef3fe;
+}
+
+.hint {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.field {
+  left: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field label,
+.pair label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.pair {
+  left: 16px;
+  right: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.pair > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.input[data-focus] {
+  border-color: #2a5fe8;
+  box-shadow: 0 0 0 3px rgba(42, 95, 232, 0.18);
+}
+
+.input[data-empty] {
+  color: #9ca3af;
+}
+
+.input[data-readonly] {
+  background: #f3f4f6;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.textarea {
+  display: block;
+  min-height: 56px;
+  padding-top: 8px;
+  white-space: normal;
+}
+
+.select {
+  justify-content: space-between;
+}
+
+.select::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid #6b7280;
+  border-bottom: 1.5px solid #6b7280;
+  transform: rotate(45deg) translateY(-2px);
+}
+
+.caret {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1px;
+  height: 14px;
+  margin-left: 1px;
+  background: #111827;
+}
+
+.symbolRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.symbolRow svg {
+  width: 34px;
+  height: 34px;
+}
+
+.actions {
+  right: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.actions span {
+  display: grid;
+  place-items: center;
+  width: 80px;
+  height: 34px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.actions span[data-primary] {
+  border-color: #2a5fe8;
+  background: #2a5fe8;
+  color: #fff;
+}
+
+.pin {
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  transform: translate(-50%, -50%);
+  animation: drop 0.3s ease both;
+}
+
+.pin svg,
+.ghost svg {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 4px 10px rgba(3, 7, 15, 0.35);
+}
+
+.pin[data-pending] {
+  opacity: 0.6;
+}
+
+@keyframes drop {
+  from {
+    transform: translate(-50%, -80%);
+  }
+}
+
+.ghost {
+  z-index: 7;
+  width: 34px;
+  height: 34px;
+  opacity: 0.85;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.loading {
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 6px 16px -8px rgba(3, 7, 15, 0.5);
+  font-size: 12px;
+  font-weight: 600;
+  transform: translateX(-50%);
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(42, 95, 232, 0.25);
+  border-top-color: #2a5fe8;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.toast {
+  bottom: 16px;
+  left: 50%;
+  z-index: 3;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #111827;
+  font-size: 12px;
+  color: #fff;
+  transform: translateX(-50%);
+}
+
+.card {
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 250px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 16px 40px -12px rgba(3, 7, 15, 0.45);
+  font-size: 12px;
+  transform: translate(26px, -50%);
+}
+
+.card[data-left] {
+  transform: translate(-50%, calc(-100% - 26px));
+}
+
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.cardHead span {
+  color: #6b7280;
+}
+
+.cardMeta {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.cardCoords {
+  padding: 5px 7px;
+  border-radius: 5px;
+  background: #f3f4f6;
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.card p {
+  color: #374151;
+}
+
+.cardActions {
+  display: flex;
+  gap: 6px;
+}
+
+.cardActions b {
+  padding: 4px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.cardActions b[data-danger] {
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
+.cursor {
+  z-index: 8;
+  width: 20px;
+  height: 24px;
+  margin: -2px 0 0 -2px;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.4));
+}
+
+.cursor svg {
+  width: 100%;
+  height: 100%;
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+
+.cursor[data-pressed]::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: 28px;
+  height: 28px;
+  border: 2px solid #2a5fe8;
+  border-radius: 50%;
+  animation: ping 0.3s ease-out both;
+}
+
+@keyframes ping {
+  from {
+    opacity: 1;
+    transform: scale(0.4);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog,
+  .reports,
+  .pin,
+  .spinner,
+  .cursor[data-pressed]::after {
+    animation: none;
+  }
+}

@@ -45,9 +45,18 @@
   /* accents use the sans face — no decorative serif */
   --font-serif: var(--font-sans);
 
+  /* Type scale: one set of sizes for the whole site (390px → 1440px) */
+  --fs-mega: clamp(44px, 3.4vw + 30px, 84px); /* decorative wordmarks only */
+  --fs-display: clamp(36px, 1.9vw + 28px, 56px); /* page titles */
+  --fs-h2: clamp(26px, 0.95vw + 22px, 36px); /* section headings */
+  --fs-statement: clamp(20px, 0.6vw + 17px, 26px); /* large statement paragraphs */
+  --fs-h3: clamp(18px, 0.3vw + 17px, 21px); /* card and item headings */
+  --fs-lead: clamp(15px, 0.2vw + 14px, 17px);
+
   /* Layout */
   --rail: 80px;
-  --gutter: 64px;
+  --gutter: 56px;
+  --section-y: clamp(36px, 1.2vw + 26px, 48px); /* vertical rhythm between sections */
   --radius: 28px;
   --radius-sm: 20px;
 
@@ -59,14 +68,14 @@
 /* Responsive table (Foundations v2): 1280 · 1024 rail stays · <1024 floating capsule · 390 20px gutter */
 @media (max-width: 1279px) {
   :root {
-    --gutter: 48px;
+    --gutter: 40px;
   }
 }
 
 @media (max-width: 1023px) {
   :root {
     --rail: 0px;
-    --gutter: 32px;
+    --gutter: 28px;
   }
 }
 

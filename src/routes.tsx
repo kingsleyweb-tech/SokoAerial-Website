@@ -14,6 +14,7 @@ import {
   PrivacyPage,
   RadiosPage,
   WatcherPage,
+  WatchPage,
   WebPage,
 } from './pages/lazyPages'
 
@@ -39,12 +40,13 @@ export const pageRoutes: PageRoute[] = [
   { path: paths.web, title: 'Sigtrack Web', element: <WebPage />, rail: { label: 'Sigtrack Web', short: 'Web', num: 6 }, tone: { actions: 'light', capsule: 'light' }, product: 'web' },
   { path: paths.mobile, title: 'Sigtrack Mobile', element: <MobilePage />, rail: { label: 'Sigtrack Mobile', short: 'Mobile', num: 7 }, tone: { actions: 'light', capsule: 'light' }, product: 'mobile' },
   { path: paths.desktop, title: 'Sigtrack Desktop', element: <DesktopPage />, rail: { label: 'Sigtrack Desktop', short: 'Desktop', num: 8 }, tone: { actions: 'dark', capsule: 'dark' }, product: 'desktop' },
-  { path: paths.radios, title: 'Radios', element: <RadiosPage />, rail: { label: 'Radios', num: 9 }, tone: { actions: 'light', capsule: 'dark' }, product: 'radios' },
-  { path: paths.watcher, title: 'Watcher', element: <WatcherPage />, rail: { label: 'Watcher', num: 10 }, tone: { actions: 'dark', capsule: 'dark' }, product: 'watcher' },
-  { path: paths.flash, title: 'Flash', element: <FlashPage />, rail: { label: 'Flash', num: 11 }, tone: { actions: 'light', capsule: 'light' }, product: 'flash' },
-  { path: paths.legal, title: 'Legal Notice', element: <LegalPage />, rail: { label: 'Legal Notice', short: 'Legal', num: 12 }, tone: { actions: 'light', capsule: 'light' } },
-  { path: paths.privacy, title: 'Privacy Policy', element: <PrivacyPage />, rail: { label: 'Privacy Policy', short: 'Privacy', num: 13 }, tone: { actions: 'light', capsule: 'light' } },
-  { path: paths.plans, title: 'Get Sigtrack', element: <PlansPage />, rail: { label: 'Get Sigtrack', short: 'Plans', num: 14 }, tone: { actions: 'dark', capsule: 'dark' } },
+  { path: paths.watch, title: 'Sigtrack Watch', element: <WatchPage />, rail: { label: 'Sigtrack Watch', short: 'Watch', num: 9 }, tone: { actions: 'dark', capsule: 'dark' }, product: 'watch' },
+  { path: paths.radios, title: 'Radios', element: <RadiosPage />, rail: { label: 'Radios', num: 10 }, tone: { actions: 'light', capsule: 'dark' }, product: 'radios' },
+  { path: paths.watcher, title: 'Watcher', element: <WatcherPage />, rail: { label: 'Watcher', num: 11 }, tone: { actions: 'dark', capsule: 'dark' }, product: 'watcher' },
+  { path: paths.flash, title: 'Flash', element: <FlashPage />, rail: { label: 'Flash', num: 12 }, tone: { actions: 'light', capsule: 'light' }, product: 'flash' },
+  { path: paths.legal, title: 'Legal Notice', element: <LegalPage />, rail: { label: 'Legal Notice', short: 'Legal', num: 13 }, tone: { actions: 'light', capsule: 'light' } },
+  { path: paths.privacy, title: 'Privacy Policy', element: <PrivacyPage />, rail: { label: 'Privacy Policy', short: 'Privacy', num: 14 }, tone: { actions: 'light', capsule: 'light' } },
+  { path: paths.plans, title: 'Get Sigtrack', element: <PlansPage />, rail: { label: 'Get Sigtrack', short: 'Plans', num: 15 }, tone: { actions: 'dark', capsule: 'dark' } },
 ]
 
 export const pageCount = pageRoutes.length

@@ -166,7 +166,7 @@
 }
 
 .title {
-  font-size: clamp(51px, 4.16vw + 21px, 83px);
+  font-size: var(--fs-display);
   font-weight: 600;
   letter-spacing: -0.045em;
   line-height: 0.92;
@@ -335,7 +335,7 @@
   }
 
   .stackTitle {
-    font-size: clamp(38px, 10.4vw, 51px);
+    font-size: var(--fs-display);
     font-weight: 600;
     letter-spacing: -0.045em;
     line-height: 0.92;

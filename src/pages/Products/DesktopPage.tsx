@@ -9,6 +9,7 @@ import { Pill } from '../../components/Pill/Pill'
 import { desktopModes } from '../../data/content'
 import { images, videos } from '../../data/media'
 import styles from '../../styles/Desktop.module.css'
+import { SimSection } from '../../components/Sim/SimSection'
 
 const hud = ['Live updates', 'History playback', 'Silvus · Meshtastic', 'Custom markers']
 const clips = [
@@ -18,7 +19,7 @@ const clips = [
 ]
 const shots = [
   { src: images.desktopTracking, alt: 'Sigtrack Desktop tracking team members on a map', caption: 'Live tracking', label: 'Sigtrack Desktop' },
-  ...desktopModes.map((m) => ({ src: m.image, alt: `Sigtrack Desktop — ${m.label}`, caption: m.label, label: 'Sigtrack Desktop' })),
+  ...desktopModes.map((m) => ({ src: m.image, alt: `Sigtrack Desktop: ${m.label}`, caption: m.label, label: 'Sigtrack Desktop' })),
 ]
 const uses = ['Search and rescue', 'Military exercises', 'Outdoor adventures', 'Remote team coordination']
 
@@ -52,7 +53,7 @@ export function DesktopPage() {
               Sigtrack Desktop <span className="mono">Windows</span>
             </span>
             <p>
-              Robust mapping, tracking and communication — different map types, custom markers, and Silvus and Meshtastic
+              Robust mapping, tracking and communication: different map types, custom markers, and Silvus and Meshtastic
               radios for offline communication.
             </p>
             <Pill href="#demo" variant="light">
@@ -124,6 +125,23 @@ export function DesktopPage() {
       </section>
 
       {screens.viewer}
+      <SimSection
+        sim="desktop"
+        chip="See it work"
+        title={
+          <>
+            Sigtrack Desktop <em className="serif">on Windows.</em>
+          </>
+        }
+        lead="Live tracking, history playback for debriefing, markers shared with the team, and mesh radio links. Hover over or tap a label for details."
+        summary={[
+          'Track team members and assets live.',
+          'Replay movement history for debriefing.',
+          'Drop and customise markers, then share them.',
+          'Communicate over Silvus and Meshtastic radios.',
+        ]}
+      />
+
       <DemoForm product="Sigtrack Desktop" feedbackLead="On Sigtrack Desktop," mobileFeedbackLabel="My feedback" button="dark" />
     </>
   )

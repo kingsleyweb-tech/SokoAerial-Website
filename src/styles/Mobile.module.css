@@ -7,7 +7,7 @@
   /* the text block (rows 2–5) sits vertically centred beside the phone */
   grid-template-rows: 1fr auto auto auto auto 1fr;
   column-gap: 32px;
-  padding: 120px var(--gutter) 56px;
+  padding: 100px var(--gutter) 56px;
   overflow: hidden;
   container-type: inline-size;
   background: var(--ice);
@@ -20,7 +20,7 @@
   grid-row: 3;
   margin: 8px 0 28px -0.04em;
   /* fills the space left of the phone (320px + gap) so the word is never covered */
-  font-size: clamp(80px, calc((100cqw - 352px) / 3.1), 440px);
+  font-size: var(--fs-display);
   line-height: 0.95;
   letter-spacing: -0.03em;
   white-space: nowrap;
@@ -36,9 +36,18 @@
   justify-self: end;
 }
 
-/* frame details live in PhoneFrame; pages only set the width */
+/* frame details live in PhoneFrame; pages only set the width (landscape screenshots get a wider phone) */
 .phone {
   width: 320px;
+}
+
+.phone[data-orientation='landscape'] {
+  width: 560px;
+}
+
+/* the giant word fills whatever the phone leaves free */
+.hero:has(.phone[data-orientation='landscape']) {
+  --phone-space: 592px;
 }
 
 .heroTitle {
@@ -51,7 +60,7 @@
 }
 
 .heroTitle h1 {
-  font-size: 58px;
+  font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.06em;
   line-height: 0.9;
@@ -80,8 +89,8 @@
 .pocket {
   display: flex;
   flex-direction: column;
-  gap: 48px;
-  padding: 72px 0;
+  gap: 36px;
+  padding: var(--section-y) 0;
   background: var(--midnight);
   color: var(--white);
 }
@@ -95,7 +104,7 @@
 }
 
 .pocketHead h2 {
-  font-size: clamp(35px, 3.35vw + 22px, 70px);
+  font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.05em;
   line-height: 0.92;
@@ -168,6 +177,14 @@
   margin: 0 0 14px 6px;
 }
 
+.card:has([data-orientation='landscape']) {
+  width: 420px;
+}
+
+.cardPhone[data-orientation='landscape'] {
+  width: 400px;
+}
+
 .card :global(.mono) {
   font-size: 12px;
   color: var(--ice-60);
@@ -192,7 +209,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding: 72px var(--gutter);
+  padding: var(--section-y) var(--gutter);
   background: var(--white);
   color: var(--midnight);
 }
@@ -220,7 +237,7 @@
 }
 
 .kitWord {
-  font-size: clamp(38px, 4.26vw + 22px, 83px);
+  font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.055em;
   line-height: 0.95;
@@ -237,8 +254,8 @@
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
   align-items: center;
-  gap: 64px;
-  padding: 72px var(--gutter);
+  gap: 40px;
+  padding: var(--section-y) var(--gutter);
   background: var(--fog);
   color: var(--midnight);
 }
@@ -274,7 +291,7 @@
 }
 
 .radiosText p {
-  font-size: clamp(21px, 1.37vw + 15px, 35px);
+  font-size: var(--fs-statement);
   font-weight: 500;
   letter-spacing: -0.035em;
   line-height: 1.12;
@@ -299,7 +316,7 @@
     grid-row: auto;
     order: 1;
     margin: -8px 0 -24px;
-    font-size: min(28.8vw, 240px);
+    font-size: var(--fs-display);
     line-height: 0.9;
     translate: none;
   }
@@ -339,11 +356,15 @@
   }
 
   .heroTitle h1 {
-    font-size: 42px;
+    font-size: var(--fs-h2);
   }
 
   .phone {
     width: 240px;
+  }
+
+  .phone[data-orientation='landscape'] {
+    width: 100%;
   }
 
   .heroText {
@@ -365,6 +386,14 @@
 
   .cardPhone {
     width: 190px;
+  }
+
+  .card:has([data-orientation='landscape']) {
+    width: 300px;
+  }
+
+  .cardPhone[data-orientation='landscape'] {
+    width: 290px;
   }
 
   .kit {
@@ -391,5 +420,23 @@
   .arch {
     height: 360px;
     border-radius: 160px 24px 24px 160px;
+  }
+}
+
+/* ---------- Images size their own boxes: shown whole, no empty bands ---------- */
+
+.arch {
+  height: auto;
+}
+
+.arch img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  .arch {
+    height: auto;
   }
 }

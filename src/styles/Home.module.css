@@ -1,8 +1,8 @@
 .h2 {
-  font-size: clamp(35px, 3.35vw + 22px, 70px);
+  font-size: var(--fs-h2);
   font-weight: 600;
-  letter-spacing: -0.045em;
-  line-height: 0.95;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
 }
 
 .h2 em {
@@ -12,18 +12,18 @@
 /* ---------- Statement ---------- */
 
 .statement {
-  padding: clamp(56px, 3vw + 32px, 80px) var(--gutter) clamp(40px, 3vw + 24px, 64px);
+  padding: clamp(44px, 2vw + 28px, 64px) var(--gutter) clamp(32px, 2vw + 20px, 48px);
   background: var(--white);
 }
 
 .statement > div {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 36px;
 }
 
 .statementText {
-  font-size: clamp(27px, 3.2vw + 14px, 61px);
+  font-size: var(--fs-statement);
   font-weight: 500;
   letter-spacing: -0.04em;
   line-height: 1.08;
@@ -37,7 +37,6 @@
   display: inline-block;
   width: 2em;
   height: 0.84em;
-  border-radius: 999px;
   vertical-align: -0.08em;
 }
 
@@ -56,7 +55,7 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 40px;
-  padding: 0 var(--gutter) clamp(48px, 3vw + 32px, 80px);
+  padding: 0 var(--gutter) clamp(36px, 2vw + 24px, 56px);
   background: var(--white);
 }
 
@@ -70,7 +69,7 @@
 
 .factNum {
   font-family: var(--font-serif);
-  font-size: clamp(51px, 4.88vw + 32px, 102px);
+  font-size: var(--fs-h2);
   letter-spacing: -0.03em;
   line-height: 0.85;
 }
@@ -86,240 +85,19 @@
   color: var(--slate-2);
 }
 
-/* ---------- The system ---------- */
-
-.system {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-  padding: clamp(56px, 2vw + 40px, 72px) 0 72px;
-  overflow: hidden;
-  background: var(--midnight);
-  color: var(--white);
-}
-
-.system .h2 em,
-.field .h2 em {
-  color: var(--ice);
-}
-
-.systemHead {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 0 var(--gutter);
-}
-
-.trackControls {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.counter {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: rgba(207, 224, 255, 0.7);
-}
-
-.roundOutline,
-.roundSolid {
-  display: grid;
-  place-items: center;
-  width: 56px;
-  height: 56px;
-  padding: 0;
-  border-radius: 50%;
-  transition:
-    background-color var(--t-hover) ease,
-    transform var(--t-hover) var(--ease);
-}
-
-.roundOutline {
-  border: 1px solid var(--line-dark-2);
-  background: transparent;
-  color: var(--white);
-}
-
-.roundSolid {
-  border: 0;
-  background: var(--white);
-  color: var(--midnight);
-}
-
-.roundOutline:hover {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.roundSolid:hover {
-  transform: translateX(3px);
-}
-
-.roundOutline svg,
-.roundSolid svg {
-  width: 16px;
-  height: 16px;
-}
-
-.track {
-  display: flex;
-  gap: 24px;
-  padding: 0 var(--gutter);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: var(--gutter);
-  scrollbar-width: none;
-}
-
-.track::-webkit-scrollbar {
-  display: none;
-}
-
-.card {
-  display: grid;
-  flex-shrink: 0;
-  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
-  gap: 40px;
-  width: min(1000px, calc(100vw - var(--rail) - 2 * var(--gutter)));
-  height: 600px;
-  padding: 48px;
-  border-radius: 32px;
-  scroll-snap-align: start;
-  transition: transform 0.6s var(--ease);
-}
-
-.card:hover {
-  transform: translateY(-4px);
-}
-
-.card[data-tone='fog'] {
-  background: var(--fog);
-  color: var(--midnight);
-}
-
-.card[data-tone='ice'] {
-  background: var(--ice);
-  color: var(--midnight);
-}
-
-.card[data-tone='navy'] {
-  background: var(--navy);
-  color: var(--white);
-}
-
-.card[data-tone='signal'] {
-  background: var(--signal);
-  color: var(--white);
-}
-
-.cardText {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.cardTop {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.cardMeta {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.7;
-}
-
-.cardName {
-  font-size: clamp(24px, 2.59vw + 14px, 51px);
-  font-weight: 600;
-  letter-spacing: -0.04em;
-  line-height: 0.95;
-}
-
-.cardDesc {
-  font-size: 15px;
-  line-height: 1.55;
-  opacity: 0.82;
-}
-
-.cardLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.cardLink svg {
-  width: 14px;
-  height: 14px;
-  transition: transform var(--t-hover) var(--ease);
-}
-
-.card:hover .cardLink svg {
-  transform: rotate(45deg);
-}
-
-.device {
-  align-self: center;
-  justify-self: center;
-  width: 100%;
-  max-width: 500px;
-  aspect-ratio: 500 / 340;
-  border: 8px solid var(--white);
-  border-radius: 14px;
-}
-
-.device[data-frame='phone'] {
-  max-width: 240px;
-  aspect-ratio: 240 / 480;
-  border-color: var(--midnight);
-  border-radius: 36px;
-}
-
-.device[data-frame='laptop'] {
-  max-width: 520px;
-  aspect-ratio: 520 / 330;
-  border-color: var(--frame);
-  border-radius: 12px;
-}
-
-.device[data-frame='round'] {
-  max-width: 400px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-}
-
-.device img {
-  position: absolute;
-  inset: 0;
-}
-
-.swipeHint {
-  padding: 0 var(--gutter);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  text-transform: uppercase;
-  color: var(--ice-60);
-}
-
 /* ---------- Dual usage ---------- */
 
 .usage {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 56px;
-  padding: clamp(48px, 2.5vw + 32px, 72px) var(--gutter);
+  gap: 40px;
+  padding: var(--section-y) var(--gutter);
   background: var(--fog);
 }
 
 .usageTitle {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
   color: var(--slate-2);
 }
@@ -374,7 +152,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 56px;
+  gap: 40px;
   width: 100%;
 }
 
@@ -396,14 +174,14 @@
   align-items: baseline;
   padding: 22px 0;
   border-top: 1px solid var(--line-ink-2);
-  font-size: clamp(16px, 1.52vw + 10px, 32px);
+  font-size: var(--fs-h3);
   font-weight: 500;
   letter-spacing: -0.03em;
   line-height: 1.25;
 }
 
 .caps li span {
-  font-size: clamp(18px, 0.8vw + 14px, 26px);
+  font-size: var(--fs-h3);
   color: var(--signal);
 }
 
@@ -413,7 +191,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding: clamp(48px, 2.5vw + 32px, 72px) var(--gutter);
+  padding: var(--section-y) var(--gutter);
   background: var(--white);
 }
 
@@ -434,7 +212,7 @@
 .worksGrid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
-  gap: 48px;
+  gap: 36px;
 }
 
 .useRow {
@@ -462,7 +240,7 @@
 }
 
 .useTitle {
-  font-size: clamp(21px, 1.98vw + 13px, 42px);
+  font-size: var(--fs-h3);
   font-weight: 500;
   letter-spacing: -0.035em;
   line-height: 1.05;
@@ -486,7 +264,6 @@
 
 .useImage {
   height: 440px;
-  border-radius: var(--radius);
 }
 
 .useImage img {
@@ -506,7 +283,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: clamp(48px, 2.5vw + 32px, 72px) 0;
+  padding: var(--section-y) 0;
   overflow: hidden;
   background: var(--midnight);
   color: var(--white);
@@ -540,7 +317,6 @@
   flex-shrink: 0;
   width: calc(var(--w) * 1px);
   height: 300px;
-  border-radius: 24px;
 }
 
 .fieldRow[data-row='1'] .fieldTile {
@@ -553,14 +329,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 48px;
-  padding: clamp(48px, 2vw + 32px, 64px) var(--gutter);
+  gap: 36px;
+  padding: clamp(36px, 1.5vw + 24px, 48px) var(--gutter);
   background: var(--signal);
   color: var(--white);
 }
 
 .getTitle {
-  font-size: clamp(61px, 10.21vw + 21px, 168px);
+  font-size: var(--fs-display);
   font-weight: 700;
   letter-spacing: -0.065em;
   line-height: 0.85;
@@ -594,7 +370,7 @@
 }
 
 .planPrice {
-  font-size: clamp(24px, 0.8vw + 21px, 32px);
+  font-size: var(--fs-h3);
   font-weight: 500;
   letter-spacing: -0.03em;
 }
@@ -619,12 +395,6 @@
   .facts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     row-gap: 32px;
-  }
-
-  .card {
-    grid-template-columns: minmax(0, 1fr);
-    height: auto;
-    gap: 32px;
   }
 
   .worksGrid {
@@ -669,66 +439,6 @@
   .factText {
     font-size: 13px;
     line-height: 1.45;
-  }
-
-  .system {
-    gap: 24px;
-    padding: 64px 0;
-  }
-
-  .track {
-    gap: 12px;
-  }
-
-  .card {
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-between;
-    width: 290px;
-    height: 420px;
-    padding: 24px;
-    border-radius: var(--radius);
-    gap: 16px;
-  }
-
-  .card:hover {
-    transform: none;
-  }
-
-  .cardText,
-  .cardTop {
-    gap: 6px;
-  }
-
-  .cardName {
-    font-size: 24px;
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-
-  .cardDesc {
-    font-size: 14px;
-    line-height: 1.45;
-  }
-
-  .cardMeta {
-    order: -1;
-    font-size: 10px;
-  }
-
-  .device {
-    max-width: 230px;
-    border-width: 5px;
-    border-radius: 10px;
-  }
-
-  .device[data-frame='phone'] {
-    max-width: 110px;
-    border-radius: 22px;
-  }
-
-  .device[data-frame='round'] {
-    max-width: 180px;
   }
 
   .usage {
@@ -801,7 +511,6 @@
   .fieldTile {
     width: calc(var(--w) * 0.47px);
     height: 150px;
-    border-radius: 18px;
   }
 
   .fieldRow[data-row='1'] .fieldTile {
@@ -839,3 +548,31 @@
   }
 }
 .planAction::after { content: ''; } @media (max-width: 767px) { .planAction::after { content: ' ↗'; } }
+
+/* ---------- Images size their own boxes: shown whole, no empty bands ---------- */
+
+.useImage {
+  height: auto;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.useImage img {
+  position: static;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+}
+
+/* the strip keeps its row height; each tile takes the width of its photo */
+.fieldTile {
+  width: auto;
+}
+
+.fieldTile img {
+  display: block;
+  width: auto;
+  height: 100%;
+}

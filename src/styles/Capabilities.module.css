@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding: 128px var(--gutter) 48px;
+  padding: 100px var(--gutter) 48px;
   overflow: hidden;
   background: var(--fog);
 }
@@ -17,14 +17,14 @@
 }
 
 .title {
-  font-size: clamp(51px, 11.28vw + 7px, 170px);
+  font-size: var(--fs-display);
   font-weight: 600;
   letter-spacing: -0.065em;
   line-height: 0.82;
 }
 
 .tag {
-  font-size: clamp(22px, 1.5vw + 14px, 36px);
+  font-size: var(--fs-statement);
   font-weight: 600;
   letter-spacing: -0.03em;
   color: var(--signal);
@@ -145,8 +145,8 @@
 .explorer {
   display: grid;
   grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
-  gap: 56px;
-  padding: 72px var(--gutter);
+  gap: 40px;
+  padding: var(--section-y) var(--gutter);
   background: var(--midnight);
   color: var(--white);
   scroll-margin-top: 0;
@@ -172,7 +172,7 @@
   padding: 10px 0;
   border: 0;
   background: none;
-  font-size: clamp(22px, 0.8vw + 19px, 30px);
+  font-size: var(--fs-h3);
   font-weight: 500;
   letter-spacing: -0.03em;
   color: rgba(207, 224, 255, 0.5);
@@ -217,7 +217,7 @@
 }
 
 .explorerTitle {
-  font-size: clamp(29px, 2.14vw + 21px, 51px);
+  font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 0.98;
@@ -293,7 +293,7 @@
 
 .stanagNumber {
   margin-left: -0.04em;
-  font-size: clamp(96px, 8vw + 50px, 190px);
+  font-size: var(--fs-mega);
   font-weight: 600;
   line-height: 0.9;
   letter-spacing: -0.06em;
@@ -303,14 +303,14 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 72px var(--gutter);
+  padding: var(--section-y) var(--gutter);
   font-size: 16px;
   line-height: 1.6;
   color: var(--slate);
 }
 
 .stanagTitle {
-  font-size: clamp(26px, 0.91vw + 22px, 35px);
+  font-size: var(--fs-h3);
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.02;
@@ -349,7 +349,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  padding: 72px 0;
+  padding: var(--section-y) 0;
   overflow: hidden;
   background: var(--fog);
 }
@@ -363,7 +363,7 @@
 }
 
 .rolesTitle {
-  font-size: clamp(29px, 2.14vw + 21px, 51px);
+  font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 0.98;
@@ -484,8 +484,8 @@
 .mirror {
   display: flex;
   flex-direction: column;
-  gap: 48px;
-  padding: 72px var(--gutter);
+  gap: 36px;
+  padding: var(--section-y) var(--gutter);
   background: var(--white);
 }
 
@@ -500,14 +500,14 @@
 }
 
 .mirrorHead > span:first-child {
-  font-size: clamp(21px, 3.5vw + 7px, 58px);
+  font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.045em;
   text-align: right;
 }
 
 .mirrorHead em {
-  font-size: clamp(21px, 3.5vw + 7px, 58px);
+  font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.045em;
   color: var(--signal);
@@ -545,15 +545,15 @@
 .versions {
   display: flex;
   flex-direction: column;
-  gap: 56px;
-  padding: 72px var(--gutter);
+  gap: 40px;
+  padding: var(--section-y) var(--gutter);
   background: var(--midnight);
   color: var(--white);
 }
 
 .versionsTitle {
   max-width: 900px;
-  font-size: clamp(26px, 2.44vw + 16px, 51px);
+  font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 0.98;
@@ -829,4 +829,27 @@
     font-size: 20px;
     font-weight: 500;
   }
+}
+
+/* ---------- Images size their own boxes: shown whole, no empty bands ---------- */
+
+.explorerImage {
+  align-self: start;
+}
+
+.explorerImage,
+.device .screen,
+.device[data-kind='browser'] .screen,
+.device[data-kind='phone'] .screen,
+.laptop .screen {
+  min-height: 0;
+  height: auto;
+}
+
+.explorerImage img,
+.screen img {
+  position: static;
+  display: block;
+  width: 100%;
+  height: auto;
 }

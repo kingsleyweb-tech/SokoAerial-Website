@@ -37,6 +37,7 @@ export const MobilePage = lazyPage(() => import('./Products/MobilePage'), 'Mobil
 export const RadiosPage = lazyPage(() => import('./Products/RadiosPage'), 'RadiosPage')
 export const WatcherPage = lazyPage(() => import('./Products/WatcherPage'), 'WatcherPage')
 export const FlashPage = lazyPage(() => import('./Products/FlashPage'), 'FlashPage')
+export const WatchPage = lazyPage(() => import('./Products/WatchPage'), 'WatchPage')
 export const WebPage = lazyPage(() => import('./Products/WebPage'), 'WebPage')
 export const PlansPage = lazyPage(() => import('./Plans/PlansPage'), 'PlansPage')
 
@@ -52,6 +53,7 @@ const pages = [
   RadiosPage,
   WatcherPage,
   FlashPage,
+  WatchPage,
   WebPage,
   PlansPage,
 ]

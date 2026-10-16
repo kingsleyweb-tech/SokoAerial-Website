@@ -24,4 +24,6 @@ function spaFallback(): Plugin {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), spaFallback()],
+  // Explicit floor for older Safari / Chromium; no legacy polyfill bundle is added.
+  build: { target: ['es2020', 'safari14'] },
 })

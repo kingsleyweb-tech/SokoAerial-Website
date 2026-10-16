@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 44px;
-  padding: 128px var(--gutter) 64px;
+  padding: 100px var(--gutter) 64px;
   overflow: hidden;
   background: var(--midnight);
   color: var(--white);
@@ -18,7 +18,7 @@
 }
 
 .heroHead h1 {
-  font-size: clamp(46px, 4.42vw + 29px, 93px);
+  font-size: var(--fs-display);
   font-weight: 600;
   letter-spacing: -0.055em;
   line-height: 0.9;
@@ -115,8 +115,8 @@
 .modes {
   display: flex;
   flex-direction: column;
-  gap: 56px;
-  padding: 72px var(--gutter);
+  gap: 40px;
+  padding: var(--section-y) var(--gutter);
   overflow-x: clip;
   background: var(--topo);
   color: var(--white);
@@ -125,7 +125,7 @@
 .tabs {
   display: flex;
   align-items: baseline;
-  gap: 56px;
+  gap: 40px;
   padding-bottom: 24px;
   overflow-x: auto;
   border-bottom: 1px solid var(--line-dark);
@@ -138,7 +138,7 @@
   padding: 0;
   border: 0;
   background: none;
-  font-size: clamp(35px, 3.96vw + 20px, 77px);
+  font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.05em;
   line-height: 0.9;
@@ -197,7 +197,7 @@
 .panel {
   display: grid;
   grid-template-columns: 440px minmax(0, 1fr);
-  gap: 56px;
+  gap: 40px;
 }
 
 .items {
@@ -236,7 +236,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) 360px;
   gap: 24px;
-  padding: 72px var(--gutter);
+  padding: var(--section-y) var(--gutter);
   background: var(--midnight);
   color: var(--white);
 }
@@ -244,7 +244,7 @@
 .bigVideo {
   height: 520px;
   overflow: hidden;
-  border-radius: var(--radius);
+  border-radius: 0;
   background: var(--deep);
 }
 
@@ -382,7 +382,7 @@
 .marqueeTrack > span {
   flex-shrink: 0;
   padding-right: 0.4em;
-  font-size: clamp(29px, 2.14vw + 21px, 51px);
+  font-size: var(--fs-h3);
   font-weight: 600;
   letter-spacing: -0.04em;
   white-space: nowrap;
@@ -475,7 +475,7 @@
 
   .bigVideo {
     height: 240px;
-    border-radius: 22px;
+    border-radius: 0;
   }
 
   .bigPlay {
@@ -503,5 +503,34 @@
 @media (prefers-reduced-motion: reduce) {
   .marqueeTrack {
     animation: none;
+  }
+}
+
+/* ---------- Images size their own boxes: shown whole, no empty bands ---------- */
+
+.bigVideo {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.small {
+  flex-grow: 0;
+  min-height: 0;
+  height: auto;
+}
+
+.small img {
+  position: static;
+  display: block;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  .bigVideo {
+    height: auto;
+  }
+
+  .small {
+    min-height: 0;
   }
 }

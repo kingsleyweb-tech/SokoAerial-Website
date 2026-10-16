@@ -1,6 +1,7 @@
 // Page copy from the approved v2 design, which draws on sigtrackapp.com.
-import { images, videos } from './media'
+import { images } from './media'
 import { paths } from './site'
+import { watchScreens } from './watch'
 
 // ---------- Home ----------
 
@@ -14,14 +15,6 @@ export interface HeroSlide {
 }
 
 export const heroSlides: HeroSlide[] = [
-  {
-    name: 'Drones',
-    lead: 'Eyes in the',
-    accent: 'sky.',
-    body: 'Sigtrack Team Awareness Kits for Windows and Android — explore imagery and maps on the move.',
-    mobileBody: 'Team Awareness Kits for Windows and Android — imagery and maps on the move.',
-    media: { type: 'video', src: videos.droneFootage, label: 'Drone footage captured with Sigtrack' },
-  },
   {
     name: 'Sigtrack Web',
     lead: 'Every teammate,',
@@ -51,19 +44,19 @@ export const heroSlides: HeroSlide[] = [
     lead: 'All-in-one',
     accent: 'response.',
     body: 'Connect radios, command trailers and drones seamlessly. Empowering emergency response anywhere.',
-    mobileBody: 'Connect radios, command trailers and drones — anywhere.',
+    mobileBody: 'Connect radios, command trailers and drones, anywhere.',
     media: { type: 'image', src: images.webCommandWall, alt: 'Briefing at a command-centre video wall running Sigtrack Web' },
   },
 ]
 
 export const facts = [
-  { n: '03', t: 'Platforms', d: 'Web, Android and Windows — dedicated versions for each.', short: 'Web, Android, Windows' },
+  { n: '03', t: 'Platforms', d: 'Web, Android and Windows, with a dedicated version for each.', short: 'Web, Android, Windows' },
   { n: '02', t: 'Radio systems', d: 'Silvus for bandwidth, Meshtastic for reach.', short: 'Silvus and Meshtastic' },
   { n: '4609', t: 'STANAG', d: 'Full Motion Video support to the NATO standard.', short: 'Full Motion Video support' },
   { n: '07', t: 'ISR roles', d: 'From data exploitation to dissemination and training.', short: 'Post-mission' },
 ]
 
-export type DeviceFrame = 'browser' | 'phone' | 'laptop' | 'round'
+export type DeviceFrame = 'browser' | 'phone' | 'laptop' | 'round' | 'watch'
 export type CardTone = 'fog' | 'ice' | 'navy' | 'signal'
 
 export const systemProducts: {
@@ -111,6 +104,17 @@ export const systemProducts: {
     tone: 'navy',
   },
   {
+    name: 'Sigtrack',
+    sub: 'Watch',
+    platform: 'Wear OS',
+    to: paths.watch,
+    desc: 'Real-time situational awareness on the wrist: live location, an SOS button, geofence zones and team coordination.',
+    short: 'Location, SOS and geofences on the wrist.',
+    image: watchScreens[0].image,
+    frame: 'watch',
+    tone: 'fog',
+  },
+  {
     name: 'The',
     sub: 'Radios',
     platform: 'Silvus · Meshtastic',
@@ -126,7 +130,7 @@ export const systemProducts: {
     sub: 'Watcher',
     platform: 'Windows',
     to: paths.watcher,
-    desc: 'Drone payload ground control — live gimbal camera, a geospatial operations map and full telemetry in one cockpit.',
+    desc: 'Drone payload ground control: live gimbal camera, a geospatial operations map and full telemetry in one cockpit.',
     short: 'Gimbal camera, ops map, telemetry.',
     image: images.watcherMap,
     frame: 'laptop',
@@ -158,10 +162,10 @@ export const usage = {
   },
   civilian: {
     intro:
-      'Team Awareness Kits for Windows and Android — an imagery exploration application and mapping framework for mobile and laptop devices.',
+      'Team Awareness Kits for Windows and Android: an imagery exploration application and mapping framework for mobile and laptop devices.',
     items: [
       'Online and offline mapping, fast rendering',
-      'Collaborative mapping — points, drawings, KML',
+      'Collaborative mapping: points, drawings, KML',
       'Chat, file, photo and video sharing, streaming',
       'Navigation for walking, hiking and driving',
     ],
@@ -183,7 +187,7 @@ export const uses = [
   },
   {
     title: 'Emergency response',
-    body: 'Radios, command trailers and drones connected — anywhere.',
+    body: 'Radios, command trailers and drones connected, anywhere.',
     image: images.fieldCommandTruck,
     alt: 'Operators working beside a 93 Signal Regiment command-centre truck',
   },
@@ -257,12 +261,12 @@ export const capabilityAreas = [
     head: 'Imagery and maps,',
     accent: 'on the move.',
     image: images.webMeshMap,
-    body: 'Team Awareness Kits for Windows and Android — an imagery exploration application and mapping framework for mobile and laptop devices.',
+    body: 'Team Awareness Kits for Windows and Android: an imagery exploration application and mapping framework for mobile and laptop devices.',
     items: [
       'Online and offline mapping, most standard formats',
       'Fast rendering engine',
-      'Collaborative mapping — points, drawings, locations of interest, KML',
-      'Navigation — walking/hiking and driving',
+      'Collaborative mapping: points, drawings, locations of interest, KML',
+      'Navigation: walking, hiking and driving',
     ],
   },
   {
@@ -282,7 +286,7 @@ export const capabilityAreas = [
     head: 'Connected',
     accent: 'without the network.',
     image: images.silvusRadio,
-    body: 'Cell phone, WiFi and civilian radio controls and interface — plus Silvus and Meshtastic integration for offline communication.',
+    body: 'Cell phone, WiFi and civilian radio controls and interface, plus Silvus and Meshtastic integration for offline communication.',
     items: [
       'Cell phone, WiFi and civilian radio interface',
       'Silvus: high-bandwidth multimedia',
@@ -298,7 +302,7 @@ export const capabilityAreas = [
     accent: 'and desktop.',
     image: images.desktopWorldMap,
     body: 'Dedicated versions for mobile, web and desktop, so personnel can reach Sigtrack in the field, at a command center or in an office.',
-    items: ['Sigtrack Web — browser', 'Sigtrack Mobile — Android', 'Sigtrack Desktop — Windows', 'Support for drones and command trailers'],
+    items: ['Sigtrack Web (browser)', 'Sigtrack Mobile (Android)', 'Sigtrack Desktop (Windows)', 'Support for drones and command trailers'],
   },
 ]
 
@@ -324,7 +328,7 @@ export const isrRoles = [
 export const dualUse = [
   { military: 'Full motion video exploitation', civilian: 'Imagery exploration and mapping framework', mShort: 'FMV exploitation', cShort: 'Imagery & mapping framework' },
   { military: 'Live-stream and archived video analysis', civilian: 'Online and offline mapping', mShort: 'Live & archived video', cShort: 'Online & offline maps' },
-  { military: 'Playback, image and clip capture', civilian: 'Collaborative mapping — points, drawings, KML', mShort: 'Clip capture & analysis', cShort: 'Collaborative mapping' },
+  { military: 'Playback, image and clip capture', civilian: 'Collaborative mapping: points, drawings, KML', mShort: 'Clip capture & analysis', cShort: 'Collaborative mapping' },
   { military: 'ISR platform sharing', civilian: 'Chat, file, photo and video sharing, streaming', mShort: 'ISR platform sharing', cShort: 'Chat, file & video sharing' },
   { military: 'Cursor on Target (CoT)', civilian: 'Cell phone, WiFi and civilian radio interface', mShort: 'Cursor on Target', cShort: 'Phone, WiFi & radio interface' },
 ]
@@ -385,13 +389,12 @@ export const webFeatures = [
   { title: 'Track each member in real time', body: 'Real-time tracking of every member through the connected radio systems.' },
 ]
 
-// Screens are centred in the portrait phone (x/y = focus point as a fraction of the image, default 0.5);
-// zoom trims the bezels and system bars baked into some screenshots.
+// Screenshots are shown whole in the phone frame (never cropped or zoomed).
 export const mobileFeatures = [
   {
     title: 'Silvus + Meshtastic radio',
     body: 'Robust channels in the most challenging environments.',
-    screen: { src: images.mobileRadioMap, zoom: 1.12 },
+    screen: { src: images.mobileRadioMap },
   },
   {
     title: 'Field Situation Awareness Kit',
@@ -406,12 +409,12 @@ export const mobileFeatures = [
   {
     title: 'Custom markers & images',
     body: 'Drag and drop markers or images onto the map.',
-    screen: { src: images.mobileMarkers, x: 0.1, y: 0.62, zoom: 1.35 },
+    screen: { src: images.mobileMarkers },
   },
   {
     title: 'Waypoint sharing',
     body: 'Direct teammates to rendezvous points and objectives.',
-    screen: { src: images.mobileMapTypes, x: 0.52, zoom: 1.12 },
+    screen: { src: images.mobileMapTypes },
   },
 ]
 
@@ -427,7 +430,7 @@ export const desktopModes = [
     label: 'Track',
     image: images.desktopWestAfrica,
     items: [
-      { t: 'Live updates', b: 'Track team members, assets or other entities in real time — a constantly updated view of operations.' },
+      { t: 'Live updates', b: 'Track team members, assets or other entities in real time: a constantly updated view of operations.' },
       { t: 'Data visualization', b: 'Visualize past movements and analyze travel patterns to plan and optimize routes.' },
       { t: 'History playback', b: 'Replay movement history for post-operation analysis, training and debriefing.' },
     ],
@@ -436,7 +439,7 @@ export const desktopModes = [
     label: 'Communicate',
     image: images.desktopCommunicate,
     items: [
-      { t: 'Silvus radios', b: 'Reliable mesh networking — devices communicate without relying on a central node.' },
+      { t: 'Silvus radios', b: 'Reliable mesh networking: devices communicate without relying on a central node.' },
       { t: 'Meshtastic radios', b: 'Long-range, low-power communication; open source and adaptable.' },
       { t: 'Uninterrupted connectivity', b: 'Robust channels even in dense forests, urban canyons or remote terrain.' },
     ],
@@ -532,7 +535,7 @@ export const aboutChapters = [
   {
     kicker: 'What',
     title: 'Team Awareness Kits and ISR software.',
-    body: 'Imagery exploration and mapping software for Windows and Android, and ISR post-mission software — delivered as Sigtrack Web, Sigtrack Mobile and Sigtrack Desktop, with Silvus and Meshtastic radio integration.',
+    body: 'Imagery exploration and mapping software for Windows and Android, and ISR post-mission software, delivered as Sigtrack Web, Sigtrack Mobile and Sigtrack Desktop, with Silvus and Meshtastic radio integration.',
   },
   {
     kicker: 'Why',
@@ -542,11 +545,11 @@ export const aboutChapters = [
   {
     kicker: 'How',
     title: 'Video, maps and mesh radio.',
-    body: 'Full Motion Video support to STANAG 4609, online and offline mapping, real-time tracking and history playback, encrypted chat — and a dual-radio approach combining Silvus bandwidth with Meshtastic reliability.',
+    body: 'Full Motion Video support to STANAG 4609, online and offline mapping, real-time tracking and history playback, encrypted chat, and a dual radio approach combining Silvus bandwidth with Meshtastic reliability.',
   },
   {
     kicker: 'For',
     title: 'Empowering emergency response anywhere.',
-    body: 'By supporting drones and command trailers across platforms, Sigtrack enhances situational awareness and decision-making — for defense organizations and across industries.',
+    body: 'By supporting drones and command trailers across platforms, Sigtrack enhances situational awareness and decision making, for defense organizations and across industries.',
   },
 ]

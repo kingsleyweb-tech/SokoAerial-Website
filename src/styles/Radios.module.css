@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 120px var(--gutter) 56px;
+  padding: 100px var(--gutter) 56px;
 }
 
 .silvus {
@@ -42,14 +42,14 @@
 }
 
 .silvusName {
-  font-size: clamp(58px, 4.57vw + 40px, 106px);
+  font-size: var(--fs-display);
   font-weight: 600;
   letter-spacing: -0.06em;
   line-height: 0.85;
 }
 
 .meshName {
-  font-size: clamp(58px, 4.57vw + 40px, 106px);
+  font-size: var(--fs-display);
   font-weight: 600;
   letter-spacing: -0.06em;
   line-height: 0.85;
@@ -96,8 +96,8 @@
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   align-items: center;
-  gap: 56px;
-  padding: 72px var(--gutter);
+  gap: 40px;
+  padding: var(--section-y) var(--gutter);
   background: var(--fog);
   color: var(--midnight);
 }
@@ -117,7 +117,7 @@
 
 .spectrum h2,
 .built h2 {
-  font-size: clamp(35px, 2.74vw + 25px, 64px);
+  font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.045em;
   line-height: 0.95;
@@ -188,7 +188,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 72px var(--gutter);
+  padding: var(--section-y) var(--gutter);
   background: var(--white);
   color: var(--midnight);
 }
@@ -207,7 +207,7 @@
 }
 
 .compareHead > span {
-  font-size: clamp(29px, 1.52vw + 23px, 45px);
+  font-size: var(--fs-h2);
   line-height: 1;
 }
 
@@ -278,14 +278,14 @@
 /* ---------- Statement ---------- */
 
 .statement {
-  padding: 72px var(--gutter);
+  padding: var(--section-y) var(--gutter);
   background: var(--signal);
   color: var(--white);
 }
 
 .statement p {
   max-width: 1180px;
-  font-size: clamp(26px, 2.29vw + 17px, 54px);
+  font-size: var(--fs-statement);
   font-weight: 500;
   letter-spacing: -0.04em;
   line-height: 1.05;
@@ -325,7 +325,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding: 72px var(--gutter);
+  padding: var(--section-y) var(--gutter);
   background: var(--midnight);
   color: var(--white);
 }
@@ -359,7 +359,7 @@
 }
 
 .linkName {
-  font-size: clamp(22px, 1.37vw + 17px, 38px);
+  font-size: var(--fs-h3);
   font-weight: 600;
   letter-spacing: -0.035em;
 }
@@ -520,5 +520,45 @@
   .link svg {
     grid-column: 2;
     grid-row: 1 / span 2;
+  }
+}
+
+/* ---------- Images size their own boxes: shown whole, no empty bands ---------- */
+
+.round {
+  aspect-ratio: auto;
+}
+
+.round img {
+  display: block;
+  height: auto;
+}
+
+/* masonry columns: every photo at its own proportions */
+.mosaic {
+  display: block;
+  columns: 3 260px;
+  column-gap: 12px;
+}
+
+.mosaic > div {
+  margin-bottom: 12px;
+  break-inside: avoid;
+}
+
+.mosaic > div > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  .mosaic {
+    columns: 2 140px;
+    column-gap: 8px;
+  }
+
+  .mosaic > div {
+    margin-bottom: 8px;
   }
 }

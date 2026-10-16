@@ -9,9 +9,10 @@ import { awarenessKit, mobileFeatures } from '../../data/content'
 import { images } from '../../data/media'
 import { useSnapCarousel } from '../../hooks/useSnapCarousel'
 import styles from '../../styles/Mobile.module.css'
+import { SimSection } from '../../components/Sim/SimSection'
 
 const pad = (n: number) => String(n).padStart(2, '0')
-const shots = mobileFeatures.map((f) => ({ src: f.screen.src, alt: `Sigtrack Mobile — ${f.title}`, caption: f.title, label: 'Sigtrack Mobile' }))
+const shots = mobileFeatures.map((f) => ({ src: f.screen.src, alt: `Sigtrack Mobile: ${f.title}`, caption: f.title, label: 'Sigtrack Mobile' }))
 const rise = { initial: { opacity: 0, y: 12 }, animate: { opacity: 1, y: 0 } }
 
 export function MobilePage() {
@@ -34,9 +35,6 @@ export function MobilePage() {
           <PhoneFrame
             className={styles.phone}
             src={images.mobileRadioMap}
-            x={0.24}
-            y={0.52}
-            zoom={1.16}
             alt="Sigtrack Mobile on the map, with Silvus and Meshtastic radio options"
             loading="eager"
             onOpen={() => screens.open(images.mobileRadioMap)}
@@ -49,7 +47,7 @@ export function MobilePage() {
           </h1>
         </motion.div>
         <p className={styles.heroText}>
-          Comprehensive, real-time situational awareness for field operatives — in the palm of their hand.
+          Comprehensive, real-time situational awareness for field operatives, in the palm of their hand.
         </p>
         <div className={styles.heroCta}>
           <Pill href="#demo" variant="dark">
@@ -126,6 +124,23 @@ export function MobilePage() {
       </section>
 
       {screens.viewer}
+      <SimSection
+        sim="mobile"
+        chip="See it work"
+        title={
+          <>
+            Sigtrack Mobile <em className="serif">in the hand.</em>
+          </>
+        }
+        lead="A field operative’s phone: paired with a radio, dropping a marker, sharing a waypoint and chatting securely. Hover over or tap a label for details."
+        summary={[
+          'Pair the phone with a Silvus or Meshtastic radio.',
+          'Drag a marker onto the map.',
+          'Share a waypoint so teammates can meet at it.',
+          'Send encrypted messages to the team.',
+        ]}
+      />
+
       <DemoForm
         product="Sigtrack Mobile"
         tone="signal"

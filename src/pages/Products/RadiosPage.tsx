@@ -6,6 +6,7 @@ import { radioComparison } from '../../data/content'
 import { images } from '../../data/media'
 import { paths } from '../../data/site'
 import styles from '../../styles/Radios.module.css'
+import { SimSection } from '../../components/Sim/SimSection'
 
 const rise = (delay = 0) => ({
   initial: { opacity: 0, y: 12 },
@@ -41,7 +42,7 @@ export function RadiosPage() {
           <motion.div className={`${styles.round} topo photo`} {...rise(0.1)}>
             <img src={images.silvusRadio} alt="Silvus radio" />
           </motion.div>
-          <p>Images, PDFs, documents, messages and videos — rich multimedia for detailed information sharing.</p>
+          <p>Images, PDFs, documents, messages and videos: rich multimedia for detailed information sharing.</p>
         </div>
         <div className={styles.mesh}>
           <motion.span className="mono" {...rise()}>
@@ -53,7 +54,7 @@ export function RadiosPage() {
           <motion.div className={`${styles.round} topo`} {...rise(0.1)}>
             <img src={images.meshtasticDevice} alt="Meshtastic radio" />
           </motion.div>
-          <p>Efficient burst messages — reliable coverage in challenging terrain and remote locations.</p>
+          <p>Efficient burst messages: reliable coverage in challenging terrain and remote locations.</p>
         </div>
       </section>
 
@@ -63,7 +64,7 @@ export function RadiosPage() {
           <h2 id="spectrum-title">
             Two ends of the <em className="serif">spectrum.</em>
           </h2>
-          <p>Use Silvus when you need bandwidth, Meshtastic when you need range — Sigtrack works with either.</p>
+          <p>Use Silvus when you need bandwidth, Meshtastic when you need range. Sigtrack works with either.</p>
         </div>
         <Reveal className={styles.scale}>
           <div className={styles.bar}>
@@ -133,6 +134,22 @@ export function RadiosPage() {
           ))}
         </ul>
       </section>
+      <SimSection
+        sim="radios"
+        chip="See it work"
+        title={
+          <>
+            Two radios, <em className="serif">two jobs.</em>
+          </>
+        }
+        lead="Silvus carries rich media across a mesh with no central node. Meshtastic carries short messages a long way on little power. Hover over or tap a label for details."
+        summary={[
+          'Silvus forms a mesh where devices talk without a central node.',
+          'Silvus carries images, documents and video.',
+          'Meshtastic sends burst messages over long range, at low power.',
+          'Both connect to Sigtrack (Silvus: Mobile and Desktop; Meshtastic: Web, Mobile and Desktop).',
+        ]}
+      />
     </>
   )
 }

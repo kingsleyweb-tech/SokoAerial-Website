@@ -4,8 +4,8 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 48px;
-  padding: 128px var(--gutter) 132px;
+  gap: 36px;
+  padding: 100px var(--gutter) 132px;
   background: var(--midnight);
   color: var(--white);
 }
@@ -17,7 +17,7 @@
 }
 
 .title {
-  font-size: clamp(52px, 4.5vw + 26px, 96px);
+  font-size: var(--fs-display);
   font-weight: 600;
   letter-spacing: -0.065em;
   line-height: 0.82;
@@ -75,7 +75,7 @@
 /* ---------- Plan cards ---------- */
 
 .choose {
-  padding: 0 var(--gutter) 80px;
+  padding: 0 var(--gutter) 56px;
   background: var(--fog);
 }
 
@@ -172,7 +172,7 @@
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  font-size: clamp(40px, 2.5vw + 24px, 60px);
+  font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.06em;
   line-height: 0.85;
@@ -294,7 +294,7 @@
 .detailsGrid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
-  gap: 56px;
+  gap: 40px;
   align-items: start;
 }
 
@@ -322,7 +322,7 @@
 }
 
 .formTitle {
-  font-size: clamp(29px, 1.52vw + 23px, 45px);
+  font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.045em;
   line-height: 0.98;
@@ -462,7 +462,7 @@
 }
 
 .total strong {
-  font-size: clamp(35px, 0.91vw + 32px, 45px);
+  font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.045em;
 }

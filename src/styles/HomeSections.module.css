@@ -1,0 +1,762 @@
+/* New home-page sections: hero, product showcase, aerial video. Image frames are square-cornered. */
+
+.h2 {
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+}
+
+.h2 em {
+  color: var(--signal);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 36px;
+  min-height: clamp(600px, 86vh, 800px);
+  padding: 120px var(--gutter) 32px;
+  overflow: hidden;
+  background: var(--midnight);
+  color: var(--white);
+}
+
+/* full-bleed background, darkened towards the text (left) and the product panel (bottom) */
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--midnight);
+  background-position: 62% 50%;
+  background-size: cover;
+  animation: heroDrift 18s var(--ease) both;
+}
+
+.heroBg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(6, 13, 28, 0.92) 0%, rgba(6, 13, 28, 0.7) 38%, rgba(6, 13, 28, 0.15) 75%),
+    linear-gradient(0deg, rgba(6, 13, 28, 0.95) 0%, rgba(6, 13, 28, 0) 38%),
+    linear-gradient(180deg, rgba(6, 13, 28, 0.6) 0%, rgba(6, 13, 28, 0) 22%);
+}
+
+@keyframes heroDrift {
+  from {
+    transform: scale(1.06);
+  }
+}
+
+.chips {
+  display: none;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(24px, 3vw, 44px);
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.heroTitle {
+  max-width: 900px;
+  font-size: var(--fs-display);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.heroTitle em {
+  color: var(--ice);
+}
+
+.heroLead {
+  max-width: 520px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ice-80);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.strip {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  border: 1px solid rgba(207, 224, 255, 0.14);
+  background: rgba(6, 13, 28, 0.55);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.strip .stripItem {
+  padding-left: 18px;
+}
+
+.strip .stripItem + .stripItem {
+  border-left: 1px solid rgba(207, 224, 255, 0.1);
+}
+
+.stripItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 28px 16px 0;
+  color: var(--white);
+  transition: color var(--t-hover) ease;
+}
+
+.stripItem::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--signal);
+  transition: width 0.35s var(--ease);
+}
+
+.stripItem:hover::before,
+.stripItem:focus-visible::before {
+  width: 100%;
+}
+
+.stripNum {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ice-60);
+}
+
+.stripName {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.stripMeta {
+  font-size: 13px;
+  color: var(--ice-60);
+}
+
+.stripArrow {
+  position: absolute;
+  top: 18px;
+  right: 16px;
+  width: 12px;
+  height: 12px;
+  color: var(--ice-60);
+  transition: transform var(--t-hover) var(--ease);
+}
+
+.stripItem:hover .stripArrow {
+  transform: rotate(45deg);
+  color: var(--white);
+}
+
+/* ---------- Products ---------- */
+
+.products {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: var(--section-y) var(--gutter);
+  background: var(--midnight);
+  color: var(--white);
+}
+
+.products .h2 em {
+  color: var(--ice);
+}
+
+.productsHead {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.autoToggle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--line-dark-2);
+  border-radius: 999px;
+  background: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ice-80);
+}
+
+.autoToggle span {
+  font-size: 10px;
+}
+
+.autoToggle:hover {
+  border-color: var(--ice);
+  color: var(--white);
+}
+
+/* fills under the selected product over 3s, then the next one is selected */
+.rowProgress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--signal);
+  transform-origin: left;
+  animation: rowProgress 3s linear forwards;
+}
+
+.products[data-paused] .rowProgress {
+  animation-play-state: paused;
+}
+
+@keyframes rowProgress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  align-items: center;
+  gap: clamp(24px, 3vw, 44px);
+}
+
+.productRow {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto 24px;
+  align-items: baseline;
+  gap: 12px;
+  width: 100%;
+  padding: 16px 0;
+  border: 0;
+  border-top: 1px solid var(--line-dark);
+  background: none;
+  text-align: left;
+  color: var(--ice-60);
+  transition:
+    color 0.25s ease,
+    padding-left 0.35s var(--ease);
+}
+
+.productRow:hover,
+.productRow[data-active] {
+  padding-left: 12px;
+  color: var(--white);
+}
+
+.rowNum {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.rowName {
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.rowName em {
+  color: inherit;
+}
+
+.productRow[data-active] .rowName em {
+  color: var(--ice);
+}
+
+.rowMeta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ice-60);
+}
+
+.rowArrow {
+  width: 13px;
+  height: 13px;
+  opacity: 0;
+  transition: opacity var(--t-hover) ease;
+}
+
+.productRow[data-active] .rowArrow {
+  opacity: 1;
+}
+
+.preview {
+  min-width: 0;
+}
+
+.previewInner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 460px;
+  padding: 24px;
+  background: var(--topo);
+}
+
+.previewText {
+  max-width: 520px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ice-80);
+}
+
+.devicePhone {
+  width: 210px;
+}
+
+.devicePhone[data-orientation='landscape'] {
+  width: min(560px, 100%);
+}
+
+.deviceLaptop {
+  width: min(580px, 100%);
+}
+
+.deviceWatch {
+  width: 280px;
+}
+
+.deviceBrowser {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 620px;
+  border: 1px solid var(--line-dark-2);
+  background: #0b1220;
+}
+
+.browserBar {
+  display: flex;
+  gap: 6px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line-dark);
+}
+
+.browserBar i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(207, 224, 255, 0.3);
+}
+
+.deviceBrowser img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+}
+
+.devicePhoto {
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 4 / 3;
+}
+
+.productsCompact {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* one fixed-height stage, so the page never jumps as the selection changes */
+.productsCompact .stage {
+  height: 320px;
+}
+
+.productsCompact .previewInner {
+  min-height: 470px;
+}
+
+.productsCompact .productRow {
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  min-height: 52px;
+  padding: 12px 0;
+}
+
+.productsCompact .productRow:hover,
+.productsCompact .productRow[data-active] {
+  padding-left: 0;
+}
+
+.exploreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ice);
+}
+
+.exploreLink svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* ---------- Aerial video, bonded ---------- */
+
+.aerial {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  align-items: start;
+  gap: clamp(24px, 3vw, 44px);
+  padding: var(--section-y) var(--gutter);
+  background: var(--white);
+  color: var(--midnight);
+}
+
+.aerialText {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.aerialLead {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--slate);
+}
+
+.aerialPoints {
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0 0;
+}
+
+.aerialPoints > div {
+  display: grid;
+  grid-template-columns: minmax(0, 160px) minmax(0, 1fr);
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+
+.aerialPoints dt {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.aerialPoints dd {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--slate);
+}
+
+.aerialVisual {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bond {
+  margin: 0;
+  padding: 24px;
+  background: var(--midnight);
+}
+
+.bond svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.bond figcaption {
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ice-60);
+}
+
+.bondPaths path,
+.bondOut {
+  fill: none;
+  stroke-dasharray: 5 7;
+  animation: bondFlow 1.2s linear infinite;
+}
+
+.bondPaths path {
+  stroke: rgba(207, 224, 255, 0.55);
+  stroke-width: 1.5;
+}
+
+.bondStarlink {
+  stroke: var(--ice) !important;
+  animation:
+    bondFlow 1.2s linear infinite,
+    starlinkDrop 6s ease-in-out infinite !important;
+}
+
+.bondOut {
+  stroke: var(--white);
+  stroke-width: 3;
+  stroke-dasharray: 10 8;
+}
+
+.bondNode {
+  fill: var(--signal);
+}
+
+.bondNodeText {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--white);
+}
+
+.bondLabels {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--ice-72);
+}
+
+.bondDrop {
+  fill: #ff8a7a;
+  opacity: 0;
+  animation: dropLabel 6s ease-in-out infinite;
+}
+
+@keyframes bondFlow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+/* the Starlink path drops out for a moment; the bonded stream keeps flowing */
+@keyframes starlinkDrop {
+  0%,
+  50%,
+  90%,
+  100% {
+    opacity: 1;
+  }
+
+  58%,
+  82% {
+    opacity: 0.1;
+  }
+}
+
+@keyframes dropLabel {
+  0%,
+  50%,
+  90%,
+  100% {
+    opacity: 0;
+  }
+
+  58%,
+  82% {
+    opacity: 1;
+  }
+}
+
+.aerialPhotos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.aerialPhotos li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--slate-2);
+}
+
+.aerialPhoto {
+  aspect-ratio: 3 / 4;
+  background: var(--fog);
+}
+
+/* the source photos are small; show them whole, never cropped or blown up */
+.aerialPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 1279px) {
+  .strip {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero {
+    min-height: 0;
+    padding-top: 110px;
+  }
+
+  .heroGrid,
+  .aerial {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Phone ---------- */
+
+@media (max-width: 767px) {
+  .hero {
+    gap: 28px;
+    min-height: 0;
+    padding: 104px var(--gutter) 28px;
+  }
+
+  .heroBg {
+    background-position: 70% 50%;
+  }
+
+  .heroBg::after {
+    background:
+      linear-gradient(180deg, rgba(6, 13, 28, 0.75) 0%, rgba(6, 13, 28, 0.6) 45%, rgba(6, 13, 28, 0.92) 100%);
+  }
+
+  .strip {
+    display: none;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chipLink {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 14px;
+    border: 1px solid rgba(207, 224, 255, 0.22);
+    border-radius: 20px;
+    background: rgba(6, 13, 28, 0.5);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+  }
+
+  .heroLead {
+    font-size: 16px;
+  }
+
+  .strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stripItem {
+    padding-right: 24px;
+    border-bottom: 1px solid var(--line-dark);
+  }
+
+  .products,
+  .aerial {
+    gap: 28px;
+    padding: 56px var(--gutter);
+  }
+
+  .productsCompact .stage {
+    height: 260px;
+    padding: 16px;
+  }
+
+  .productsCompact .previewInner {
+    min-height: 420px;
+  }
+
+  .autoToggle {
+    position: static;
+  }
+
+  .devicePhone {
+    width: 150px;
+  }
+
+  .devicePhone[data-orientation='landscape'] {
+    width: 100%;
+  }
+
+  .deviceWatch {
+    width: 200px;
+  }
+
+  .aerialPoints > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+
+  .bond {
+    padding: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rowProgress {
+    animation-duration: 3s !important;
+  }
+
+  .bondPaths path,
+  .bondOut,
+  .bondStarlink,
+  .bondDrop {
+    animation: none !important;
+  }
+}
+
+/* ---------- Images size their own boxes: shown whole, no empty bands ---------- */
+
+.aerialPhotos {
+  align-items: start;
+}
+
+.aerialPhoto {
+  aspect-ratio: auto;
+}
+
+.aerialPhoto img {
+  display: block;
+  height: auto;
+}

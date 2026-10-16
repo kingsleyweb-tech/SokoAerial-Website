@@ -7,9 +7,10 @@ import { Pill } from '../../components/Pill/Pill'
 import { watcherModes } from '../../data/content'
 import { images } from '../../data/media'
 import styles from '../../styles/Desktop.module.css'
+import { SimSection } from '../../components/Sim/SimSection'
 
 const hud = ['Gimbal camera', 'Heading · FOV', 'Telemetry', 'Local + SD recording']
-const shots = watcherModes.map((m) => ({ src: m.image, alt: `Watcher — ${m.label}`, caption: m.items[0].t, label: 'Watcher' }))
+const shots = watcherModes.map((m) => ({ src: m.image, alt: `Watcher: ${m.label}`, caption: m.items[0].t, label: 'Watcher' }))
 const uses = ['Aerial surveillance', 'Tethered overwatch', 'Target estimation', 'Search and rescue']
 
 // Shares the Sigtrack Desktop layout: Watcher is also a dark, Windows cockpit app.
@@ -34,7 +35,7 @@ export function WatcherPage() {
               Watcher <span className="mono">Soko Aerial Robotics</span>
             </span>
             <p>
-              Drone payload ground control — the gimbal camera, a geospatial operations map and live telemetry in one
+              Drone payload ground control: the gimbal camera, a geospatial operations map and live telemetry in one
               cockpit.
             </p>
             <Pill href="#demo" variant="light">
@@ -75,6 +76,23 @@ export function WatcherPage() {
       </section>
 
       {screens.viewer}
+      <SimSection
+        sim="watcher"
+        chip="See it work"
+        title={
+          <>
+            Soko Watcher <em className="serif">in flight.</em>
+          </>
+        }
+        lead="The drone payload cockpit: the aircraft and its camera view on the map, the gimbal feed, telemetry and recording. Hover over or tap a label for details."
+        summary={[
+          'The operations map shows the aircraft, its heading and camera field of view.',
+          'The gimbal camera feed with heading and tilt scales.',
+          'Telemetry: attitude, altitude, tether, wind and battery.',
+          'Record video and capture stills from the cockpit.',
+        ]}
+      />
+
       <DemoForm product="Watcher" feedbackLead="On Watcher," mobileFeedbackLabel="My feedback" button="dark" />
     </>
   )

@@ -146,7 +146,7 @@ export function CapabilitiesPage() {
           </h2>
           <p className="hide-mobile">
             STANAG 4609 sets requirements for the capture, compression, transmission and playback of FMV within NATO and
-            Advanced Electro-Optical/Infrared (EOIR) systems — so FMV intelligence can be shared across forces and
+            Advanced Electro-Optical/Infrared (EOIR) systems, so FMV intelligence can be shared across forces and
             manufacturers.
           </p>
           <ol className={styles.leaders}>
@@ -217,7 +217,7 @@ export function CapabilitiesPage() {
 
       <section className={styles.versions} aria-labelledby="versions-title">
         <h2 id="versions-title" className={styles.versionsTitle}>
-          <span className="hide-mobile">Wherever the work is — </span>
+          <span className="hide-mobile">Wherever the work is, </span>
           <span className="show-mobile">Three </span>
           <em className="serif">
             <span className="hide-mobile">three </span>dedicated versions.

@@ -3,15 +3,15 @@
 .hero {
   display: flex;
   flex-direction: column;
-  gap: 64px;
-  padding: 128px 0 64px;
+  gap: 40px;
+  padding: 104px 0 48px;
   background: var(--midnight);
   color: var(--white);
 }
 
 .title {
   padding: 0 var(--gutter);
-  font-size: clamp(74px, 10.48vw + 33px, 184px);
+  font-size: var(--fs-display);
   font-weight: 600;
   letter-spacing: -0.07em;
   line-height: 0.8;
@@ -60,7 +60,7 @@
 
 .rowValue {
   overflow-wrap: anywhere;
-  font-size: clamp(22px, 2.44vw + 13px, 48px);
+  font-size: var(--fs-statement);
   font-weight: 500;
   letter-spacing: -0.04em;
   line-height: 1.05;
@@ -98,7 +98,7 @@
   flex-direction: column;
   gap: 40px;
   margin-top: -48px;
-  padding: 64px var(--gutter) 72px;
+  padding: 48px var(--gutter) 56px;
   border-radius: 48px 48px 0 0;
   background: var(--white);
   color: var(--midnight);
@@ -163,14 +163,14 @@
 /* ---------- Map ---------- */
 
 .mapSection {
-  padding: 0 var(--gutter) 72px;
+  padding: 0 var(--gutter) 56px;
   background: var(--white);
   scroll-margin-top: 24px;
 }
 
 .map {
   position: relative;
-  height: 520px;
+  height: 420px;
   overflow: hidden;
   border-radius: 32px;
   background: var(--fog);
@@ -224,7 +224,7 @@
 @media (max-width: 767px) {
   .hero {
     gap: 32px;
-    padding: 100px 0 72px;
+    padding: 96px 0 48px;
   }
 
   .row {

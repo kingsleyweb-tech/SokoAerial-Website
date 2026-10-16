@@ -209,7 +209,7 @@ em {
   background-image: repeating-radial-gradient(circle at 70% 40%, rgba(15, 47, 95, 0.1) 0 1px, transparent 1px 24px);
 }
 
-/* Real photography sits in rounded masks with a slight midnight duotone. */
+/* Photography and screenshots are shown whole: never cropped, zoomed, tinted or rounded. */
 .photo {
   position: relative;
   overflow: hidden;
@@ -219,22 +219,24 @@ em {
 .photo > video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  filter: saturate(0.88) contrast(1.02);
-  transition: transform 0.6s var(--ease);
+  object-fit: contain;
 }
 
-.photo::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(6, 13, 28, 0.12);
-  mix-blend-mode: multiply;
-  pointer-events: none;
+/*
+ * Site rule: every image is shown complete and square-cornered. Fixed-size frames letterbox an image
+ * (object-fit: contain) instead of cropping it, nothing zooms on hover, and nothing that directly
+ * holds an image rounds its corners. Animated images in the site only fade, so transforms are safe to drop.
+ */
+img {
+  object-fit: contain !important;
+  border-radius: 0 !important;
+  transform: none !important;
+  scale: none !important;
 }
 
-.photo--zoom:hover > img {
-  transform: scale(1.03);
+:where(*):has(> img),
+:where(*):has(> picture) {
+  border-radius: 0 !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -249,4 +251,10 @@ em {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* a frame that holds an image shows the image, not a navy fill around it */
+.topo:has(> img),
+.photo:has(> img) {
+  background: none;
 }

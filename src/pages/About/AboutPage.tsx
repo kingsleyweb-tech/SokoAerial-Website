@@ -36,7 +36,7 @@ export function AboutPage() {
           </h1>
         </motion.div>
         <p className={styles.heroLead}>
-          Sigtrack innovates to optimize communication and coordination — delivering efficient solutions across industries.
+          Sigtrack innovates to optimize communication and coordination, delivering efficient solutions across industries.
         </p>
       </section>
 
@@ -81,7 +81,7 @@ export function AboutPage() {
           </p>
         </Reveal>
 
-        <svg className={`${styles.cycle} hide-mobile`} viewBox="0 0 800 700" role="img" aria-label="Seven ISR post-mission roles arranged in a cycle">
+        <svg className={`${styles.cycle} hide-mobile`} viewBox="0 64 800 548" role="img" aria-label="Seven ISR post-mission roles arranged in a cycle">
           <circle className={styles.orbit} cx="400" cy="350" r="200" />
           <circle cx="400" cy="350" r="100" fill="#0F2F5F" />
           <text x="400" y="344" textAnchor="middle" fill="#FFFFFF" fontSize="24" fontWeight="600">

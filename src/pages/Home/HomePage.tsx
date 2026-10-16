@@ -1,28 +1,28 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
-import { HeroSlider } from '../../components/HeroSlider/HeroSlider'
-import { ArrowIcon, ArrowLeftIcon, ArrowUpRightIcon } from '../../components/Icons/Icons'
 import { Pill } from '../../components/Pill/Pill'
 import { Reveal } from '../../components/Reveal/Reveal'
-import { facts, fieldRows, heroSlides, systemProducts, usage, uses } from '../../data/content'
+import { SymbolDemoSection } from '../../components/SymbolDemo/SymbolDemoSection'
+import { facts, fieldRows, usage, uses } from '../../data/content'
 import { images } from '../../data/media'
 import { paths } from '../../data/site'
-import { useSnapCarousel } from '../../hooks/useSnapCarousel'
 import styles from '../../styles/Home.module.css'
+import { AerialBonded } from './AerialBonded'
 import { ConnectedResponse } from './ConnectedResponse'
+import { HomeHero } from './HomeHero'
+import { ProductShowcase } from './ProductShowcase'
 
 const pad = (n: number) => String(n).padStart(2, '0')
 
 export function HomePage() {
-  const { trackRef, current: trackIndex, onScroll: onTrackScroll, scrollTo: scrollTrackTo } = useSnapCarousel<HTMLDivElement>(systemProducts.length)
   const [military, setMilitary] = useState(true)
   const [use, setUse] = useState(0)
   const usageSet = military ? usage.military : usage.civilian
 
   return (
     <>
-      <HeroSlider slides={heroSlides} />
+      <HomeHero />
 
       {/* Statement */}
       <section className={styles.statement}>
@@ -37,7 +37,7 @@ export function HomePage() {
             <span className={`${styles.pill} ${styles.pillSmall} topo--light photo hide-mobile`}>
               <img src={images.commandSetup} alt="" />
             </span>{' '}
-            and drones — so every team shares <em className="serif">one picture,</em> anywhere.
+            and drones, so every team shares <em className="serif">one picture,</em> anywhere.
           </p>
         </Reveal>
       </section>
@@ -56,67 +56,14 @@ export function HomePage() {
         ))}
       </section>
 
-      {/* The system — product track */}
-      <section className={styles.system} aria-labelledby="system-title">
-        <div className={styles.systemHead}>
-          <h2 id="system-title" className={styles.h2}>
-            The <em className="serif">system.</em>
-          </h2>
-          <div className={`${styles.trackControls} hide-mobile`}>
-            <span className={styles.counter}>
-              {pad(trackIndex + 1)} / {pad(systemProducts.length)}
-            </span>
-            <button
-              type="button"
-              className={styles.roundOutline}
-              aria-label="Previous product"
-              onClick={() => scrollTrackTo(Math.max(0, trackIndex - 1))}
-            >
-              <ArrowLeftIcon />
-            </button>
-            <button
-              type="button"
-              className={styles.roundSolid}
-              aria-label="Next product"
-              onClick={() => scrollTrackTo(Math.min(systemProducts.length - 1, trackIndex + 1))}
-            >
-              <ArrowIcon />
-            </button>
-          </div>
-        </div>
-        <div ref={trackRef} className={styles.track} onScroll={onTrackScroll}>
-          {systemProducts.map((p, i) => (
-            <Link key={p.sub} to={p.to} className={styles.card} data-tone={p.tone}>
-              <div className={styles.cardText}>
-                <div className={styles.cardTop}>
-                  <span className={styles.cardMeta}>
-                    {pad(i + 1)} · {p.platform}
-                  </span>
-                  <span className={styles.cardName}>
-                    {p.name} <br className="hide-mobile" />
-                    <em className="serif">{p.sub}</em>
-                  </span>
-                  <span className={styles.cardDesc}>
-                    <span className="hide-mobile">{p.desc}</span>
-                    <span className="show-mobile">{p.short}</span>
-                  </span>
-                </div>
-                <span className={`${styles.cardLink} hide-mobile`}>
-                  Explore {p.sub} <ArrowUpRightIcon />
-                </span>
-              </div>
-              <span className={`${styles.device} topo photo`} data-frame={p.frame}>
-                <img src={p.image} alt="" loading="lazy" />
-              </span>
-            </Link>
-          ))}
-        </div>
-        <span className={`${styles.swipeHint} show-mobile`}>
-          Swipe · {pad(trackIndex + 1)} / {pad(systemProducts.length)}
-        </span>
-      </section>
+      <ProductShowcase />
+
+      <SymbolDemoSection />
 
       <ConnectedResponse />
+
+      <AerialBonded />
+
 
       {/* Dual usage */}
       <section className={styles.usage} aria-labelledby="usage-title">

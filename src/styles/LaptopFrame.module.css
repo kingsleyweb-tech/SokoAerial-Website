@@ -154,3 +154,13 @@
     transform: scale(1);
   }
 }
+
+/* ---------- Images size their own boxes: shown whole, no empty bands ---------- */
+
+.screen {
+  aspect-ratio: auto;
+}
+
+.screen img {
+  height: auto;
+}

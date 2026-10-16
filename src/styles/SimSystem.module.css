@@ -1,0 +1,282 @@
+/* Home page: the Sigtrack system diagram (SystemSim). */
+
+.scene {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 64% 50%, rgba(42, 95, 232, 0.22), transparent 45%),
+    #0b1628;
+}
+
+.groupLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  fill: var(--ice-60);
+}
+
+.edge {
+  fill: none;
+  stroke: rgba(207, 224, 255, 0.22);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  transition: stroke 0.4s ease;
+}
+
+.edge[data-on] {
+  stroke: rgba(127, 211, 255, 0.85);
+  stroke-dasharray: 6 6;
+  animation: flow 1.1s linear infinite;
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+.commandBox {
+  fill: rgba(207, 224, 255, 0.03);
+  stroke: rgba(207, 224, 255, 0.18);
+  stroke-dasharray: 4 4;
+  vector-effect: non-scaling-stroke;
+  transition: stroke 0.4s ease;
+}
+
+.commandBox[data-on] {
+  stroke: rgba(127, 211, 255, 0.7);
+}
+
+.site rect:first-child {
+  fill: #18311f;
+  stroke: rgba(207, 224, 255, 0.2);
+  vector-effect: non-scaling-stroke;
+}
+
+.site path {
+  stroke: rgba(207, 224, 255, 0.1);
+  vector-effect: non-scaling-stroke;
+}
+
+.site[data-on] rect:first-child {
+  stroke: rgba(127, 211, 255, 0.7);
+}
+
+.sweep {
+  fill: rgba(127, 211, 255, 0.22);
+  stroke: rgba(127, 211, 255, 0.8);
+  vector-effect: non-scaling-stroke;
+}
+
+.cone {
+  fill: rgba(127, 211, 255, 0.12);
+  stroke: none;
+}
+
+.siteLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  fill: var(--ice-72);
+}
+
+.hubRing {
+  fill: rgba(42, 95, 232, 0.16);
+  stroke: rgba(127, 211, 255, 0.45);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+  transition: fill 0.4s ease;
+}
+
+.hubRing[data-on] {
+  fill: rgba(42, 95, 232, 0.32);
+  stroke: #7fd3ff;
+}
+
+.hubPulse {
+  fill: none;
+  stroke: rgba(127, 211, 255, 0.5);
+  vector-effect: non-scaling-stroke;
+}
+
+.hubDot {
+  fill: #9ff0c4;
+}
+
+/* ---------- Nodes (HTML over the drawing) ---------- */
+
+.node {
+  position: absolute;
+  display: flex;
+  opacity: 0.62;
+  transition: opacity 0.4s ease;
+}
+
+.node[data-on] {
+  opacity: 1;
+}
+
+.node > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.nodeBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  border: 1px solid rgba(207, 224, 255, 0.22);
+  background: #10203a;
+  color: var(--white);
+  text-align: left;
+  cursor: help;
+  transition:
+    border-color var(--t-hover) ease,
+    background var(--t-hover) ease;
+}
+
+.node[data-on] .nodeBtn {
+  border-color: rgba(127, 211, 255, 0.75);
+  background: #13284d;
+}
+
+.nodeBtn:hover,
+.nodeBtn[aria-expanded='true'] {
+  border-color: var(--ice);
+  background: #173361;
+}
+
+.node[data-kind='lane'] .nodeBtn {
+  background: rgba(16, 32, 58, 0.8);
+}
+
+.node[data-kind='hub'] .nodeBtn {
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  text-align: center;
+}
+
+.node[data-kind='hub'] .nodeText {
+  align-items: center;
+}
+
+.node[data-kind='hub'] .nodeName {
+  font-size: 15px;
+}
+
+.nodeIcon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: #7fd3ff;
+}
+
+.nodeText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.nodeName {
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nodeSub {
+  overflow: hidden;
+  font-size: 11px;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--ice-72);
+}
+
+.explore {
+  color: var(--ice);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* a narrower desktop stage: drop the second line */
+@container (max-width: 860px) {
+  .nodeSub {
+    display: none;
+  }
+
+  .nodeName {
+    font-size: 12px;
+  }
+
+  .nodeBtn {
+    gap: 6px;
+    padding: 0 7px;
+  }
+
+  .nodeIcon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .nodeBtn {
+    justify-content: center;
+    gap: 5px;
+    padding: 0 5px;
+  }
+
+  .node:not([data-kind]) .nodeBtn {
+    flex-direction: column;
+    gap: 3px;
+    text-align: center;
+  }
+
+  .node:not([data-kind]) .nodeText {
+    align-items: center;
+  }
+
+  .node[data-kind='lane'] .nodeBtn {
+    justify-content: flex-start;
+    padding: 0 10px;
+  }
+
+  .nodeName {
+    font-size: 11px;
+  }
+
+  .node[data-kind='hub'] .nodeName {
+    font-size: 13px;
+  }
+
+  .node[data-kind='hub'] .nodeSub {
+    display: block;
+    font-size: 10px;
+  }
+
+  .groupLabel {
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .edge[data-on] {
+    animation: none;
+  }
+}
+
+[data-paused] .edge[data-on] {
+  animation-play-state: paused;
+}

@@ -1,8 +1,8 @@
 .body {
   display: grid;
   grid-template-columns: 360px minmax(0, 1fr);
-  gap: 64px;
-  padding: 64px var(--gutter) 80px;
+  gap: 40px;
+  padding: 48px var(--gutter) 56px;
   background: var(--white);
   color: var(--midnight);
 }
@@ -14,7 +14,7 @@
 }
 
 .site {
-  font-size: clamp(24px, 1.06vw + 20px, 35px);
+  font-size: var(--fs-h3);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1;
@@ -87,7 +87,7 @@
 @media (max-width: 767px) {
   .body {
     gap: 28px;
-    padding: 40px var(--gutter) 64px;
+    padding: 32px var(--gutter) 48px;
   }
 
   .list div {

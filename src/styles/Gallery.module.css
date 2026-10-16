@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 120px var(--gutter) 48px;
+  padding: 100px var(--gutter) 48px;
   background: var(--midnight);
   color: var(--white);
   scroll-margin-top: 0;
@@ -18,7 +18,7 @@
 }
 
 .title {
-  font-size: clamp(61px, 4.26vw + 44px, 106px);
+  font-size: var(--fs-display);
   line-height: 0.85;
 }
 
@@ -101,7 +101,7 @@
 }
 
 .caption {
-  font-size: clamp(19px, 1.22vw + 14px, 32px);
+  font-size: var(--fs-h3);
   font-weight: 600;
   letter-spacing: -0.03em;
 }
@@ -228,8 +228,8 @@
 .collections {
   display: flex;
   flex-direction: column;
-  gap: 48px;
-  padding: 72px 0 72px var(--gutter);
+  gap: 36px;
+  padding: var(--section-y) 0 var(--section-y) var(--gutter);
   overflow: hidden;
   background: var(--fog);
   color: var(--midnight);
@@ -255,7 +255,7 @@
 }
 
 .collectionTitle {
-  font-size: clamp(27px, 1.68vw + 21px, 45px);
+  font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 0.95;
@@ -375,5 +375,41 @@
     width: calc(var(--w) * 0.5px);
     height: 170px;
     border-radius: 18px;
+  }
+}
+
+/* ---------- Images size their own boxes: shown whole, no empty bands ---------- */
+
+.featured {
+  width: fit-content;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+}
+
+.featured img {
+  position: static;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 520px;
+}
+
+.thumb,
+.shot {
+  width: auto;
+}
+
+.thumb img,
+.shot img {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+
+@media (max-width: 767px) {
+  .featured img {
+    max-height: 420px;
   }
 }

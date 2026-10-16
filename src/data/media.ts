@@ -24,6 +24,7 @@ import sigtrackRadiosPair from '../assets/images/sigtrack-radios-pair.jpg'
 import silvusPromo from '../assets/images/silvus-promo.jpg'
 import silvusRadio from '../assets/images/silvus-radio.jpg'
 import webDashboard from '../assets/images/web-dashboard.jpg'
+import webGhanaTeams from '../assets/images/web-ghana-teams.jpg'
 import webMarkers from '../assets/images/web-markers.jpg'
 import webMeshChat from '../assets/images/web-mesh-chat.jpg'
 import webMeshMap from '../assets/images/web-mesh-map.jpg'
@@ -79,6 +80,7 @@ export const images = {
   watcherTelemetry,
   webCommandWall,
   webDashboard,
+  webGhanaTeams,
   webMarkers,
   webMeshChat,
   webMeshMap,
@@ -91,7 +93,6 @@ export const images = {
 const VIDEO_HOST = 'https://res.cloudinary.com/lxjudwn8/video/upload/f_auto,q_auto/sigtrack'
 
 export const videos = {
-  droneFootage: `${VIDEO_HOST}/drone-footage.mp4`,
   sigtrackDemo1: `${VIDEO_HOST}/demo-1.mp4`,
   sigtrackDemo2: `${VIDEO_HOST}/demo-2.mp4`,
   sigtrackDemo3: `${VIDEO_HOST}/demo-3.mp4`,
