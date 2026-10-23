@@ -7,7 +7,6 @@ import { SafeBoundary } from '../SafeBoundary/SafeBoundary'
 
 export type SimId = ProductId | 'system' | 'symbols'
 
-// Each simulation is its own small chunk, downloaded only when its section nears the viewport.
 const sims: Record<SimId, ReturnType<typeof lazy>> = {
   system: lazy(() => import('./sims/SystemSim')),
   web: lazy(() => import('./sims/WebSim')),
@@ -26,7 +25,6 @@ interface Props {
   chip: string
   title: ReactNode
   lead: ReactNode
-  /** Plain-text summary of the steps, kept in the page for visitors without JavaScript or if the simulation fails. */
   summary: string[]
   tone?: 'dark' | 'light'
 }

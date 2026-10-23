@@ -23,9 +23,7 @@ export interface PageRoute {
   path: string
   title: string
   element: ReactElement
-  /** Page name shown in the side rail and mobile capsule, with its index number. */
   rail: { label: string; short?: string; num: number }
-  /** Tone of the floating product switcher (desktop) and the capsule (mobile). */
   tone: { actions: Tone; capsule: Tone }
   product?: ProductId
 }
@@ -49,7 +47,6 @@ export const pageRoutes: PageRoute[] = [
 
 export const pageCount = pageRoutes.length
 
-/** URLs from the current sigtrackapp.com site, kept working after the redesign. */
 export const legacyRedirects: Record<string, string> = {
   '/about-us-13': paths.about,
   '/sigtackweb': paths.web,

@@ -1,9 +1,6 @@
-// Page copy from the approved v2 design, which draws on sigtrackapp.com.
 import { images } from './media'
 import { paths } from './site'
 import { watchScreens } from './watch'
-
-// ---------- Home ----------
 
 export const facts = [
   { n: '03', t: 'Platforms', d: 'Web, Android and Windows, with a dedicated version for each.', short: 'Web, Android, Windows' },
@@ -161,7 +158,6 @@ export const uses = [
   },
 ]
 
-/** Two offset rows of field imagery on the home page ("In the field."). */
 export const fieldRows = [
   [
     { src: images.fieldBriefing, w: 460 },
@@ -176,8 +172,6 @@ export const fieldRows = [
     { src: images.fieldTeam, w: 460 },
   ],
 ]
-
-// ---------- Capabilities ----------
 
 export const capabilityAreas = [
   {
@@ -270,7 +264,6 @@ export const stanagTopics = [
   { full: 'Interoperability and compatibility', short: 'Interoperability' },
 ]
 
-/** Sigtrack's roles as ISR post-mission software (sigtrackapp.com/about-us). */
 export const isrRoles = [
   { title: 'Data analysis and exploitation', short: 'Data analysis & exploitation', body: 'Processing and extracting insight from data collected on ISR missions.' },
   { title: 'Mission reporting and debriefing', short: 'Mission reporting & debriefing', body: 'Detailed reports and debriefings for mission crews.' },
@@ -289,8 +282,6 @@ export const dualUse = [
   { military: 'Cursor on Target (CoT)', civilian: 'Cell phone, WiFi and civilian radio interface', mShort: 'Cursor on Target', cShort: 'Phone, WiFi & radio interface' },
 ]
 
-// ---------- Gallery ----------
-
 export type GalleryCategory = 'field' | 'web' | 'mobile' | 'desktop' | 'watcher' | 'flash'
 
 export interface GalleryItem {
@@ -300,7 +291,6 @@ export interface GalleryItem {
   category: GalleryCategory
 }
 
-/** Gallery images from sigtrackapp.com; categories follow the live gallery. */
 export const galleryItems: GalleryItem[] = [
   { src: images.fieldBriefing, alt: 'Military personnel at a Sigtrack briefing', caption: 'Sigtrack in the field', category: 'field' },
   { src: images.fieldCommandTruck, alt: 'Operators beside a 93 Signal Regiment command-centre truck', caption: 'Mobile command centre', category: 'field' },
@@ -335,8 +325,6 @@ export const galleryCategoryLabels: Record<GalleryCategory, string> = {
   flash: 'Flash',
 }
 
-// ---------- Products ----------
-
 export const webFeatures = [
   { title: 'Group and display team members', body: 'Organize operatives into groups and visualize team structures directly in the platform.' },
   { title: 'Each member as a marker', body: 'Pinpoint the location of every team member as a distinct marker on the map.' },
@@ -345,7 +333,6 @@ export const webFeatures = [
   { title: 'Track each member in real time', body: 'Real-time tracking of every member through the connected radio systems.' },
 ]
 
-// Screenshots are shown whole in the phone frame (never cropped or zoomed).
 export const mobileFeatures = [
   {
     title: 'Silvus + Meshtastic radio',
@@ -479,8 +466,6 @@ export const radioComparison = [
   { key: 'Best for', silvus: 'Rich multimedia communication', mesh: 'Dependable messaging, extended field ops', sShort: 'Rich multimedia', mShort: 'Dependable messaging' },
   { key: 'Works with', silvus: 'Sigtrack Mobile · Desktop', mesh: 'Sigtrack Web · Mobile · Desktop', sShort: 'Mobile · Desktop', mShort: 'Web · Mobile · Desktop' },
 ]
-
-// ---------- About ----------
 
 export const aboutChapters = [
   {

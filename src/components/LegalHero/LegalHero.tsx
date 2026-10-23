@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom'
 import { paths } from '../../data/site'
 import styles from '../../styles/LegalHero.module.css'
 
-/** Fog hero shared by Legal Notice and Privacy Policy, with the segmented switch between them. */
 export function LegalHero({ lead, accent }: { lead: string; accent: string }) {
   return (
     <section className={styles.hero}>

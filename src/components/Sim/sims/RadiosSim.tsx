@@ -1,7 +1,3 @@
-// Radios: the two radios compared on the Radios page. Silvus (high frequencies, high bandwidth, mesh with no
-// central node; images, PDFs, documents, messages, video) and Meshtastic (lower frequencies, long range, low
-// power; burst messages), and which Sigtrack products each works with. Node layouts are illustrative, not
-// ranges or network sizes.
 import type { CSSProperties } from 'react'
 import { radioComparison } from '../../../data/content'
 import sim from '../../../styles/Sim.module.css'
@@ -18,12 +14,11 @@ const steps: SimStep[] = [
   { label: 'Works with', caption: 'Silvus works with Sigtrack Mobile and Desktop; Meshtastic with Sigtrack Web, Mobile and Desktop.', duration: 4500 },
 ]
 
-// each radio is drawn in its own 500 × 480 half
 const silvus: Pt[] = [[110, 190], [250, 140], [390, 190], [140, 340], [340, 350], [250, 260]]
 const silvusLinks = silvus.flatMap((a, i) =>
   silvus.slice(i + 1).flatMap((b, j) => (Math.hypot(a[0] - b[0], a[1] - b[1]) < 200 ? [[i, i + 1 + j] as const] : [])),
 )
-const DROP = 1 // the node that goes offline in step 1
+const DROP = 1
 const mesht: Pt[] = [[70, 150], [430, 180], [130, 390], [440, 410]]
 const meshtLinks = [[0, 1], [0, 2], [1, 3], [2, 3]] as const
 
@@ -79,7 +74,6 @@ function Half({ f, kind, active }: { f: SimFrame; kind: 'silvus' | 'mesht'; acti
         )
       })}
 
-      {/* step 1: traffic keeps flowing around the dropped node */}
       {isS && f.step === 0 && dropped && (
         <>
           <Packets pts={[silvus[0], silvus[5], silvus[4]]} t={f.t} period={1500} count={2} r={5} color="#7fb0ff" />
@@ -87,7 +81,6 @@ function Half({ f, kind, active }: { f: SimFrame; kind: 'silvus' | 'mesht'; acti
         </>
       )}
 
-      {/* step 2: media across the mesh */}
       {isS &&
         f.step === 1 &&
         media.map((m, i) => {
@@ -105,7 +98,6 @@ function Half({ f, kind, active }: { f: SimFrame; kind: 'silvus' | 'mesht'; acti
           )
         })}
 
-      {/* step 3: a short burst hops a long way */}
       {!isS && f.step === 2 && (
         <>
           <Packets pts={[mesht[0], mesht[1], mesht[3]]} t={f.t} period={2200} count={1} r={6} color="#6ee7a8" />
@@ -118,7 +110,6 @@ function Half({ f, kind, active }: { f: SimFrame; kind: 'silvus' | 'mesht'; acti
 
 function Scene({ f }: { f: SimFrame }) {
   const sActive = f.step < 2
-  // phones show one radio at a time
   const showS = !f.compact || f.step < 2
   const showM = !f.compact || f.step >= 2
   const W = f.compact ? 500 : 1000

@@ -2,10 +2,6 @@ import { createElement, lazy, type ComponentType } from 'react'
 
 type PageModule<K extends string> = Record<K, ComponentType>
 
-/**
- * A code-split page that can be fetched ahead of time. Once its chunk is in, the page renders
- * directly instead of through React.lazy, so navigating to it never shows the Suspense fallback.
- */
 function lazyPage<K extends string>(load: () => Promise<PageModule<K>>, name: K) {
   let Loaded: ComponentType | undefined
   let pending: Promise<{ default: ComponentType }> | undefined
@@ -16,7 +12,7 @@ function lazyPage<K extends string>(load: () => Promise<PageModule<K>>, name: K)
         return { default: m[name] }
       },
       (error: unknown) => {
-        pending = undefined // let a later visit retry, e.g. after a dropped connection
+        pending = undefined
         throw error
       },
     ))
@@ -25,7 +21,6 @@ function lazyPage<K extends string>(load: () => Promise<PageModule<K>>, name: K)
   return Object.assign(Page, { preload })
 }
 
-// Home ships in the main bundle; other pages load on first visit, or earlier via preloadPages.
 export const AboutPage = lazyPage(() => import('./About/AboutPage'), 'AboutPage')
 export const CapabilitiesPage = lazyPage(() => import('./Capabilities/CapabilitiesPage'), 'CapabilitiesPage')
 export const ContactPage = lazyPage(() => import('./Contact/ContactPage'), 'ContactPage')
@@ -56,7 +51,6 @@ const pages = [
   WebPage,
 ]
 
-/** Fetches every page chunk (a few KB each) so later navigation is instant. */
 export function preloadPages() {
   for (const page of pages) page.preload().catch(() => {})
 }

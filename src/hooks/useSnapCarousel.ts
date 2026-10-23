@@ -1,6 +1,5 @@
 import { useCallback, useRef, useState } from 'react'
 
-/** Tracks the current card of a horizontal scroll-snap rail and scrolls to a card on demand. */
 export function useSnapCarousel<T extends HTMLElement>(count: number) {
   const trackRef = useRef<T>(null)
   const [current, setCurrent] = useState(0)

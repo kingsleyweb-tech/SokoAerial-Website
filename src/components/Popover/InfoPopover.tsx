@@ -5,27 +5,18 @@ import styles from '../../styles/Popover.module.css'
 export type PopoverSide = 'top' | 'bottom' | 'left' | 'right'
 
 interface InfoPopoverProps {
-  /** Heading inside the panel. */
   title: string
-  /** Panel text. */
   children: ReactNode
-  /** What the trigger button shows. */
   trigger: ReactNode
-  /** Accessible name for the trigger when its content is not descriptive (e.g. a number). */
   triggerLabel?: string
   triggerClassName?: string
-  /** Extra attributes for the trigger, e.g. data-* hooks used for leader lines. */
   triggerAttrs?: Record<string, string | number | undefined>
-  /** Preferred side; flips or slides to stay inside the viewport. */
   placement?: PopoverSide
-  /** Controlled open state (optional). */
   open?: boolean
   onOpenChange?: (open: boolean) => void
-  /** If set, a click/tap runs this instead of pinning the panel open (the panel then follows hover/focus only). */
   onActivate?: () => void
 }
 
-/** Time the panel stays after the pointer leaves, so it can be read or reached. */
 const CLOSE_DELAY = 280
 const MARGIN = 8
 const GAP = 10
@@ -52,7 +43,6 @@ function place(anchor: DOMRect, w: number, h: number, preferred: PopoverSide) {
     const p = at(side)
     if (p.fits) return p
   }
-  // Nothing fits cleanly (tiny viewport): keep the preferred side, pinned inside the screen.
   const p = at(preferred)
   return { ...p, left: clamp(p.left, MARGIN, vw - w - MARGIN), top: clamp(p.top, MARGIN, vh - h - MARGIN) }
 }
@@ -61,16 +51,10 @@ const isFocusVisible = (el: Element) => {
   try {
     return el.matches(':focus-visible')
   } catch {
-    return true // browsers without :focus-visible: treat every focus as keyboard focus
+    return true
   }
 }
 
-/**
- * Small explanatory panel attached to a button.
- * Mouse: opens on hover and closes shortly after the pointer leaves (the delay keeps it readable and lets the
- * pointer move onto the panel); a click keeps it open. Touch/pen: tap toggles. Keyboard: opens on focus,
- * Enter/Space toggle, Escape closes. A tap or click elsewhere, or opening another popover, closes it.
- */
 export function InfoPopover({
   title,
   children,
@@ -111,7 +95,6 @@ export function InfoPopover({
   }
   const cancelClose = () => window.clearTimeout(closeTimer.current)
 
-  // Only one popover open at a time.
   useEffect(() => {
     const onOther = (e: Event) => {
       if ((e as CustomEvent<string>).detail !== id && isOpen) setOpen(false)
@@ -120,7 +103,6 @@ export function InfoPopover({
     return () => window.removeEventListener(OPEN_EVENT, onOther)
   }, [id, isOpen, setOpen])
 
-  // Escape and outside taps close it.
   useEffect(() => {
     if (!isOpen) return
     const onKey = (e: KeyboardEvent) => {
@@ -141,7 +123,6 @@ export function InfoPopover({
     }
   }, [isOpen, setOpen])
 
-  // Position against the trigger; follow scrolling and resizing while open.
   const reposition = useCallback(() => {
     const t = triggerRef.current
     const p = panelRef.current
@@ -167,7 +148,6 @@ export function InfoPopover({
       onActivate()
       return
     }
-    // detail 0 = activated from the keyboard (Enter/Space): a plain toggle.
     if (e.detail === 0) {
       setOpen(!isOpen)
       return
@@ -180,7 +160,6 @@ export function InfoPopover({
     }
   }
 
-  // a position left over from the last opening is ignored until reposition() has run again
   const shown = isOpen ? pos : null
   const style: CSSProperties = shown ? { left: shown.left, top: shown.top } : { left: 0, top: 0, visibility: 'hidden' }
 

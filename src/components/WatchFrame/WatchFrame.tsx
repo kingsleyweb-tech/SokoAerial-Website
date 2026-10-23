@@ -2,17 +2,10 @@ import type { ReactNode } from 'react'
 import styles from '../../styles/WatchFrame.module.css'
 
 interface WatchFrameProps {
-  /** Screen contents: the screenshot plus any overlays. Laid out in a square box. */
   children: ReactNode
   className?: string
 }
 
-/**
- * A rugged smartwatch drawn in SVG — modelled on the rectangular rugged watch in the Sigtrack field photo
- * (raised bezel, corner screws, side buttons, vented strap), without any third-party branding.
- * The screen is a square HTML box over the drawing, so screenshots and callout dots line up exactly.
- * Size comes from the element's width.
- */
 export function WatchFrame({ children, className }: WatchFrameProps) {
   return (
     <div className={[styles.watch, className].filter(Boolean).join(' ')}>
@@ -35,7 +28,6 @@ export function WatchFrame({ children, className }: WatchFrameProps) {
           </linearGradient>
         </defs>
 
-        {/* strap */}
         <g className={styles.strap}>
           <path d="M150 0 H370 L382 168 H138 Z" fill="url(#wf-strap)" />
           <path d="M138 532 H382 L370 700 H150 Z" fill="url(#wf-strap)" />
@@ -47,7 +39,6 @@ export function WatchFrame({ children, className }: WatchFrameProps) {
           ))}
         </g>
 
-        {/* side buttons */}
         <g fill="#2c313b" stroke="#545c6b" strokeWidth="2">
           <rect x="462" y="228" width="22" height="62" rx="6" />
           <rect x="462" y="330" width="22" height="92" rx="6" />
@@ -60,14 +51,11 @@ export function WatchFrame({ children, className }: WatchFrameProps) {
           ))}
         </g>
 
-        {/* case */}
         <rect x="54" y="140" width="412" height="420" rx="70" fill="url(#wf-case)" />
         <rect x="54" y="140" width="412" height="420" rx="70" fill="none" stroke="#5b6372" strokeWidth="2" />
-        {/* raised bezel */}
         <rect x="80" y="166" width="360" height="368" rx="52" fill="url(#wf-bezel)" />
         <rect x="92" y="178" width="336" height="344" rx="42" fill="#07090c" />
 
-        {/* corner screws */}
         <g>
           {[
             [92, 168],

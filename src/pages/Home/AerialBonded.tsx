@@ -4,7 +4,6 @@ import transmitter from '../../assets/images/aerial-transmitter.webp'
 import { Reveal } from '../../components/Reveal/Reveal'
 import styles from '../../styles/HomeSections.module.css'
 
-// From the "Sigtrack with Starlink" paper.
 const points = [
   { t: 'Bonded links', b: 'Up to eight 5G/LTE modems bonded at once, with optional LEO satellite links such as Starlink.' },
   { t: '4K UHD, HEVC', b: 'Encoded on board and streamed as NDI, SRT, RTMP and more.' },
@@ -20,10 +19,6 @@ const photos = [
 
 const lanes = [70, 110, 150, 190]
 
-/**
- * "Aerial video, bonded." The figure loops the documented helicopter-test result: several cellular paths
- * and a Starlink path merge into one stream; when the Starlink path drops, the stream carries on.
- */
 export function AerialBonded() {
   return (
     <section id="aerial" className={styles.aerial} aria-labelledby="aerial-title">

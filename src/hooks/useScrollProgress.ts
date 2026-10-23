@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
-/** Page scroll progress from 0 to 1, updated once per frame. */
 export function useScrollProgress() {
   const [progress, setProgress] = useState(0)
 

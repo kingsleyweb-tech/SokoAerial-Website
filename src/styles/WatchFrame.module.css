@@ -11,7 +11,6 @@
   filter: drop-shadow(0 30px 40px rgba(3, 7, 15, 0.45));
 }
 
-/* square display inside the bezel: x 100–420, y 190–510 of the 520 × 700 drawing */
 .screen {
   position: absolute;
   left: 19.231%;

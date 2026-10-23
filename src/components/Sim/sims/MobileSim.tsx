@@ -1,6 +1,3 @@
-// Sigtrack Mobile, in the hand: the features on the Sigtrack Mobile page (Silvus + Meshtastic radio, custom
-// markers dragged onto the map, waypoint sharing, encrypted chatting), on two phones linked by a radio.
-// The map is a made-up area; names and messages are invented.
 import type { CSSProperties, ReactNode } from 'react'
 import sim from '../../../styles/Sim.module.css'
 import styles from '../../../styles/SimProducts.module.css'
@@ -16,7 +13,6 @@ const steps: SimStep[] = [
   { label: 'Encrypted chat', caption: 'Secure messaging that safeguards sensitive data.', duration: 5500 },
 ]
 
-// positions on the phone's map, in % of the map area
 const me = { x: 38, y: 64 }
 const mate = { x: 66, y: 30 }
 const drop = { x: 62, y: 58 }
@@ -101,10 +97,8 @@ function Scene({ f }: { f: SimFrame }) {
   const paired = f.step > 0 || f.t > 1600
   const radioState = paired ? 'Radio ✓' : 'Radio …'
 
-  // step 2: the drag, from the marker tray to the map
   const drag = f.step === 1 ? f.p(900, 1500) : 0
   const finger = f.step === 1 && f.t > 500 && f.t < 3000
-  // step 3: the waypoint is set on this phone, then shared over the radio
   const wpHere = f.step === 2 ? f.p(500, 400) : f.step > 2 ? 1 : 0
   const shared = f.step === 2 ? f.p(2200, 500) : f.step > 2 ? 1 : 0
   const route = f.step === 2 ? f.p(2800, 1600) : f.step > 2 ? 1 : 0

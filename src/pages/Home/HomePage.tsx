@@ -24,7 +24,6 @@ export function HomePage() {
     <>
       <HomeHero />
 
-      {/* Statement */}
       <section className={styles.statement}>
         <Reveal>
           <span className="chip hide-mobile">Your all-in-one response solution</span>
@@ -42,7 +41,6 @@ export function HomePage() {
         </Reveal>
       </section>
 
-      {/* Facts */}
       <section className={styles.facts} aria-label="Sigtrack at a glance">
         {facts.map((f, i) => (
           <Reveal key={f.t} className={styles.fact} delay={i * 0.06}>
@@ -65,7 +63,6 @@ export function HomePage() {
       <AerialBonded />
 
 
-      {/* Dual usage */}
       <section className={styles.usage} aria-labelledby="usage-title">
         <h2 id="usage-title" className={`${styles.usageTitle} hide-mobile`}>
           One platform, <em className="serif">dual usage</em>
@@ -102,7 +99,6 @@ export function HomePage() {
         </AnimatePresence>
       </section>
 
-      {/* Where it works */}
       <section className={styles.works} aria-labelledby="works-title">
         <Reveal className={styles.worksHead}>
           <h2 id="works-title" className={styles.h2}>
@@ -152,7 +148,6 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* In the field */}
       <section className={styles.field} aria-labelledby="field-title">
         <div className={styles.fieldHead}>
           <h2 id="field-title" className={styles.h2}>

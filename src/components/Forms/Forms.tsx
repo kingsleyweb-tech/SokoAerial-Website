@@ -10,12 +10,10 @@ interface SentenceInputProps {
   type?: 'text' | 'email' | 'tel'
   autoComplete?: string
   required?: boolean
-  /** Width on the desktop artboard, in px; inputs go full width on small screens. */
   width: number
   tone?: 'light' | 'dark'
 }
 
-/** Conversational field: serif italic input on a single underline, set inside a sentence. */
 export function SentenceInput({ name, label, placeholder, type = 'text', autoComplete, required, width, tone = 'light' }: SentenceInputProps) {
   return (
     <label className={styles.inline}>
@@ -44,7 +42,6 @@ export function Consent({ tone = 'light', short = false }: { tone?: 'light' | 'd
   )
 }
 
-/** Shown after submit: the form prepares an email because the site has no form backend. */
 export function SentNote({ sent, tone = 'light' }: { sent: boolean; tone?: 'light' | 'dark' }) {
   return (
     <p className={`${styles.note} ${tone === 'dark' ? styles.noteDark : ''}`} role="status">

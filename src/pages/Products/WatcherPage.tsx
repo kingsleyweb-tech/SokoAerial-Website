@@ -13,7 +13,6 @@ const hud = ['Gimbal camera', 'Heading · FOV', 'Telemetry', 'Local + SD recordi
 const shots = watcherModes.map((m) => ({ src: m.image, alt: `Watcher: ${m.label}`, caption: m.items[0].t, label: 'Watcher' }))
 const uses = ['Aerial surveillance', 'Tethered overwatch', 'Target estimation', 'Search and rescue']
 
-// Shares the Sigtrack Desktop layout: Watcher is also a dark, Windows cockpit app.
 export function WatcherPage() {
   const screens = useScreenViewer(shots)
 

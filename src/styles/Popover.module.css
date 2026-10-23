@@ -1,4 +1,3 @@
-/* Shared hover / focus / tap panel (InfoPopover). Fixed to the viewport and portalled to <body>. */
 .panel {
   position: fixed;
   z-index: 400;

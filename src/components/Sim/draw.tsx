@@ -1,7 +1,5 @@
-// Small drawing components shared by the simulations.
 import { along, type Pt } from './geom'
 
-/** Packets travelling along a path: `count` dots evenly spaced, looping every `period` ms. */
 export function Packets({
   pts,
   t,
@@ -32,7 +30,6 @@ export function Packets({
   )
 }
 
-/** Line icons on a 24-unit grid, drawn with the current stroke colour. */
 const iconPaths: Record<string, string> = {
   watch: 'M8 3h8l1 4v10l-1 4H8l-1-4V7zM7 7h10v10H7zM12 10v2.5l1.5 1',
   phone: 'M8 2.5h8a1.5 1.5 0 0 1 1.5 1.5v16a1.5 1.5 0 0 1-1.5 1.5H8A1.5 1.5 0 0 1 6.5 20V4A1.5 1.5 0 0 1 8 2.5zM11 18.5h2',
@@ -90,10 +87,6 @@ const mapTones = {
   sat: { ground: '#4d5a3c', park: '#3c4d2e', water: '#2d4d5c', road: '#a9a28f', edge: '#5d6649', block: '#7b7563' },
 }
 
-/**
- * A made-up local area (river, roads, blocks, green space) drawn on a 400 × 300 grid and fitted to cover a
- * W × H box. Not a real place: it only gives the product interfaces something to sit on.
- */
 export function MiniMap({ W, H, tone = 'light' }: { W: number; H: number; tone?: keyof typeof mapTones }) {
   const c = mapTones[tone]
   const k = Math.max(W / 400, H / 300)

@@ -1,4 +1,3 @@
-/* ---------- Conversational inputs ---------- */
 
 .inline {
   display: inline;
@@ -44,12 +43,10 @@
 
 @media (max-width: 767px) {
   .sentence {
-    /* inputs shrink with the type so each sentence wraps into whole phrases */
     width: min(calc(var(--w) * 0.55), 100%);
   }
 }
 
-/* ---------- Consent + status ---------- */
 
 .consent {
   display: flex;
@@ -108,7 +105,6 @@
   display: none;
 }
 
-/* ---------- Text areas ---------- */
 
 .softArea {
   width: 100%;

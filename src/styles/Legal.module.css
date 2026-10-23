@@ -59,7 +59,6 @@
   color: var(--muted);
 }
 
-/* dotted leader between the label and the value */
 .list dt::after {
   content: '';
   flex: 1;

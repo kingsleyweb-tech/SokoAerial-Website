@@ -1,7 +1,3 @@
-// Sigtrack Watch, on the wrist: real screenshots from the SIGTRACK WEAR deck (locator, create zone, active
-// zone, quick actions) and, beside it, the command centre that receives live tracking, geofencing and SOS
-// (ESRI deck). The labels repeat the WEAR slide bullets. The operative's name and the times are invented;
-// the coordinates are the ones shown on the real locator screen.
 import type { CSSProperties } from 'react'
 import { watchScreens } from '../../../data/watch'
 import sim from '../../../styles/Sim.module.css'
@@ -21,9 +17,7 @@ const steps: SimStep[] = [
 
 const screen = (id: string) => watchScreens.find((s) => s.id === id)!
 const shots = [screen('locator'), screen('create-zone'), screen('active-zone'), screen('locator'), screen('quick-actions')]
-// one callout per step, word for word from the WEAR deck
 const notes = [shots[0].callouts[0], shots[1].callouts[1], shots[2].callouts[1], shots[3].callouts[2], shots[4].callouts[2]]
-// where the finger presses, as a fraction of the screen
 const taps: Record<number, { x: number; y: number; at: number }> = {
   1: { x: 0.5, y: 0.86, at: 1800 },
   3: { x: 0.12, y: 0.5, at: 900 },
@@ -42,7 +36,6 @@ function Scene({ f }: { f: SimFrame }) {
 
   const zoneOn = f.step === 1 ? f.t > 2200 : f.step >= 2
   const sos = f.step === 3 && f.t > 1700
-  // keep labels off the screen's own buttons
   const notePos = f.step === 3 ? { x: 0.14, y: 0.66 } : f.step === 2 ? { x: 0.5, y: 0.74 } : note
 
   return (

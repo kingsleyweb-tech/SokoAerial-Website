@@ -1,7 +1,3 @@
-// The Sigtrack system, as the ESRI conference deck draws it: field operators (slide 6) report over whichever link
-// is available (slide 5) into Sigtrack, which the command centre and supervisors work from (slides 7–13); orders
-// flow back down (slide 8). Slide 21 adds the modular parts: a drone over a site, its ground control station, the
-// Sigtrack cloud, AI processing and a mobile patrol unit. Only these documented connections are drawn.
 import { Link } from 'react-router-dom'
 import { paths } from '../../../data/site'
 import styles from '../../../styles/SimSystem.module.css'
@@ -51,7 +47,7 @@ interface Layout {
   commandBox: Box
   site: Box
   edges: {
-    field: Pt[][] // watch, phone, body → spine
+    field: Pt[][]
     spineIn: Pt[]
     laneIn: Pt[][]
     laneOut: Pt[][]
@@ -246,7 +242,6 @@ const nodeInfo: Record<NodeId, { name: string; short?: string; sub: string; icon
   },
 }
 
-/** Which nodes and links each step brings forward. */
 const focus: Record<number, { nodes: NodeId[]; lanes: boolean; drone: boolean }> = {
   0: { nodes: ['watch', 'phone', 'body'], lanes: false, drone: false },
   1: { nodes: ['hub'], lanes: true, drone: false },
@@ -284,7 +279,6 @@ function Scene({ f }: { f: SimFrame }) {
     <path key={key} d={polyD(pts)} className={styles.edge} data-on={active || undefined} />
   )
 
-  // packets: where information is moving right now
   const moving: { pts: Pt[]; reverse?: boolean; color?: string; period?: number }[] = []
   if (f.step === 0) edges.field.forEach((pts) => moving.push({ pts: [...pts, ...edges.spineIn.slice(1)] }))
   if (f.step === 1) edges.laneOut.forEach((pts, i) => laneLit(i) && moving.push({ pts: [edges.laneIn[i][0], ...pts], period: 2000 }))
@@ -317,7 +311,6 @@ function Scene({ f }: { f: SimFrame }) {
         ))}
         <rect {...L.commandBox} className={styles.commandBox} data-on={f.step === 4 || undefined} />
 
-        {/* links */}
         {edges.field.map((pts, i) => edge(pts, f.step === 0 || f.step === 4, `f${i}`))}
         {edge(edges.spineIn, f.step <= 1 || f.step === 4)}
         {edges.laneIn.map((pts, i) => edge(pts, laneLit(i), `li${i}`))}
@@ -328,7 +321,6 @@ function Scene({ f }: { f: SimFrame }) {
         {edge(edges.command, f.step === 4)}
         {edge(edges.patrol, f.step === 4 && f.t > 1800)}
 
-        {/* the site under surveillance, swept by the drone's camera */}
         <g className={styles.site} data-on={f.step === 2 || undefined}>
           <rect {...site} />
           {Array.from({ length: 5 }, (_, i) => (
@@ -350,7 +342,6 @@ function Scene({ f }: { f: SimFrame }) {
           )}
         </g>
 
-        {/* the hub */}
         <circle cx={hcx} cy={hcy} r={hub.w / 2} className={styles.hubRing} data-on={lit('hub') || undefined} />
         {lit('hub') && <circle cx={hcx} cy={hcy} r={hub.w / 2} className={`${styles.hubPulse} ${sim.pulse}`} />}
         {f.step === 3 &&
@@ -376,7 +367,6 @@ function Scene({ f }: { f: SimFrame }) {
         ))}
       </svg>
 
-      {/* nodes and lanes are real buttons: hover, focus or tap for what each one does */}
       {(Object.keys(L.nodes) as NodeId[]).map((id) => {
         const b = L.nodes[id]
         const n = nodeInfo[id]

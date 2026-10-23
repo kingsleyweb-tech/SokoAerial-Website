@@ -1,7 +1,3 @@
-// Sigtrack Web's tactical-symbol workflow, replayed on its own: open Tactical Symbols, select a symbol, choose a
-// report type, drag it onto the map, fill in the report and save. The steps, dialogs, symbols, report types and
-// map still come from a screen recording of the app (see SymbolDemo/symbols.ts). The report text is invented;
-// the coordinates are read from where the symbol lands on that map still.
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import sim from '../../../styles/Sim.module.css'
 import styles from '../../../styles/SimSymbols.module.css'
@@ -26,7 +22,6 @@ const REPORT = reportTypes[0]
 const TITLE = 'Vehicle checkpoint'
 const DESCRIPTION = 'Two vehicles stopped at the junction. Team holding position.'
 
-// The scene is laid out in fixed design pixels and scaled to the stage, so the cursor can aim at exact spots.
 interface Layout {
   W: number
   H: number
@@ -100,7 +95,6 @@ function geometry(L: Layout) {
   }
 }
 
-/** The map still covers the map area: its size and offset in design pixels. */
 function cover(L: Layout) {
   const mapW = L.W - L.rail
   const mapH = L.H - BAR
@@ -108,7 +102,6 @@ function cover(L: Layout) {
   return { w: map.width * s, h: map.height * s, x: (mapW - map.width * s) / 2, y: (mapH - map.height * s) / 2 }
 }
 
-/** Where the drop point falls on the map still. */
 function dropOnMap(L: Layout) {
   const c = cover(L)
   return toLatLng((L.drop.x - L.rail - c.x) / c.w, (L.drop.y - BAR - c.y) / c.h)
@@ -248,7 +241,6 @@ function Scene({ f }: { f: SimFrame }) {
           Tactical Symbols
         </span>
 
-        {/* the placed symbol, then its report card */}
         {(loading || placed) && (
           <span className={styles.pin} data-pending={loading || undefined} style={px(L.drop.x, L.drop.y)}>
             <SymbolGlyph symbol={SYMBOL} />
@@ -281,7 +273,6 @@ function Scene({ f }: { f: SimFrame }) {
           </span>
         )}
 
-        {/* Tactical Symbols dialog */}
         {pickerOpen && (
           <>
             <span className={styles.backdrop} />
@@ -329,7 +320,6 @@ function Scene({ f }: { f: SimFrame }) {
           </>
         )}
 
-        {/* Report form */}
         {formOpen && (
           <>
             <span className={styles.backdrop} />

@@ -1,4 +1,3 @@
-/* ---------- Hero ---------- */
 
 .hero {
   display: flex;
@@ -30,7 +29,6 @@
   color: var(--signal);
 }
 
-/* Full-bleed marquee of the six areas; hover pauses it so an area can be picked. */
 .areaMarquee {
   margin: 0 calc(-1 * var(--gutter));
   overflow: hidden;
@@ -94,7 +92,6 @@
   color: var(--ice);
 }
 
-/* fills across the selected pill over 7s, then the next area is selected */
 .areaProgress {
   position: absolute;
   left: 18px;
@@ -140,7 +137,6 @@
   }
 }
 
-/* ---------- Explorer ---------- */
 
 .explorer {
   display: grid;
@@ -263,7 +259,6 @@
   inset: 0;
 }
 
-/* ---------- STANAG ---------- */
 
 .stanag {
   display: grid;
@@ -343,7 +338,6 @@
   transform: translateY(-4px);
 }
 
-/* ---------- Seven roles ---------- */
 
 .roles {
   display: flex;
@@ -373,7 +367,6 @@
   color: var(--signal);
 }
 
-/* Endless, slow marquee; the edges fade so cards glide in and out. Hover pauses it for reading. */
 .roleMarquee {
   overflow: hidden;
   mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
@@ -462,7 +455,6 @@
   opacity: 0.78;
 }
 
-/* Without motion the cards become a normal swipeable row. */
 @media (prefers-reduced-motion: reduce) {
   .roleMarquee {
     overflow-x: auto;
@@ -479,7 +471,6 @@
   }
 }
 
-/* ---------- Mirror ---------- */
 
 .mirror {
   display: flex;
@@ -540,7 +531,6 @@
   background: var(--signal);
 }
 
-/* ---------- Three versions ---------- */
 
 .versions {
   display: flex;
@@ -643,7 +633,6 @@
   color: var(--ice);
 }
 
-/* ---------- Tablet ---------- */
 
 @media (max-width: 1023px) {
   .hero {
@@ -669,7 +658,6 @@
   }
 }
 
-/* ---------- Mobile artboard ---------- */
 
 @media (max-width: 767px) {
   .hero {
@@ -732,7 +720,6 @@
     font-size: 15px;
   }
 
-  /* Mobile order: image, heading, then the list. */
   .explorerGrid {
     display: contents;
   }
@@ -831,7 +818,6 @@
   }
 }
 
-/* ---------- Images size their own boxes: shown whole, no empty bands ---------- */
 
 .explorerImage {
   align-self: start;

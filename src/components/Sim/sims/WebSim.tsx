@@ -1,6 +1,3 @@
-// Sigtrack Web, in the browser: the five features listed on the Sigtrack Web page (group and display team members,
-// each member as a marker, real-time tracking, Meshtastic radio, chat without internet), drawn over a simplified
-// map of Ghana in the style of the real Teams screenshot. Team names, members and messages are invented.
 import { Fragment } from 'react'
 import { border, ghana, lakeVolta, project, roads, seaPath, toPath, type LonLat } from '../geo-ghana'
 import sim from '../../../styles/Sim.module.css'
@@ -52,12 +49,10 @@ const chat = [
 ]
 
 function Scene({ f }: { f: SimFrame }) {
-  // the map's own drawing area; the Teams panel beside or below it is HTML
   const W = f.compact ? 400 : 750
   const H = f.compact ? 330 : 568
   const rail = f.compact ? 0 : 44
   const mapW = W - rail
-  // fit Ghana into the map area
   const [x0, y0] = project([-3.4, 11.25])
   const [x1, y1] = project([1.3, 4.65])
   const k = Math.min(mapW / (x1 - x0), H / (y1 - y0)) * 0.96
@@ -69,11 +64,9 @@ function Scene({ f }: { f: SimFrame }) {
   }
 
   const showMarkers = f.step >= 1
-  // tracking runs during step 3 and leaves members where they reached afterwards
   const travel = f.step < 2 ? 0 : f.step === 2 ? f.t / steps[2].duration : 1
   const pos = (m: (typeof members)[number]) => along(m.route.map(toScreen), travel)
   const showMesh = f.step >= 3
-  // where member B2 is, as a fraction of the whole stage (the map fills the left 75%, under a 32px bar)
   const [bx, by] = pos(members[4])
   const anchor = f.compact
     ? { x: (bx - 18) / W, y: 0.06 + (by / H) * 0.94 * (330 / 608) }
@@ -102,7 +95,6 @@ function Scene({ f }: { f: SimFrame }) {
               <path d={borderD} fill="none" stroke="#f08a24" strokeWidth={3} strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
             </g>
 
-            {/* Meshtastic links between members */}
             {showMesh &&
               members.slice(0, -1).map((m, i) => {
                 const a = pos(m)

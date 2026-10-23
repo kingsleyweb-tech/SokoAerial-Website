@@ -1,4 +1,3 @@
-/* Home page: the Sigtrack system diagram (SystemSim). */
 
 .scene {
   position: absolute;
@@ -104,7 +103,6 @@
   fill: #9ff0c4;
 }
 
-/* ---------- Nodes (HTML over the drawing) ---------- */
 
 .node {
   position: absolute;
@@ -210,7 +208,6 @@
   text-underline-offset: 2px;
 }
 
-/* a narrower desktop stage: drop the second line */
 @container (max-width: 860px) {
   .nodeSub {
     display: none;

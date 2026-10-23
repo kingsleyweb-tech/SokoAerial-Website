@@ -1,6 +1,5 @@
 import { SimSection } from '../Sim/SimSection'
 
-/** Sigtrack Web's tactical-symbol workflow, replayed on its own; shown on the home page and on Sigtrack Web. */
 export function SymbolDemoSection({ id = 'symbol-demo' }: { id?: string }) {
   return (
     <SimSection

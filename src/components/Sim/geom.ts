@@ -1,10 +1,8 @@
-// Geometry helpers shared by the simulations.
 
 export type Pt = readonly [number, number]
 
 export const lerp = (a: number, b: number, f: number) => a + (b - a) * f
 
-/** Point at fraction f (0–1) along a polyline. */
 export function along(pts: readonly Pt[], f: number): Pt {
   const segs = pts.slice(1).map((p, i) => Math.hypot(p[0] - pts[i][0], p[1] - pts[i][1]))
   const total = segs.reduce((a, b) => a + b, 0)

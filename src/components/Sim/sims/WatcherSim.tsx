@@ -1,7 +1,3 @@
-// Soko Watcher, in flight: the ground control cockpit described on the Watcher page. Operations map (aircraft,
-// heading, camera field of view, ground station), gimbal camera feed with heading and tilt scales,
-// picture in picture, telemetry (attitude, altitude AGL and MSL, tether, wind, battery), and recording with
-// stills. The terrain is made up and every number is a simulated value, labelled as such.
 import sim from '../../../styles/Sim.module.css'
 import styles from '../../../styles/SimProducts.module.css'
 import { Icon, MiniMap } from '../draw'
@@ -25,7 +21,6 @@ function heading(total: number) {
 
 function MapView({ f, hdg, mini = false }: { f: SimFrame; hdg: number; mini?: boolean }) {
   const r = (hdg * Math.PI) / 180
-  // camera footprint ahead of the aircraft, in the direction of the heading
   const cx = aircraft.x + Math.sin(r) * 150
   const cy = aircraft.y - Math.cos(r) * 150
   const side = (d: number) => [cx + Math.cos(r) * d, cy + Math.sin(r) * d]
@@ -59,7 +54,6 @@ function MapView({ f, hdg, mini = false }: { f: SimFrame; hdg: number; mini?: bo
 
 function FeedView({ hdg, tilt, mini = false, compact = false }: { hdg: number; tilt: number; mini?: boolean; compact?: boolean }) {
   const k = compact ? 1.9 : 1.1
-  // the camera looks at the ground: pan with heading, move with tilt
   const dx = (hdg - 64) * 3
   const dy = (tilt + 35) * 3
   const ticks = []
@@ -97,7 +91,6 @@ function FeedView({ hdg, tilt, mini = false, compact = false }: { hdg: number; t
 }
 
 function Scene({ f }: { f: SimFrame }) {
-  // a continuous clock across steps, so the aircraft keeps turning gently
   const total = steps.slice(0, f.step).reduce((a, s) => a + s.duration, 0) + f.t
   const hdg = heading(f.reduced ? 0 : total)
   const tilt = -35 + 8 * Math.sin((f.reduced ? 0 : total) / 1900)

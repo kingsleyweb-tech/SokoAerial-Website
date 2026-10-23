@@ -1,6 +1,3 @@
-// Sigtrack Desktop, on Windows: the three modes on the Sigtrack Desktop page. Track (live updates, history
-// playback), Mark (markers with notes, icons and colours, shared in real time) and Communicate (Silvus and
-// Meshtastic mesh radios). The map is a made-up area; unit names, times and the note are invented.
 import type { CSSProperties } from "react";
 import sim from "../../../styles/Sim.module.css";
 import styles from "../../../styles/SimProducts.module.css";
@@ -109,7 +106,6 @@ function Glyph({ name }: { name: IconName }) {
 }
 
 function Scene({ f }: { f: SimFrame }) {
-  // how far along their routes the units are
   const travel =
     f.step === 0
       ? (END * f.t) / steps[0].duration
@@ -119,7 +115,6 @@ function Scene({ f }: { f: SimFrame }) {
   const playback = f.step === 1;
   const pos = (u: (typeof units)[number]) => along(u.route, travel);
 
-  // marker editing (step 3) and sharing (step 4)
   const markerOn = f.step >= 2 ? (f.step === 2 ? f.p(300, 300) : 1) : 0;
   const iconIdx = f.step === 2 && f.t < 1500 ? 0 : 1;
   const colorIdx = f.step === 2 && f.t < 2300 ? 2 : 0;

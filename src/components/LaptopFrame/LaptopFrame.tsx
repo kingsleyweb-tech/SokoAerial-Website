@@ -7,16 +7,10 @@ interface LaptopFrameProps {
   alt: string
   className?: string
   loading?: 'lazy' | 'eager'
-  /** Overlays drawn on the screen, e.g. HUD tags. */
   children?: ReactNode
-  /** Makes the screen a button that opens the screenshot full size. */
   onOpen?: () => void
 }
 
-/**
- * A modern laptop: thin black bezel with a camera notch, aluminium base with a thumb groove.
- * Size comes from the element's width (set via className); every detail scales with it.
- */
 export function LaptopFrame({ src, alt, className, loading, children, onOpen }: LaptopFrameProps) {
   return (
     <div className={[styles.laptop, className].filter(Boolean).join(' ')}>

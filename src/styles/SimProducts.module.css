@@ -1,6 +1,4 @@
-/* Product simulations: the drawn product interfaces (browser, desktop window, phone, cockpit…). */
 
-/* ---------- Browser (Sigtrack Web) ---------- */
 
 .browser {
   position: absolute;
@@ -212,7 +210,6 @@
   stroke-width: 3px;
 }
 
-/* ---------- Phones (Sigtrack Mobile) ---------- */
 
 .phoneStage {
   position: absolute;
@@ -514,7 +511,6 @@
   stroke-dasharray: none;
 }
 
-/* ---------- Windows app (Sigtrack Desktop) ---------- */
 
 .win {
   position: absolute;
@@ -867,7 +863,6 @@
   color: #6ee7a8;
 }
 
-/* ---------- Watch and command (Sigtrack Watch) ---------- */
 
 .watchStage {
   position: absolute;
@@ -1057,7 +1052,6 @@
   }
 }
 
-/* ---------- Radios ---------- */
 
 .radiosStage {
   position: absolute;
@@ -1182,7 +1176,6 @@
   }
 }
 
-/* ---------- Cockpit (Soko Watcher) ---------- */
 
 .cockpit {
   position: absolute;
@@ -1475,7 +1468,6 @@
   color: #fff;
 }
 
-/* ---------- Laptop and phone on a LAN (Flash) ---------- */
 
 .flashStage {
   position: absolute;

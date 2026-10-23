@@ -1,4 +1,3 @@
-// Real Sigtrack imagery sourced from sigtrackapp.com, resized and re-encoded for the web.
 import commandSetup from '../assets/images/command-setup.webp'
 import desktopCommunicate from '../assets/images/desktop-communicate.webp'
 import desktopGlobe from '../assets/images/desktop-globe.webp'
@@ -28,7 +27,6 @@ import webGhanaTeams from '../assets/images/web-ghana-teams.webp'
 import webMarkers from '../assets/images/web-markers.webp'
 import webMeshChat from '../assets/images/web-mesh-chat.webp'
 import webMeshMap from '../assets/images/web-mesh-map.webp'
-// Newer field photos and product screenshots supplied directly by the Sigtrack team.
 import fieldCommandTruck from '../assets/images/field-command-truck.webp'
 import flashChat from '../assets/images/flash-chat.webp'
 import flashDesktopCall from '../assets/images/flash-desktop-call.webp'
@@ -40,7 +38,6 @@ import watcherTelemetry from '../assets/images/watcher-telemetry.webp'
 import webCommandWall from '../assets/images/web-command-wall.webp'
 import webTacticalSymbols from '../assets/images/web-tactical-symbols.webp'
 
-/** Sigtrack "Eyes in the Sky" emblem, shown beside the wordmark. */
 export const logo = sigtrackEmblem
 
 export const images = {
@@ -84,8 +81,6 @@ export const images = {
   webTacticalSymbols,
 }
 
-// Videos stream from Cloudinary's CDN; f_auto,q_auto picks the codec and quality per browser.
-// The cloud name is public (it is in every delivery URL); API keys live in .env for uploads only.
 const VIDEO_HOST = 'https://res.cloudinary.com/lxjudwn8/video/upload/f_auto,q_auto/sigtrack'
 
 export const videos = {

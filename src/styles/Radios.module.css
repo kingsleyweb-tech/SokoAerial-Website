@@ -1,4 +1,3 @@
-/* ---------- Split hero ---------- */
 
 .hero {
   position: relative;
@@ -90,7 +89,6 @@
   color: var(--slate);
 }
 
-/* ---------- Spectrum ---------- */
 
 .spectrum {
   display: grid;
@@ -182,7 +180,6 @@
   text-align: right;
 }
 
-/* ---------- Comparison ---------- */
 
 .compare {
   display: flex;
@@ -259,7 +256,6 @@
   text-align: right;
 }
 
-/* dt sits in the middle column visually but first in reading order for each row */
 .compareRow dt {
   grid-column: 2;
   grid-row: 1;
@@ -275,7 +271,6 @@
   grid-row: 1;
 }
 
-/* ---------- Statement ---------- */
 
 .statement {
   padding: var(--section-y) var(--gutter);
@@ -295,7 +290,6 @@
   color: var(--ice);
 }
 
-/* ---------- Mosaic ---------- */
 
 .mosaic {
   display: grid;
@@ -319,7 +313,6 @@
   grid-column: 2 / -1;
 }
 
-/* ---------- Built into every product ---------- */
 
 .built {
   display: flex;
@@ -381,7 +374,6 @@
   transform: rotate(45deg);
 }
 
-/* ---------- Tablet / mobile ---------- */
 
 @media (max-width: 1023px) {
   .hero {
@@ -523,7 +515,6 @@
   }
 }
 
-/* ---------- Images size their own boxes: shown whole, no empty bands ---------- */
 
 .round {
   aspect-ratio: auto;
@@ -534,7 +525,6 @@
   height: auto;
 }
 
-/* masonry columns: every photo at its own proportions */
 .mosaic {
   display: block;
   columns: 3 260px;

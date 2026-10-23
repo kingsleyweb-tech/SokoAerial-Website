@@ -1,6 +1,5 @@
 import type { TacticalSymbol } from './symbols'
 
-/** A Friend Air symbol as drawn in Sigtrack Web: a dome frame on a black tile with the label inside. */
 export function SymbolGlyph({ symbol, className }: { symbol: TacticalSymbol; className?: string }) {
   const long = symbol.glyph.length > 2
   return (

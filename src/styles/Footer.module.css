@@ -113,7 +113,6 @@
   color: var(--ice-72) !important;
 }
 
-/* in flow (not absolute) so it always sits below the links, cropped by the footer's bottom edge */
 .wordmark {
   margin: 0 0 -0.3em;
   font-size: var(--fs-mega);
@@ -153,7 +152,6 @@
     min-height: 0;
   }
 
-  /* above the wordmark instead of laid over it */
   .copyright {
     position: static;
   }
@@ -167,7 +165,6 @@
   }
 }
 
-/* ---------- Mobile footer ---------- */
 
 @media (max-width: 767px) {
   .footer {
@@ -181,7 +178,6 @@
     line-height: 1.9;
   }
 
-  /* Contact details sit below the two link columns on mobile. */
   .reach {
     order: 3;
     grid-column: 1 / -1;

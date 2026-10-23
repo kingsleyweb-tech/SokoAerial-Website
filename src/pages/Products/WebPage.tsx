@@ -114,7 +114,6 @@ export function WebPage() {
         </p>
       </section>
 
-      {/* Same video layout as Sigtrack Desktop's "See it running" section. */}
       <section className={desktop.videos} aria-label="Videos">
         <div className={desktop.bigVideo}>
           {playing ? (

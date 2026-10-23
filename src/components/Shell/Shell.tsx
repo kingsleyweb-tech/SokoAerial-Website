@@ -8,7 +8,6 @@ import styles from '../../styles/Shell.module.css'
 
 const pad = (n: number) => String(n).padStart(2, '0')
 
-/** Four-dot Index glyph used on the rail and capsule buttons. */
 function Dots() {
   return (
     <span className={styles.dots} aria-hidden="true">
@@ -28,11 +27,9 @@ interface RailProps {
   onOpenIndex: () => void
 }
 
-/** Desktop: fixed 80px midnight rail — Index button, vertical wordmark, page name and scroll progress. */
 export function SideRail({ page, num, total, indexOpen, onOpenIndex }: RailProps) {
   const progress = useScrollProgress()
   const hoverTimer = useRef<number | undefined>(undefined)
-  // After the menu closes the pointer is often still over the button; wait until it leaves before hover can reopen.
   const hoverArmed = useRef(true)
   const wasOpen = useRef(indexOpen)
 
@@ -119,7 +116,6 @@ interface CapsuleProps {
   onOpenIndex: () => void
 }
 
-/** Mobile: floating capsule with the wordmark, page name and the Index button. */
 export function MobileCapsule({ page, tone, indexOpen, onOpenIndex }: CapsuleProps) {
   return (
     <div className={styles.capsuleWrap}>
@@ -149,7 +145,6 @@ interface ActionsProps {
   active?: ProductId
 }
 
-/** Desktop: floating product switcher, top right of each page. */
 export function FloatingActions({ tone, active }: ActionsProps) {
   return (
     <div className={`${styles.actions} ${styles[tone]}`}>

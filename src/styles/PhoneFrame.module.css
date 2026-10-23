@@ -1,20 +1,14 @@
-/*
- * Phone mockup. The frame is a size container, so every detail is expressed in cqw
- * (1cqw = 1% of the phone's width) and scales with whatever width the page gives it.
- */
 .phone {
   container-type: inline-size;
   position: relative;
   flex-shrink: 0;
 }
 
-/* the body wraps the screen, and the screen takes the screenshot's own height */
 .body {
   position: relative;
   display: block;
   padding: 3.6cqw;
   border-radius: 9cqw;
-  /* titanium edge: a lit rim around a near-black bezel */
   background:
     linear-gradient(#05070c, #05070c) padding-box,
     linear-gradient(150deg, #5d6678 0%, #1b2130 22%, #0c1019 50%, #2a3242 78%, #6a7386 100%) border-box;
@@ -25,7 +19,6 @@
     0 3cqw 6cqw -2cqw rgba(6, 13, 28, 0.35);
 }
 
-/* ---------- Side buttons ---------- */
 
 .button {
   position: absolute;
@@ -61,7 +54,6 @@
   height: 9%;
 }
 
-/* ---------- Screen ---------- */
 
 .screen {
   position: relative;
@@ -76,7 +68,6 @@
   height: auto;
 }
 
-/* a phone on its side: thinner bezel relative to width, buttons move to the top and bottom edges */
 .phone[data-orientation='landscape'] .body {
   padding: 1.8cqw;
   border-radius: 4.5cqw;
@@ -87,7 +78,6 @@
   display: none;
 }
 
-/* ---------- Open full size ---------- */
 
 .open {
   position: absolute;
@@ -134,7 +124,6 @@
   outline-offset: -2px;
 }
 
-/* touch screens have no hover, so keep the badge visible */
 @media (hover: none) {
   .openBadge {
     opacity: 1;

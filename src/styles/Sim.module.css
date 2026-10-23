@@ -1,6 +1,4 @@
-/* Product simulations: the shared stage (SimStage), hotspots, and the drawing styles each simulation uses. */
 
-/* ---------- Section ---------- */
 
 .section {
   display: flex;
@@ -63,7 +61,6 @@
   font-size: 15px;
 }
 
-/* ---------- Stage ---------- */
 
 .sim {
   --sim-ink: #0b1526;
@@ -130,7 +127,6 @@
 
 
 
-/* ---------- Controls ---------- */
 
 .bar {
   display: flex;
@@ -239,7 +235,6 @@
   transform-origin: left;
 }
 
-/* controls on a light section */
 .section[data-tone='light'] .badge {
   color: var(--slate-2);
 }
@@ -267,7 +262,6 @@
   color: var(--midnight);
 }
 
-/* ---------- Hotspots ---------- */
 
 .hotspot {
   position: absolute;
@@ -329,7 +323,6 @@
   background: var(--signal);
 }
 
-/* bigger touch targets where there is no hover */
 @media (hover: none) {
   .hotspotBtn {
     min-height: 32px;
@@ -337,7 +330,6 @@
   }
 }
 
-/* ---------- Shared drawing ---------- */
 
 .svgText {
   font-family: var(--font-sans);
@@ -403,7 +395,6 @@
   }
 }
 
-/* HTML panels drawn inside a stage (alerts, chat, call stats) */
 .panel {
   position: absolute;
   z-index: 1;

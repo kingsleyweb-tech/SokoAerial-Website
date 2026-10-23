@@ -15,7 +15,6 @@ const shots = [
 ]
 const rise = { initial: { opacity: 0, y: 12 }, animate: { opacity: 1, y: 0 } }
 
-// Hero borrows the Sigtrack Mobile layout (Android); the tabbed laptop section borrows Sigtrack Desktop's (Windows).
 export function FlashPage() {
   const screens = useScreenViewer(shots)
 

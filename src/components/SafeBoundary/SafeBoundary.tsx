@@ -1,12 +1,10 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react'
 
 interface SafeBoundaryProps {
-  /** Static content shown if the children throw while rendering. */
   fallback: ReactNode
   children: ReactNode
 }
 
-/** Keeps an interactive section from blanking the page: if it fails, the static fallback renders instead. */
 export class SafeBoundary extends Component<SafeBoundaryProps, { failed: boolean }> {
   state = { failed: false }
 

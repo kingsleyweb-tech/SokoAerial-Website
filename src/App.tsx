@@ -15,22 +15,19 @@ function scrollToLocation(hash: string) {
   else window.scrollTo({ top: 0, behavior: 'instant' })
 }
 
-// Page change (Foundations v2): the rail stays fixed; content fades out 150ms and in 250ms, rising slightly.
 function Page({ route }: { route: PageRoute }) {
   const { hash } = useLocation()
+  const [arrivalHash] = useState(hash)
 
   useEffect(() => {
     document.title = route.path === paths.home ? route.title : `${route.title} · Sigtrack`
   }, [route])
 
-  // Arriving with a hash (e.g. a "Try the demo" link from another page): scroll once content is in place.
   useEffect(() => {
-    if (!hash) return
-    const id = window.setTimeout(() => scrollToLocation(hash), 80)
+    if (!arrivalHash) return
+    const id = window.setTimeout(() => scrollToLocation(arrivalHash), 80)
     return () => window.clearTimeout(id)
-    // Only on arrival; in-page hash changes are handled by App.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [arrivalHash])
 
   return (
     <motion.div
@@ -55,13 +52,11 @@ export default function App() {
     if (location.hash) scrollToLocation(location.hash)
   }, [location.hash])
 
-  // Once the first page has settled, fetch the other pages' code so every later navigation is instant.
   useEffect(() => {
     if ('requestIdleCallback' in window) {
       const id = window.requestIdleCallback(preloadPages, { timeout: 2500 })
       return () => window.cancelIdleCallback(id)
     }
-    // Safari has no requestIdleCallback.
     const id = setTimeout(preloadPages, 1200)
     return () => clearTimeout(id)
   }, [])

@@ -1,10 +1,4 @@
-/*
- * Sigtrack design tokens — Foundations v2.
- * Midnight-dominant canvas, one signal blue, editorial serif accents.
- * Fluid sizes interpolate between the 390px mobile and 1440px desktop artboards.
- */
 :root {
-  /* Colour */
   --midnight: #060d1c;
   --deep: #03070f;
   --topo: #0a1830;
@@ -39,33 +33,27 @@
   --ice-50: rgba(207, 224, 255, 0.5);
   --white-80: rgba(255, 255, 255, 0.8);
 
-  /* Type */
   --font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
-  /* accents use the sans face — no decorative serif */
   --font-serif: var(--font-sans);
 
-  /* Type scale: one set of sizes for the whole site (390px → 1440px) */
-  --fs-mega: clamp(44px, 3.4vw + 30px, 84px); /* decorative wordmarks only */
-  --fs-display: clamp(36px, 1.9vw + 28px, 56px); /* page titles */
-  --fs-h2: clamp(26px, 0.95vw + 22px, 36px); /* section headings */
-  --fs-statement: clamp(20px, 0.6vw + 17px, 26px); /* large statement paragraphs */
-  --fs-h3: clamp(18px, 0.3vw + 17px, 21px); /* card and item headings */
+  --fs-mega: clamp(44px, 3.4vw + 30px, 84px);
+  --fs-display: clamp(36px, 1.9vw + 28px, 56px);
+  --fs-h2: clamp(26px, 0.95vw + 22px, 36px);
+  --fs-statement: clamp(20px, 0.6vw + 17px, 26px);
+  --fs-h3: clamp(18px, 0.3vw + 17px, 21px);
   --fs-lead: clamp(15px, 0.2vw + 14px, 17px);
 
-  /* Layout */
   --rail: 80px;
   --gutter: 56px;
-  --section-y: clamp(36px, 1.2vw + 26px, 48px); /* vertical rhythm between sections */
+  --section-y: clamp(36px, 1.2vw + 26px, 48px);
   --radius: 28px;
   --radius-sm: 20px;
 
-  /* Motion */
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --t-hover: 200ms;
 }
 
-/* Responsive table (Foundations v2): 1280 · 1024 rail stays · <1024 floating capsule · 390 20px gutter */
 @media (max-width: 1279px) {
   :root {
     --gutter: 40px;

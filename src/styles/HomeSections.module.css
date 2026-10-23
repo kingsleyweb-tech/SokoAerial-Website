@@ -1,4 +1,3 @@
-/* New home-page sections: hero, product showcase, aerial video. Image frames are square-cornered. */
 
 .h2 {
   font-size: var(--fs-h2);
@@ -11,7 +10,6 @@
   color: var(--signal);
 }
 
-/* ---------- Hero ---------- */
 
 .hero {
   position: relative;
@@ -27,7 +25,6 @@
   color: var(--white);
 }
 
-/* full-bleed background, darkened towards the text (left) and the product panel (bottom) */
 .heroBg {
   position: absolute;
   inset: 0 0 0 36%;
@@ -38,7 +35,6 @@
   animation: heroDrift 18s var(--ease) both;
 }
 
-/* the photo fades into the navy on its left, so the headline sits on a clean background */
 .heroBg::after {
   content: '';
   position: absolute;
@@ -184,7 +180,6 @@
   color: var(--white);
 }
 
-/* ---------- Products ---------- */
 
 .products {
   display: flex;
@@ -233,7 +228,6 @@
   color: var(--white);
 }
 
-/* fills under the selected product over 3s, then the next one is selected */
 .rowProgress {
   position: absolute;
   left: 0;
@@ -409,7 +403,6 @@
   gap: 24px;
 }
 
-/* one fixed-height stage, so the page never jumps as the selection changes */
 .productsCompact .stage {
   height: 320px;
 }
@@ -444,7 +437,6 @@
   height: 12px;
 }
 
-/* ---------- Aerial video, bonded ---------- */
 
 .aerial {
   display: grid;
@@ -573,7 +565,6 @@
   }
 }
 
-/* the Starlink path drops out for a moment; the bonded stream keeps flowing */
 @keyframes starlinkDrop {
   0%,
   50%,
@@ -621,14 +612,12 @@
   background: var(--fog);
 }
 
-/* the source photos are small; show them whole, never cropped or blown up */
 .aerialPhoto img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-/* ---------- Tablet ---------- */
 
 @media (max-width: 1279px) {
   .strip {
@@ -648,7 +637,6 @@
   }
 }
 
-/* ---------- Phone ---------- */
 
 @media (max-width: 767px) {
   .hero {
@@ -749,7 +737,6 @@
   }
 }
 
-/* ---------- Images size their own boxes: shown whole, no empty bands ---------- */
 
 .aerialPhotos {
   align-items: start;

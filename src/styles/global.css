@@ -65,7 +65,6 @@ button {
   cursor: pointer;
 }
 
-/* Only show a text caret / I-beam where people can actually type. */
 body {
   caret-color: transparent;
   cursor: default;
@@ -109,7 +108,6 @@ em {
   color: var(--white);
 }
 
-/* ---------- Helpers ---------- */
 
 .visually-hidden {
   position: absolute !important;
@@ -143,7 +141,6 @@ em {
   min-height: 100vh;
 }
 
-/* The mobile artboards use different copy in a few places. */
 @media (max-width: 767px) {
   .hide-mobile {
     display: none !important;
@@ -156,7 +153,6 @@ em {
   }
 }
 
-/* Accent words in headings — colour only, same typeface as the heading. */
 .serif {
   font-family: inherit;
   font-style: normal;
@@ -166,7 +162,6 @@ em {
   font-family: var(--font-mono);
 }
 
-/* Small dot label above headings. */
 .chip {
   display: inline-flex;
   align-items: center;
@@ -196,7 +191,6 @@ em {
   color: var(--slate-2);
 }
 
-/* Contour-line map shown behind media while it loads (the design's placeholder treatment). */
 .topo {
   background-color: var(--topo);
   background-image:
@@ -209,7 +203,6 @@ em {
   background-image: repeating-radial-gradient(circle at 70% 40%, rgba(15, 47, 95, 0.1) 0 1px, transparent 1px 24px);
 }
 
-/* Photography and screenshots are shown whole: never cropped, zoomed, tinted or rounded. */
 .photo {
   position: relative;
   overflow: hidden;
@@ -222,11 +215,6 @@ em {
   object-fit: contain;
 }
 
-/*
- * Site rule: every image is shown complete and square-cornered. Fixed-size frames letterbox an image
- * (object-fit: contain) instead of cropping it, nothing zooms on hover, and nothing that directly
- * holds an image rounds its corners. Animated images in the site only fade, so transforms are safe to drop.
- */
 img {
   object-fit: contain !important;
   border-radius: 0 !important;
@@ -253,7 +241,6 @@ img {
   }
 }
 
-/* a frame that holds an image shows the image, not a navy fill around it */
 .topo:has(> img),
 .photo:has(> img) {
   background: none;

@@ -1,6 +1,3 @@
-// Sigtrack Watch (SIGTRACK WEAR) — every screen is a real screenshot from the SIGTRACK WEAR deck, and every
-// callout repeats that slide's own bullet points. Callouts sit only on elements visible in the screenshot;
-// x/y are the element's position as a fraction of the 466 × 466 screen.
 import wearActiveZone from '../assets/images/wear-active-zone.webp'
 import wearAutoTracking from '../assets/images/wear-auto-tracking.webp'
 import wearBattery from '../assets/images/wear-battery.webp'
@@ -139,7 +136,6 @@ export const watchScreens: WatchScreen[] = [
   },
 ]
 
-/** Watch features listed on the Sigtrack ESRI conference slide ("Field operators" devices). */
 export const watchSystemFeatures = [
   'Send SOS',
   'Auto-detect emergencies',

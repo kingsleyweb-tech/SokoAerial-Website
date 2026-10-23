@@ -1,4 +1,3 @@
-// Line icons from the approved designs (currentColor).
 interface IconProps {
   className?: string
 }
@@ -19,7 +18,6 @@ export function ArrowLeftIcon({ className }: IconProps) {
   )
 }
 
-/** Diagonal "go" arrow used inside pill buttons. */
 export function ArrowUpRightIcon({ className }: IconProps) {
   return (
     <svg className={className} viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">

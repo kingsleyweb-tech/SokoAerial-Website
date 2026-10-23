@@ -4,45 +4,31 @@ import { useMediaQuery } from '../../hooks/useMediaQuery'
 import styles from '../../styles/Sim.module.css'
 
 export interface SimStep {
-  /** Short chapter name for the step buttons. */
   label: string
-  /** One or two sentences: what this step shows. */
   caption: string
-  /** ms */
   duration: number
 }
 
 export interface SimFrame {
   step: number
-  /** ms into the current step */
   t: number
   compact: boolean
   reduced: boolean
-  /** Eased 0 → 1 over a window of the current step (ms). Always 1 with reduced motion. */
   p: (start: number, len?: number) => number
 }
 
 interface SimStageProps {
-  /** Names the simulation for assistive technology. */
   label: string
   steps: SimStep[]
   render: (f: SimFrame) => ReactNode
-  /** CSS aspect ratios of the stage, e.g. '16 / 9'. */
   ratio: string
   compactRatio?: string
-  /** Light stages suit product UIs drawn on white (browser, phone). */
   tone?: 'dark' | 'light'
 }
 
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v))
 const easeOut = (v: number) => 1 - Math.pow(1 - v, 3)
 
-/**
- * The shared shell for every product simulation. It plays like a short video (steps, progress, pause) but is
- * drawn live in SVG and HTML: no video files, sharp at every size, and labelled as a simulation. One clock drives
- * it and only while it is on screen. With reduced motion nothing plays: each step shows its finished state and
- * the visitor moves between steps with the buttons.
- */
 export function SimStage({ label, steps, render, ratio, compactRatio, tone = 'dark' }: SimStageProps) {
   const reduced = !!useReducedMotion()
   const compact = useMediaQuery('(max-width: 767px)')
@@ -79,7 +65,6 @@ export function SimStage({ label, steps, render, ratio, compactRatio, tone = 'da
     return () => cancelAnimationFrame(raf)
   }, [running, steps])
 
-  // on phones the step list scrolls sideways; keep the current step in view without moving the page
   useEffect(() => {
     const list = listRef.current
     const item = list?.children[clock.step] as HTMLElement | undefined

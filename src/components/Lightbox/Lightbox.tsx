@@ -7,7 +7,6 @@ export interface LightboxItem {
   src: string
   alt: string
   caption: string
-  /** Small uppercase label above the caption, e.g. the gallery category or product name. */
   label: string
 }
 
@@ -21,7 +20,6 @@ interface LightboxProps {
 
 const pad = (n: number) => String(n).padStart(2, '0')
 
-/** Full-screen image viewer: arrow keys, swipe, Esc to close. */
 export function Lightbox({ items, open, index, onChange, onClose }: LightboxProps) {
   const closeRef = useRef<HTMLButtonElement>(null)
   const swipeX = useRef<number | null>(null)

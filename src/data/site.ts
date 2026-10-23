@@ -48,7 +48,6 @@ export const productLinks: ProductLink[] = [
   { id: 'flash', label: 'Flash', short: 'Flash', to: paths.flash, image: images.flashDesktopCall },
 ]
 
-/** Pages listed in the full-screen index, with the preview shown on hover. */
 export const indexPages = [
   { label: 'Home', to: paths.home, image: images.sigtrackRadioTable, blurb: 'Eyes in the sky: the all-in-one response solution.' },
   { label: 'Capabilities', to: paths.capabilities, image: images.desktopSatellite, blurb: 'Dual usage: military ISR and civilian mapping, side by side.' },

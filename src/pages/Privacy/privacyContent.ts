@@ -1,5 +1,3 @@
-// Privacy policy carried over from sigtrackapp.com/privacy. Merged edit artefacts in the
-// source (e.g. "DSGVOGDPR", "theour") are resolved to the intended word; wording is otherwise unchanged.
 import { contact } from '../../data/site'
 
 export interface PolicyBlock {

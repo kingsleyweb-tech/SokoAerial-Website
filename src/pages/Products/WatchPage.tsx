@@ -20,7 +20,6 @@ interface Leader {
 export function WatchPage() {
   const [screenIndex, setScreenIndex] = useState(0)
   const [active, setActive] = useState<number | null>(null)
-  // Below 1024px the labels beside the watch give way to numbered dots on the screen plus a list.
   const compact = useMediaQuery('(max-width: 1023px)')
   const screen = watchScreens[screenIndex]
   const numbered = screen.callouts.map((c, i) => ({ ...c, i }))
@@ -47,7 +46,6 @@ export function WatchPage() {
 
   const toggle = (i: number) => (open: boolean) => setActive((a) => (open ? i : a === i ? null : a))
 
-  // Leader lines from each side label to its dot on the screen, measured from the live layout.
   const measure = useCallback(() => {
     const stage = stageRef.current
     if (!stage || compact) {
@@ -213,7 +211,6 @@ export function WatchPage() {
             )}
           </div>
 
-          {/* Every callout in plain text: the list on smaller screens, and the fallback for assistive tech everywhere. */}
           <ol className={compact ? styles.list : 'visually-hidden'}>
             {numbered.map((c) => (
               <li key={`${screen.id}-${c.i}`} data-active={active === c.i || undefined}>

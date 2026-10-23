@@ -1,24 +1,17 @@
-// Simplified vector map of Ghana for the system simulation. Shapes are hand-traced, generalised outlines
-// (border, coast, Lake Volta and trunk roads) at roughly 5–15 km accuracy — good enough to read as a
-// map of Ghana, not for navigation. Coordinates are [longitude, latitude] in WGS84.
-
 export type LonLat = readonly [number, number]
 
-/** Equirectangular projection into map units: 100 units per degree. */
 export const LON0 = -4.6
 export const LAT0 = 11.8
 export const UNITS_PER_DEG = 100
 
 export const project = ([lon, lat]: LonLat): [number, number] => [(lon - LON0) * UNITS_PER_DEG, (LAT0 - lat) * UNITS_PER_DEG]
 
-/** Gulf of Guinea coastline, west to east, running past both borders. */
 export const coast: LonLat[] = [
   [-4.6, 5.2], [-4.0, 5.23], [-3.3, 5.12], [-3.1, 5.08], [-2.6, 4.98], [-2.3, 4.88], [-2.05, 4.75], [-1.75, 4.88],
   [-1.55, 5.02], [-1.25, 5.1], [-0.95, 5.25], [-0.6, 5.35], [-0.35, 5.48], [-0.15, 5.55], [0.05, 5.62], [0.35, 5.75],
   [0.65, 5.8], [0.85, 5.95], [1.05, 6.05], [1.19, 6.1], [1.6, 6.2], [2.0, 6.33], [2.4, 6.36],
 ]
 
-/** Land border, from the coast at Aflao (Togo) round the north to the coast at the Côte d'Ivoire border. */
 const landBorder: LonLat[] = [
   [1.19, 6.1], [1.05, 6.35], [0.73, 6.55], [0.55, 6.9], [0.62, 7.35], [0.52, 7.55], [0.6, 8.1], [0.38, 8.75],
   [0.45, 9.25], [0.3, 9.8], [0.37, 10.3], [0.03, 10.6], [-0.05, 11.0], [0.0, 11.1], [-0.4, 11.1], [-0.7, 10.95],
@@ -37,7 +30,6 @@ export const lakeVolta: LonLat[] = [
   [-0.8, 6.75], [-0.35, 6.85], [-0.15, 6.6], [-0.05, 6.4],
 ]
 
-/** Trunk roads (N1, N6, N10, N2), simplified to their main towns. */
 export const roads: LonLat[][] = [
   [[1.19, 6.1], [0.6, 5.85], [-0.01, 5.67], [-0.19, 5.6], [-0.62, 5.35], [-1.25, 5.11], [-1.76, 4.9]],
   [[-0.19, 5.6], [-0.35, 5.81], [-0.46, 6.27], [-1.21, 6.62], [-1.62, 6.69]],
@@ -51,5 +43,4 @@ export const roads: LonLat[][] = [
 export const toPath = (pts: readonly LonLat[], close = false) =>
   pts.map((p, i) => `${i ? 'L' : 'M'}${project(p).map((n) => n.toFixed(1)).join(' ')}`).join('') + (close ? 'Z' : '')
 
-/** The sea: everything south of the coastline, carried well past both edges so a wide camera never runs out. */
 export const seaPath = `${toPath([[-9, 5.25], ...coast, [7, 6.4]])}L1100 1300L-500 1300Z`

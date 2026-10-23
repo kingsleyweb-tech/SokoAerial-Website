@@ -1,6 +1,3 @@
-// Flash, without the internet: the features on the Flash page. Paired Windows and Android devices on the same
-// local network, encrypted chat, a file the recipient accepts and that arrives verified, and a video call that
-// shows latency, resolution, frame rate and bitrate. File names, messages and every number are invented.
 import type { CSSProperties, ReactNode } from 'react'
 import sim from '../../../styles/Sim.module.css'
 import styles from '../../../styles/SimProducts.module.css'

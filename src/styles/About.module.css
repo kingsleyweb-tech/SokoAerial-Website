@@ -1,4 +1,3 @@
-/* ---------- Hero ---------- */
 
 .hero {
   position: relative;
@@ -26,7 +25,6 @@
 }
 
 .title {
-  /* stops short of the round photo on the right */
   max-width: calc(100% - 420px - 40px);
   font-size: var(--fs-display);
   font-weight: 600;
@@ -48,7 +46,6 @@
   color: var(--white-80);
 }
 
-/* ---------- Full-bleed image + address ---------- */
 
 .band {
   position: relative;
@@ -88,7 +85,6 @@
   letter-spacing: -0.02em;
 }
 
-/* ---------- Chapters ---------- */
 
 .chapters {
   display: grid;
@@ -150,7 +146,6 @@
   color: var(--slate);
 }
 
-/* ---------- ISR cycle ---------- */
 
 .isr {
   display: grid;
@@ -237,7 +232,6 @@
   color: var(--ice);
 }
 
-/* ---------- Where personnel use Sigtrack ---------- */
 
 .places {
   display: flex;
@@ -269,7 +263,6 @@
   padding-left: clamp(70px, 27.6vw - 38px, 360px);
 }
 
-/* ---------- Tablet ---------- */
 
 @media (max-width: 1023px) {
   .heroImage {
@@ -302,14 +295,12 @@
   }
 }
 
-/* ---------- Mobile artboard ---------- */
 
 @media (max-width: 767px) {
   .hero {
     padding: 108px var(--gutter) 48px;
   }
 
-  /* no room beside the headline on phones; the band photo below carries the image */
   .heroImage {
     display: none;
   }
@@ -324,7 +315,6 @@
     line-height: 0.9;
   }
 
-  /* in normal flow below the headline; also drop the desktop right/bottom offsets */
   .heroLead {
     position: relative;
     inset: auto;
@@ -385,7 +375,6 @@
   }
 }
 
-/* ---------- Images size their own boxes: shown whole, no empty bands ---------- */
 
 .heroImage {
   height: auto;

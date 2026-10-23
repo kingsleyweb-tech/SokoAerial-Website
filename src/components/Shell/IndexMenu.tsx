@@ -34,7 +34,6 @@ export function IndexMenu({ open, onClose }: IndexMenuProps) {
   const closeRef = useRef<HTMLButtonElement>(null)
   const close = useEffectEvent(onClose)
 
-  // Lock background scroll, move focus in, trap Tab, close on Escape.
   useEffect(() => {
     if (!open) return
     const opener = document.activeElement as HTMLElement | null

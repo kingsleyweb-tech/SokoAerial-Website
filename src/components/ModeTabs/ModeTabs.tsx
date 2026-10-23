@@ -11,9 +11,7 @@ interface Mode {
 
 interface ModeTabsProps {
   modes: Mode[]
-  /** Accessible name for the section and tab list. */
   label: string
-  /** Prefix for the laptop screenshot's alt text, e.g. "Watcher". */
   product: string
   onOpenImage: (src: string) => void
 }
@@ -38,24 +36,18 @@ const shot: Variants = {
   exit: { opacity: 0, x: -48, scale: 0.98, transition: { duration: 0.3, ease } },
 }
 
-/**
- * Big tab row (e.g. Track · Communicate · Mark) with a feature list and laptop screenshot per mode.
- * Modes advance every 4s — driven by the progress bar's CSS animation — and pause while hovered or focused.
- */
 export function ModeTabs({ modes, label, product, onOpenImage }: ModeTabsProps) {
   const [mode, setMode] = useState(0)
   const [paused, setPaused] = useState(false)
   const tabsRef = useRef<HTMLDivElement>(null)
   const cur = modes[mode]
 
-  // Preload every mode's screenshot so the rotation never shows an empty laptop.
   useEffect(() => {
     modes.forEach((m) => {
       new Image().src = m.image
     })
   }, [modes])
 
-  // On narrow screens the tab row scrolls; keep the active tab in view.
   useEffect(() => {
     const tabs = tabsRef.current
     const active = tabs?.children[mode] as HTMLElement | undefined

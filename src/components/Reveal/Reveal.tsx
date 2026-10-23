@@ -9,7 +9,6 @@ interface RevealProps {
   as?: 'div' | 'li' | 'section' | 'article'
 }
 
-/** Text reveal (Foundations v2): content rises 12px over 500ms, once. Reduced motion keeps opacity only. */
 export function Reveal({ children, className, id, delay = 0, as = 'div' }: RevealProps) {
   const Component = motion[as]
   return (

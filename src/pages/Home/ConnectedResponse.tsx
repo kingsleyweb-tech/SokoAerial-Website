@@ -1,6 +1,5 @@
 import { SimSection } from '../../components/Sim/SimSection'
 
-/** The Sigtrack system: how information moves from the field to command and back (ESRI conference deck). */
 export function ConnectedResponse() {
   return (
     <SimSection

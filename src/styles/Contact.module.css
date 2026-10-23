@@ -1,4 +1,3 @@
-/* ---------- Hero + contact rows ---------- */
 
 .hero {
   display: flex;
@@ -91,7 +90,6 @@
   transform: rotate(45deg);
 }
 
-/* ---------- Message form ---------- */
 
 .message {
   display: flex;
@@ -160,7 +158,6 @@
   gap: 12px;
 }
 
-/* ---------- Map ---------- */
 
 .mapSection {
   padding: 0 var(--gutter) 56px;

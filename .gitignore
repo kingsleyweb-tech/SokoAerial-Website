@@ -1,4 +1,3 @@
-# Logs & Debug
 logs/
 *.log
 npm-debug.log*
@@ -7,12 +6,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependency directories
 node_modules/
 jspm_packages/
 web_modules/
 
-# Build and distribution output
 dist/
 dist-ssr/
 build/
@@ -22,7 +19,6 @@ out/
 .cache/
 .vite/
 
-# Environment files & Secrets
 .env
 .env.*
 !.env.example
@@ -33,7 +29,6 @@ out/
 credentials.json
 secrets.*
 
-# Editor directories and OS files
 .vscode/
 !.vscode/extensions.json
 .idea/
@@ -45,7 +40,6 @@ Thumbs.db
 *.sln
 *.sw?
 
-# Temporary & Scratch files
 scratch/
 tmp/
 temp/

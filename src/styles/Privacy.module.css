@@ -7,7 +7,6 @@
   color: var(--midnight);
 }
 
-/* ---------- Table of contents ---------- */
 
 .toc > div:first-child {
   position: sticky;
@@ -72,7 +71,6 @@
   color: var(--signal);
 }
 
-/* ---------- Article ---------- */
 
 .article {
   display: flex;
@@ -142,7 +140,6 @@
   color: var(--midnight);
 }
 
-/* ---------- Mobile ---------- */
 
 .tocMobile button {
   display: grid;

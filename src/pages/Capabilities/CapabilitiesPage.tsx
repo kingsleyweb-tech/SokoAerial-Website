@@ -40,8 +40,6 @@ export function CapabilitiesPage() {
           </h1>
           <span className={`serif ${styles.tag}`}>dual usage</span>
         </motion.div>
-        {/* Scrolling row of the six areas; the second copy only completes the loop, so it is hidden from assistive tech. */}
-        {/* The selection also advances every 7s, timed by the active pill's progress bar; hovering pauses both. */}
         <nav
           className={`${styles.areaMarquee} hide-mobile`}
           aria-label="Capability areas"
@@ -171,7 +169,6 @@ export function CapabilitiesPage() {
           </h2>
           <span className="label hide-mobile">ISR post-mission</span>
         </div>
-        {/* Two copies of the cards scroll as one loop; the second copy is hidden from screen readers. */}
         <div className={styles.roleMarquee}>
           <div className={styles.roleTrack}>
             {[0, 1].map((copy) =>

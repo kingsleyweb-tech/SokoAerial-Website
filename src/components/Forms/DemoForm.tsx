@@ -9,16 +9,12 @@ import { Consent, SentNote, SentenceInput } from './Forms'
 interface DemoFormProps {
   product: string
   tone?: 'light' | 'signal'
-  /** "Hi, I’m" on Sigtrack Web; "I’m" elsewhere. */
   casual?: boolean
-  /** Starts the feedback sentence, e.g. "After trying the demo," */
   feedbackLead: string
-  /** Label for the feedback box on phones. */
   mobileFeedbackLabel: string
   button: PillVariant
 }
 
-/** "Give the demo a try and provide your feedback" — a conversational form (Foundations v2). */
 export function DemoForm({ product, tone = 'light', casual = false, feedbackLead, mobileFeedbackLabel, button }: DemoFormProps) {
   const [sent, setSent] = useState(false)
   const phone = useMediaQuery('(max-width: 767px)')

@@ -1,10 +1,8 @@
-/* ---------- Hero ---------- */
 
 .hero {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  /* the text block (rows 2–5) sits vertically centred beside the phone */
   grid-template-rows: 1fr auto auto auto auto 1fr;
   column-gap: 32px;
   padding: 100px var(--gutter) 56px;
@@ -19,7 +17,6 @@
   grid-column: 1;
   grid-row: 3;
   margin: 8px 0 28px -0.04em;
-  /* fills the space left of the phone (320px + gap) so the word is never covered */
   font-size: var(--fs-display);
   line-height: 0.95;
   letter-spacing: -0.03em;
@@ -36,7 +33,6 @@
   justify-self: end;
 }
 
-/* frame details live in PhoneFrame; pages only set the width (landscape screenshots get a wider phone) */
 .phone {
   width: 320px;
 }
@@ -45,7 +41,6 @@
   width: 560px;
 }
 
-/* the giant word fills whatever the phone leaves free */
 .hero:has(.phone[data-orientation='landscape']) {
   --phone-space: 592px;
 }
@@ -84,7 +79,6 @@
   margin-top: 28px;
 }
 
-/* ---------- Five things ---------- */
 
 .pocket {
   display: flex;
@@ -203,7 +197,6 @@
   color: var(--ice-72);
 }
 
-/* ---------- Awareness kit ---------- */
 
 .kit {
   display: flex;
@@ -248,7 +241,6 @@
   letter-spacing: -0.02em;
 }
 
-/* ---------- Radios ---------- */
 
 .radios {
   display: grid;
@@ -297,7 +289,6 @@
   line-height: 1.12;
 }
 
-/* ---------- Tablet / mobile ---------- */
 
 @media (max-width: 1023px) {
   .hero {
@@ -308,7 +299,6 @@
     padding-top: 110px;
   }
 
-  /* stacked layout: the word sits in the flow under "Sigtrack" so the phone can't cover it */
   .giant {
     position: relative;
     top: auto;
@@ -423,7 +413,6 @@
   }
 }
 
-/* ---------- Images size their own boxes: shown whole, no empty bands ---------- */
 
 .arch {
   height: auto;

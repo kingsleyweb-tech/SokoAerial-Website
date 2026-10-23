@@ -3,11 +3,6 @@ import { Link } from 'react-router-dom'
 import styles from '../../styles/Pill.module.css'
 import { ArrowDownIcon, ArrowUpRightIcon } from '../Icons/Icons'
 
-/**
- * Pill control from Foundations v2: a rounded pill with a circle arrow.
- * dark = midnight + signal circle · signal = blue + white circle · light = white + signal circle
- * contrast = white + midnight circle · outline / outline-light = bordered, no circle.
- */
 export type PillVariant = 'dark' | 'signal' | 'light' | 'contrast' | 'outline' | 'outline-light'
 
 interface CommonProps {

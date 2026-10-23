@@ -16,10 +16,6 @@ const platforms: Record<ProductId, string> = {
   flash: 'Local network',
 }
 
-/**
- * Home hero: one message, two actions, and every product one click away, over a full-bleed photo of a
- * Sigtrack field deployment (operators beside a mobile command vehicle at dusk).
- */
 export function HomeHero() {
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
@@ -62,7 +58,6 @@ export function HomeHero() {
         ))}
       </nav>
 
-      {/* phones: the same links as compact buttons, all visible at once */}
       <nav className={styles.chips} aria-label="Sigtrack products">
         {productLinks.map((p) => (
           <Link key={p.id} to={p.to} className={styles.chipLink}>

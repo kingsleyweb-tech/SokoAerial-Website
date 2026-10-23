@@ -6,7 +6,6 @@ import styles from '../../styles/About.module.css'
 
 const pad = (n: number) => String(n).padStart(2, '0')
 
-// Seven roles around the post-mission cycle (positions from the v2 artboard).
 const cycle = [
   { cx: 400, cy: 150, lines: ['Data analysis', '& exploitation'], x: 400, y: 104, anchor: 'middle' },
   { cx: 556.4, cy: 225.3, lines: ['Mission reporting', '& debriefing'], x: 578, y: 222, anchor: 'start' },

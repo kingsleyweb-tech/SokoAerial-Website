@@ -13,7 +13,6 @@ type Product = (typeof systemProducts)[number]
 const pad = (n: number) => String(n).padStart(2, '0')
 const exploreLabel = (p: Product) => (p.name === 'Sigtrack' ? `Sigtrack ${p.sub}` : p.sub)
 
-/** Each product shown in the shape it runs on; screenshots are never cropped (object-fit: contain). */
 function Device({ p }: { p: Product }) {
   const alt = `${p.name} ${p.sub}`
   switch (p.frame) {
@@ -47,10 +46,6 @@ function Device({ p }: { p: Product }) {
   }
 }
 
-/**
- * "The system": a product list beside a live preview. The selection advances every 3s, timed by the active
- * row's progress bar; hovering or focusing the section pauses it, and the pause button stops it outright.
- */
 export function ProductShowcase() {
   const [active, setActive] = useState(0)
   const [hovered, setHovered] = useState(false)
