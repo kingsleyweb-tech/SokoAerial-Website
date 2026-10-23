@@ -1,100 +1,46 @@
-# React + TypeScript + Vite
+# Soko Aerial: Sigtrack Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The official website for **Sigtrack** by Soko Aerial, a team awareness platform that connects radios, command trailers, drones and the people carrying them, so every team shares one live picture in the field.
 
-Currently, two official plugins are available:
+The site presents the Sigtrack products, their capabilities for military and civilian use, a photo gallery of real deployments, and ways to get in touch.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What's on the site
 
-## React Compiler
+- **Home**: overview of Sigtrack, interactive product demos and where it is used
+- **Products**
+  - **Sigtrack Web**: live team tracking in the browser
+  - **Sigtrack Mobile**: the Android field app
+  - **Sigtrack Desktop**: tracking, history playback and analysis on Windows
+  - **Sigtrack Watch**: a Wear OS companion with SOS and alerts
+  - **Radios**: Silvus and Meshtastic integration for off-grid communication
+  - **Watcher**: drone payload with live video and telemetry
+  - **Flash**: calls, chat and file sharing over a local network
+- **Capabilities**, **Gallery**, **About Us** and **Contact**
+- **Legal Notice** and **Privacy Policy**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Built with
 
-## Expanding the ESLint configuration
+React, TypeScript, Vite, React Router and Framer Motion. Videos are streamed from Cloudinary.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Running it locally
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Then open http://localhost:5173.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Building for production
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run build
 ```
 
-## Hosting: deep links and refreshes
+The finished site is written to the `dist` folder, ready to upload to any static host. Hosting settings for Firebase, Vercel, Netlify, Cloudflare Pages and Apache are included.
 
-The site is a single-page app, so the server must answer every route (e.g. `/about`, `/contact`)
-with `index.html`. Fallback rules for common hosts ship with the build:
+## Contact
 
-| Host | File |
-| --- | --- |
-| Netlify, Cloudflare Pages | `public/_redirects` |
-| Vercel | `vercel.json` |
-| Apache / cPanel | `public/.htaccess` |
-| Azure Static Web Apps | `public/staticwebapp.config.json` |
-| Firebase Hosting | `firebase.json` |
-| GitHub Pages | `dist/404.html` (copied from `index.html` at build time, see `vite.config.ts`) |
-
-On nginx, add this to the site's `server` block:
-
-```nginx
-location / {
-  try_files $uri $uri/ /index.html;
-}
-```
-
-Unknown paths redirect to the home page inside the app, and old sigtrackapp.com URLs
-(`/about-us-13`, `/sigtackweb`, `/chooseplan`, `/payment`, `/exhibition`) redirect to their new pages.
+- **Address:** Soko Aerial, Burma Camp, Accra, Ghana
+- **Phone:** +233 24 324 9309
+- **Email:** sokoaerial@gmail.com
