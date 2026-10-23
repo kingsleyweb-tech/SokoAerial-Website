@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom'
 import { contact, indexPages, paths, productLinks } from '../../data/site'
 import styles from '../../styles/IndexMenu.module.css'
 import { CloseIcon } from '../Icons/Icons'
-import { Pill } from '../Pill/Pill'
 
 interface IndexMenuProps {
   open: boolean
@@ -171,9 +170,6 @@ export function IndexMenu({ open, onClose }: IndexMenuProps) {
                   </li>
                 ))}
               </ul>
-              <Pill to={paths.plans} variant="signal" block onClick={onClose}>
-                Get Sigtrack
-              </Pill>
               <div className={styles.mobileContact}>
                 <a href={contact.phoneHref}>{contact.phoneDisplay}</a>
                 <a href={`mailto:${contact.email}`}>{contact.email}</a>

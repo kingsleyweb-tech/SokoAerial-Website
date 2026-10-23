@@ -1,46 +1,44 @@
 // Real Sigtrack imagery sourced from sigtrackapp.com, resized and re-encoded for the web.
-import commandSetup from '../assets/images/command-setup.jpg'
-import desktopCommunicate from '../assets/images/desktop-communicate.jpg'
-import desktopGlobe from '../assets/images/desktop-globe.jpg'
-import desktopSatellite from '../assets/images/desktop-satellite.jpg'
-import desktopTracking from '../assets/images/desktop-tracking.jpg'
-import desktopWestAfrica from '../assets/images/desktop-west-africa.jpg'
-import desktopWorldMap from '../assets/images/desktop-world-map.jpg'
-import fieldBriefing from '../assets/images/field-briefing.jpg'
-import fieldTeam from '../assets/images/field-team.jpg'
-import meshtasticDevice from '../assets/images/meshtastic-device.jpg'
-import meshtasticSetup from '../assets/images/meshtastic-setup.jpg'
-import mobileFieldKit from '../assets/images/mobile-field-kit.jpg'
-import mobileGallery from '../assets/images/mobile-gallery.jpg'
-import mobileMapTypes from '../assets/images/mobile-map-types.jpg'
-import mobileMarkers from '../assets/images/mobile-markers.jpg'
-import mobileRadioMap from '../assets/images/mobile-radio-map.jpg'
-import mobileWithRadio from '../assets/images/mobile-with-radio.jpg'
-import sigtrackEmblem from '../assets/images/sigtrack-emblem.png'
-import radioWorkbench from '../assets/images/radio-workbench.jpg'
-import sigtrackRadioCloseup from '../assets/images/sigtrack-radio-closeup.jpg'
-import sigtrackRadioTable from '../assets/images/sigtrack-radio-table.jpg'
-import sigtrackRadiosPair from '../assets/images/sigtrack-radios-pair.jpg'
-import silvusPromo from '../assets/images/silvus-promo.jpg'
-import silvusRadio from '../assets/images/silvus-radio.jpg'
-import webDashboard from '../assets/images/web-dashboard.jpg'
-import webGhanaTeams from '../assets/images/web-ghana-teams.jpg'
-import webMarkers from '../assets/images/web-markers.jpg'
-import webMeshChat from '../assets/images/web-mesh-chat.jpg'
-import webMeshMap from '../assets/images/web-mesh-map.jpg'
-import webMeshtasticConnect from '../assets/images/web-meshtastic-connect.jpg'
+import commandSetup from '../assets/images/command-setup.webp'
+import desktopCommunicate from '../assets/images/desktop-communicate.webp'
+import desktopGlobe from '../assets/images/desktop-globe.webp'
+import desktopSatellite from '../assets/images/desktop-satellite.webp'
+import desktopTracking from '../assets/images/desktop-tracking.webp'
+import desktopWestAfrica from '../assets/images/desktop-west-africa.webp'
+import desktopWorldMap from '../assets/images/desktop-world-map.webp'
+import fieldBriefing from '../assets/images/field-briefing.webp'
+import fieldTeam from '../assets/images/field-team.webp'
+import meshtasticDevice from '../assets/images/meshtastic-device.webp'
+import meshtasticSetup from '../assets/images/meshtastic-setup.webp'
+import mobileFieldKit from '../assets/images/mobile-field-kit.webp'
+import mobileGallery from '../assets/images/mobile-gallery.webp'
+import mobileMapTypes from '../assets/images/mobile-map-types.webp'
+import mobileMarkers from '../assets/images/mobile-markers.webp'
+import mobileRadioMap from '../assets/images/mobile-radio-map.webp'
+import mobileWithRadio from '../assets/images/mobile-with-radio.webp'
+import sigtrackEmblem from '../assets/images/sigtrack-emblem.webp'
+import radioWorkbench from '../assets/images/radio-workbench.webp'
+import sigtrackRadioCloseup from '../assets/images/sigtrack-radio-closeup.webp'
+import sigtrackRadioTable from '../assets/images/sigtrack-radio-table.webp'
+import sigtrackRadiosPair from '../assets/images/sigtrack-radios-pair.webp'
+import silvusPromo from '../assets/images/silvus-promo.webp'
+import silvusRadio from '../assets/images/silvus-radio.webp'
+import webDashboard from '../assets/images/web-dashboard.webp'
+import webGhanaTeams from '../assets/images/web-ghana-teams.webp'
+import webMarkers from '../assets/images/web-markers.webp'
+import webMeshChat from '../assets/images/web-mesh-chat.webp'
+import webMeshMap from '../assets/images/web-mesh-map.webp'
 // Newer field photos and product screenshots supplied directly by the Sigtrack team.
-import fieldCommandTruck from '../assets/images/field-command-truck.jpg'
-import flashChat from '../assets/images/flash-chat.jpg'
-import flashDesktopCall from '../assets/images/flash-desktop-call.jpg'
-import flashMobileCall from '../assets/images/flash-mobile-call.jpg'
-import flashShare from '../assets/images/flash-share.jpg'
-import flashTransfers from '../assets/images/flash-transfers.jpg'
-import watcherCockpit from '../assets/images/watcher-cockpit.jpg'
-import watcherMap from '../assets/images/watcher-map.jpg'
-import watcherTelemetry from '../assets/images/watcher-telemetry.jpg'
-import webCommandWall from '../assets/images/web-command-wall.jpg'
-import webTacticalSymbols from '../assets/images/web-tactical-symbols.jpg'
+import fieldCommandTruck from '../assets/images/field-command-truck.webp'
+import flashChat from '../assets/images/flash-chat.webp'
+import flashDesktopCall from '../assets/images/flash-desktop-call.webp'
+import flashMobileCall from '../assets/images/flash-mobile-call.webp'
+import flashShare from '../assets/images/flash-share.webp'
+import watcherCockpit from '../assets/images/watcher-cockpit.webp'
+import watcherMap from '../assets/images/watcher-map.webp'
+import watcherTelemetry from '../assets/images/watcher-telemetry.webp'
+import webCommandWall from '../assets/images/web-command-wall.webp'
+import webTacticalSymbols from '../assets/images/web-tactical-symbols.webp'
 
 /** Sigtrack "Eyes in the Sky" emblem, shown beside the wordmark. */
 export const logo = sigtrackEmblem
@@ -60,7 +58,6 @@ export const images = {
   flashDesktopCall,
   flashMobileCall,
   flashShare,
-  flashTransfers,
   meshtasticDevice,
   meshtasticSetup,
   mobileFieldKit,
@@ -84,7 +81,6 @@ export const images = {
   webMarkers,
   webMeshChat,
   webMeshMap,
-  webMeshtasticConnect,
   webTacticalSymbols,
 }
 

@@ -111,20 +111,20 @@
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  width: min(640px, 100%);
-  height: 96px;
-  padding: 8px;
-  border-radius: 48px;
+  width: min(320px, 100%);
+  height: 48px;
+  padding: 4px;
+  border-radius: 24px;
   background: var(--midnight);
 }
 
 .knobThumb {
   position: absolute;
-  top: 8px;
-  bottom: 8px;
-  left: 8px;
-  width: calc(50% - 8px);
-  border-radius: 40px;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  border-radius: 20px;
   background: var(--white);
   transition: transform 0.45s var(--ease);
 }
@@ -137,9 +137,9 @@
   position: relative;
   border: 0;
   background: transparent;
-  font-size: 24px;
+  font-size: 15px;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   color: var(--white);
   transition: color 0.45s var(--ease);
 }
@@ -323,72 +323,6 @@
   height: 240px;
 }
 
-/* ---------- Get Sigtrack ---------- */
-
-.get {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 36px;
-  padding: clamp(36px, 1.5vw + 24px, 48px) var(--gutter);
-  background: var(--signal);
-  color: var(--white);
-}
-
-.getTitle {
-  font-size: var(--fs-display);
-  font-weight: 700;
-  letter-spacing: -0.065em;
-  line-height: 0.85;
-}
-
-.planRows {
-  display: flex;
-  flex-direction: column;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-}
-
-.planRow {
-  display: grid;
-  grid-template-columns: 280px minmax(0, 1fr) 200px 60px;
-  align-items: center;
-  padding: 26px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.4);
-  color: var(--white);
-  transition: padding-left 0.35s var(--ease);
-}
-
-.planRow:hover {
-  padding-left: 16px;
-}
-
-.planLabel {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.planPrice {
-  font-size: var(--fs-h3);
-  font-weight: 500;
-  letter-spacing: -0.03em;
-}
-
-.planAction {
-  font-size: 16px;
-}
-
-.planArrow {
-  font-size: 23px;
-  text-align: right;
-  transition: transform var(--t-hover) var(--ease);
-}
-
-.planRow:hover .planArrow {
-  transform: rotate(45deg);
-}
-
 /* ---------- Tablet ---------- */
 
 @media (max-width: 1023px) {
@@ -446,21 +380,11 @@
   }
 
   .knob {
-    height: 64px;
-    padding: 6px;
-    border-radius: 32px;
-  }
-
-  .knobThumb {
-    top: 6px;
-    bottom: 6px;
-    left: 6px;
-    width: calc(50% - 6px);
-    border-radius: 26px;
+    height: 44px;
   }
 
   .knob button {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .usageBody {
@@ -517,49 +441,23 @@
     height: 120px;
   }
 
-  .get {
-    gap: 28px;
-  }
-
-  .planRow {
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-rows: auto auto;
-    column-gap: 16px;
-    row-gap: 4px;
-    padding: 20px 0;
-  }
-
-  .planLabel {
-    font-size: 10px;
-  }
-
-  .planPrice {
-    grid-row: 2;
-  }
-
-  .planAction {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    font-size: 15px;
-  }
-
-  .planArrow {
-    display: none;
-  }
 }
-.planAction::after { content: ''; } @media (max-width: 767px) { .planAction::after { content: ' ↗'; } }
 
 /* ---------- Images size their own boxes: shown whole, no empty bands ---------- */
 
 .useImage {
+  display: grid;
   height: auto;
   width: fit-content;
   max-width: 100%;
 }
 
+/* outgoing and incoming photos share one cell so the crossfade overlaps instead of stacking */
 .useImage img {
   position: static;
+  grid-area: 1 / 1;
   display: block;
+  margin: auto;
   width: auto;
   max-width: 100%;
   height: auto;

@@ -1,15 +1,15 @@
 // Sigtrack Watch (SIGTRACK WEAR) — every screen is a real screenshot from the SIGTRACK WEAR deck, and every
 // callout repeats that slide's own bullet points. Callouts sit only on elements visible in the screenshot;
 // x/y are the element's position as a fraction of the 466 × 466 screen.
-import wearActiveZone from '../assets/images/wear-active-zone.jpg'
-import wearAutoTracking from '../assets/images/wear-auto-tracking.jpg'
-import wearBattery from '../assets/images/wear-battery.jpg'
-import wearCreateZone from '../assets/images/wear-create-zone.jpg'
-import wearLocator from '../assets/images/wear-locator.jpg'
-import wearMapType from '../assets/images/wear-map-type.jpg'
-import wearQuickActions from '../assets/images/wear-quick-actions.jpg'
-import wearWeather from '../assets/images/wear-weather.jpg'
-import watchOnWrist from '../assets/images/watch-on-wrist.jpg'
+import wearActiveZone from '../assets/images/wear-active-zone.webp'
+import wearAutoTracking from '../assets/images/wear-auto-tracking.webp'
+import wearBattery from '../assets/images/wear-battery.webp'
+import wearCreateZone from '../assets/images/wear-create-zone.webp'
+import wearLocator from '../assets/images/wear-locator.webp'
+import wearMapType from '../assets/images/wear-map-type.webp'
+import wearQuickActions from '../assets/images/wear-quick-actions.webp'
+import wearWeather from '../assets/images/wear-weather.webp'
+import watchOnWrist from '../assets/images/watch-on-wrist.webp'
 
 export interface WatchCallout {
   x: number

@@ -5,7 +5,6 @@ import { logo } from '../../data/media'
 import { paths, productLinks, type ProductId } from '../../data/site'
 import { useScrollProgress } from '../../hooks/useScrollProgress'
 import styles from '../../styles/Shell.module.css'
-import { Pill } from '../Pill/Pill'
 
 const pad = (n: number) => String(n).padStart(2, '0')
 
@@ -150,7 +149,7 @@ interface ActionsProps {
   active?: ProductId
 }
 
-/** Desktop: floating product switcher and Get Sigtrack pill, top right of each page. */
+/** Desktop: floating product switcher, top right of each page. */
 export function FloatingActions({ tone, active }: ActionsProps) {
   return (
     <div className={`${styles.actions} ${styles[tone]}`}>
@@ -162,9 +161,6 @@ export function FloatingActions({ tone, active }: ActionsProps) {
           </Link>
         ))}
       </nav>
-      <Pill to={paths.plans} variant="signal" size="sm">
-        Get Sigtrack
-      </Pill>
     </div>
   )
 }

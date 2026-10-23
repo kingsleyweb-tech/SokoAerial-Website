@@ -11,7 +11,7 @@ import styles from '../../styles/Contact.module.css'
 import demo from '../../styles/DemoForm.module.css'
 import forms from '../../styles/Forms.module.css'
 
-const interests = ['Sigtrack Web', 'Sigtrack Mobile', 'Sigtrack Desktop', 'Radios', 'Plans', 'A demo']
+const interests = ['Sigtrack Web', 'Sigtrack Mobile', 'Sigtrack Desktop', 'Radios', 'A demo']
 const mapQuery = encodeURIComponent(`Burma Camp, Accra, Ghana`)
 
 const rows = [

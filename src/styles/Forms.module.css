@@ -108,39 +108,7 @@
   display: none;
 }
 
-/* ---------- Standard fields (plans) ---------- */
-
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.input {
-  width: 100%;
-  height: 56px;
-  padding: 0 18px;
-  border: 1px solid var(--field);
-  border-radius: 16px;
-  background: var(--white);
-  font-size: 16px;
-  color: var(--midnight);
-  outline: none;
-  transition:
-    border-color var(--t-hover) ease,
-    box-shadow var(--t-hover) ease;
-}
-
-.input:focus {
-  border-color: var(--signal);
-  box-shadow: 0 0 0 3px rgba(42, 95, 232, 0.2);
-}
-
-select.input {
-  appearance: auto;
-}
+/* ---------- Text areas ---------- */
 
 .softArea {
   width: 100%;
@@ -161,11 +129,6 @@ select.input {
 }
 
 @media (max-width: 767px) {
-  .input {
-    height: 52px;
-    border-radius: 14px;
-  }
-
   .softArea {
     padding: 16px;
     border-radius: 18px;

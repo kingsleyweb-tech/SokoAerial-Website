@@ -76,7 +76,7 @@ export default defineConfig([
 
 ## Hosting: deep links and refreshes
 
-The site is a single-page app, so the server must answer every route (e.g. `/about`, `/plans?plan=pro`)
+The site is a single-page app, so the server must answer every route (e.g. `/about`, `/contact`)
 with `index.html`. Fallback rules for common hosts ship with the build:
 
 | Host | File |

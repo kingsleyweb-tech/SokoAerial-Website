@@ -31,11 +31,11 @@ export function HomePage() {
           <p className={styles.statementText}>
             Sigtrack connects radios{' '}
             <span className={`${styles.pill} topo photo`}>
-              <img src={images.sigtrackRadiosPair} alt="" />
+              <img src={images.sigtrackRadiosPair} alt="" loading="lazy" />
             </span>{' '}
             command trailers{' '}
             <span className={`${styles.pill} ${styles.pillSmall} topo--light photo hide-mobile`}>
-              <img src={images.commandSetup} alt="" />
+              <img src={images.commandSetup} alt="" loading="lazy" />
             </span>{' '}
             and drones, so every team shares <em className="serif">one picture,</em> anywhere.
           </p>
@@ -182,32 +182,6 @@ export function HomePage() {
         ))}
       </section>
 
-      {/* Get Sigtrack */}
-      <section className={styles.get} aria-labelledby="get-title">
-        <h2 id="get-title" className={styles.getTitle}>
-          Get Sigtrack<em className="serif">.</em>
-        </h2>
-        <div className={styles.planRows}>
-          <Link to={`${paths.plans}?plan=basic`} className={styles.planRow}>
-            <span className={styles.planLabel}>Basic plan</span>
-            <span className={styles.planPrice}>Free</span>
-            <span className={styles.planAction}>Download</span>
-            <span className={styles.planArrow} aria-hidden="true">
-              ↗
-            </span>
-          </Link>
-          <Link to={`${paths.plans}?plan=pro`} className={styles.planRow}>
-            <span className={styles.planLabel}>Professional plan</span>
-            <span className={styles.planPrice}>
-              USD 50 <em className="serif">/ month</em>
-            </span>
-            <span className={styles.planAction}>Choose plan</span>
-            <span className={styles.planArrow} aria-hidden="true">
-              ↗
-            </span>
-          </Link>
-        </div>
-      </section>
     </>
   )
 }

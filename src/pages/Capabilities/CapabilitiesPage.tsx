@@ -124,7 +124,7 @@ export function CapabilitiesPage() {
                 ))}
               </ul>
               <div className={`${styles.explorerImage} topo photo`}>
-                <img src={cur.image} alt="" />
+                <img src={cur.image} alt="" loading="lazy" />
               </div>
             </div>
           </motion.div>

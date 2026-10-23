@@ -10,7 +10,6 @@ import {
   GalleryPage,
   LegalPage,
   MobilePage,
-  PlansPage,
   PrivacyPage,
   RadiosPage,
   WatcherPage,
@@ -46,7 +45,6 @@ export const pageRoutes: PageRoute[] = [
   { path: paths.flash, title: 'Flash', element: <FlashPage />, rail: { label: 'Flash', num: 12 }, tone: { actions: 'light', capsule: 'light' }, product: 'flash' },
   { path: paths.legal, title: 'Legal Notice', element: <LegalPage />, rail: { label: 'Legal Notice', short: 'Legal', num: 13 }, tone: { actions: 'light', capsule: 'light' } },
   { path: paths.privacy, title: 'Privacy Policy', element: <PrivacyPage />, rail: { label: 'Privacy Policy', short: 'Privacy', num: 14 }, tone: { actions: 'light', capsule: 'light' } },
-  { path: paths.plans, title: 'Get Sigtrack', element: <PlansPage />, rail: { label: 'Get Sigtrack', short: 'Plans', num: 15 }, tone: { actions: 'dark', capsule: 'dark' } },
 ]
 
 export const pageCount = pageRoutes.length
@@ -55,7 +53,7 @@ export const pageCount = pageRoutes.length
 export const legacyRedirects: Record<string, string> = {
   '/about-us-13': paths.about,
   '/sigtackweb': paths.web,
-  '/chooseplan': paths.plans,
-  '/payment': `${paths.plans}?plan=pro`,
+  '/chooseplan': paths.contact,
+  '/payment': paths.contact,
   '/exhibition': paths.gallery,
 }

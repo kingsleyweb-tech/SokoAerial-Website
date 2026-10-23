@@ -40,7 +40,7 @@ export function RadiosPage() {
             Silvus
           </motion.span>
           <motion.div className={`${styles.round} topo photo`} {...rise(0.1)}>
-            <img src={images.silvusRadio} alt="Silvus radio" />
+            <img src={images.silvusRadio} alt="Silvus radio" loading="lazy" />
           </motion.div>
           <p>Images, PDFs, documents, messages and videos: rich multimedia for detailed information sharing.</p>
         </div>
@@ -52,7 +52,7 @@ export function RadiosPage() {
             Meshtastic
           </motion.span>
           <motion.div className={`${styles.round} topo`} {...rise(0.1)}>
-            <img src={images.meshtasticDevice} alt="Meshtastic radio" />
+            <img src={images.meshtasticDevice} alt="Meshtastic radio" loading="lazy" />
           </motion.div>
           <p>Efficient burst messages: reliable coverage in challenging terrain and remote locations.</p>
         </div>

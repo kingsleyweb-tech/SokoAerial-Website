@@ -52,14 +52,6 @@ export function CloseIcon({ className }: IconProps) {
   )
 }
 
-export function PlusIcon({ className }: IconProps) {
-  return (
-    <svg className={className} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-      <path d="M8 2v12M2 8h12" />
-    </svg>
-  )
-}
-
 export function ExpandIcon({ className }: IconProps) {
   return (
     <svg className={className} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">

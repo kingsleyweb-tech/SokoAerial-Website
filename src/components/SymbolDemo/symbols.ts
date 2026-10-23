@@ -1,6 +1,6 @@
 // Data for the tactical-symbol demo, taken from a screen recording of Sigtrack Web's "Tactical Symbols"
 // workflow. Symbols are redrawn from the recording's Friend Air set and named only by the label they show.
-import demoMap from '../../assets/images/demo-map-accra.jpg'
+import demoMap from '../../assets/images/demo-map-accra.webp'
 
 export type ReportType = 'FOB Incident Report' | 'Operations Report'
 export const reportTypes: ReportType[] = ['FOB Incident Report', 'Operations Report']

@@ -1,51 +1,10 @@
 import { useEffect, useState } from 'react'
 import { LegalHero } from '../../components/LegalHero/LegalHero'
-import { Pill } from '../../components/Pill/Pill'
 import styles from '../../styles/Privacy.module.css'
 import { privacySections, type PolicyBlock } from './privacyContent'
 
-const OPT_OUT_KEY = 'sigtrack-matomo-opt-out'
 const pad = (n: number) => String(n).padStart(2, '0')
 const total = pad(privacySections.length)
-
-function readOptOut() {
-  try {
-    return localStorage.getItem(OPT_OUT_KEY) === '1'
-  } catch {
-    return false
-  }
-}
-
-type MatomoQueue = unknown[][]
-
-function OptOut() {
-  const [optedOut, setOptedOut] = useState(readOptOut)
-
-  const toggle = () => {
-    const next = !optedOut
-    try {
-      localStorage.setItem(OPT_OUT_KEY, next ? '1' : '0')
-    } catch {
-      // Storage unavailable — the choice still applies for this visit.
-    }
-    const paq = (window as unknown as { _paq?: MatomoQueue })._paq
-    paq?.push([next ? 'optUserOut' : 'forgetUserOptOut'])
-    setOptedOut(next)
-  }
-
-  return (
-    <div className={styles.optOut}>
-      <p>
-        {optedOut
-          ? 'You have opted out. Your visits to this website are not recorded by Matomo.'
-          : 'Your visit to this website is currently recorded by Matomo web analytics.'}
-      </p>
-      <Pill type="button" variant="light" onClick={toggle}>
-        {optedOut ? 'Allow tracking again' : 'Opt out of tracking'}
-      </Pill>
-    </div>
-  )
-}
 
 function Block({ block }: { block: PolicyBlock }) {
   const chips = block.heading === 'Server log files'
@@ -61,7 +20,6 @@ function Block({ block }: { block: PolicyBlock }) {
         </ul>
       )}
       {block.after?.map((p) => <p key={p}>{p}</p>)}
-      {block.optOut && <OptOut />}
     </div>
   )
 }

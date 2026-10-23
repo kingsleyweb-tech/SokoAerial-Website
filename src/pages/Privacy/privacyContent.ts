@@ -7,8 +7,6 @@ export interface PolicyBlock {
   paragraphs?: string[]
   list?: string[]
   after?: string[]
-  /** Renders the Matomo opt-out control after this block. */
-  optOut?: boolean
 }
 
 export interface PolicySection {
@@ -34,7 +32,7 @@ export const privacySections: PolicySection[] = [
         heading: 'Data collection on our website',
         paragraphs: [
           'Who is responsible for the data collection on this website? The data collected on this website are processed by the website operator. The operator’s contact details can be found in the website’s required legal notice.',
-          'How do we collect your data? Some data are collected when you provide it to us. This could, for example, be data you enter in a contact form. Other data are collected automatically by our IT systems when you visit and use our website. These data are primarily technical data such as the browser and operating system you are using or when you accessed the website. These data are collected automatically as soon as you enter our website.',
+          'How do we collect your data? Some data are collected when you provide them to us. This could, for example, be data you enter in a contact form. Other data are collected automatically by our IT systems when you visit and use our website. These data are primarily technical data such as the browser and operating system you are using or when you accessed the website. These data are collected automatically as soon as you enter our website.',
           'What do we use your data for? Part of the data is collected to ensure the proper functioning of the website. Other data can be used to analyze how visitors use the site.',
           'What rights do you have regarding your data? You always have the right to request information about your stored data, its origin, its recipients, and the purpose of its collection at no charge. You also have the right to request that your data be corrected, blocked, or deleted. You can contact us at any time using the address given in the legal notice if you have further questions about the issue of privacy and data protection. You may also, of course, file a complaint with the competent regulatory authorities.',
         ],
@@ -42,7 +40,7 @@ export const privacySections: PolicySection[] = [
       {
         heading: 'Analytics and third-party tools',
         paragraphs: [
-          'When visiting our website, statistical analyses may be made of your surfing behavior. This happens primarily using cookies and analytics. The analysis of your surfing behavior is usually anonymous and pseudonymized, meaning that we will not be able to identify you through this data. You can object to this analysis or prevent it by not using certain tools. Detailed information can be found in the following privacy policy.',
+          'When visiting our website, statistical analyses may be made of your surfing behavior. This happens primarily using cookies and analytics. The analysis of your surfing behavior is usually encrypted and pseudonymized, meaning that we will not be able to identify you through this data. You can object to this analysis or prevent it by not using certain tools. Detailed information can be found in the following privacy policy.',
         ],
       },
     ],
@@ -83,14 +81,6 @@ export const privacySections: PolicySection[] = [
         heading: 'Right to data portability',
         paragraphs: [
           'You have the right to have data which we process based on your consent or in fulfillment of a contract automatically delivered to yourself or to a third party in a standard, machine-readable format. If you require the direct transfer of data to another responsible party, this will only be done to the extent technically feasible.',
-        ],
-      },
-      {
-        heading: 'Encrypted payments on this website',
-        paragraphs: [
-          'If you enter into a contract which requires you to send us your payment information (e.g. account number for direct debits), we will require this data to process your payment.',
-          'Payment transactions using common means of payment (Visa/MasterCard, direct debit) are only made via encrypted SSL or TLS connections. You can recognize an encrypted connection in your browser’s address line when it changes from "http://" to "https://" and the lock icon in your browser line is visible.',
-          'In the case of encrypted communication, any payment details you submit to us cannot be read by third parties.',
         ],
       },
       {
@@ -142,7 +132,7 @@ export const privacySections: PolicySection[] = [
       {
         heading: 'Contact form',
         paragraphs: [
-          'Should you send us questions via the contact form on our website, we will collect the data entered in the form, including the contact details you provide, to answer your question and any follow-up questions. We do not share this information without your permission.',
+          'Should you send us questions via a contact form on our website, we will collect the data entered in the form, including the contact details you provide, to answer your question and any follow-up questions. We do not share this information without your permission.',
           'We will, therefore, process any data you enter in the contact form only with your consent per Art. 6 (1) (a) of the EU GDPR. You may revoke your consent at any time. An informal email making this request is sufficient. The data processed before we receive your request may still be legally processed.',
           'We will retain the data you provide in the contact form until you request its deletion, revoke your consent for its storage, or the purpose for its storage no longer pertains (e.g. after fulfilling your request). Any mandatory statutory provisions, especially those regarding mandatory data retention periods, remain unaffected by this provision.',
         ],
@@ -183,9 +173,7 @@ export const privacySections: PolicySection[] = [
           'Matomo cookies remain on your device until you delete them.',
           'The storage of Matomo cookies is based on Art. 6 (1) (f) of the EU GDPR. The website operator has a legitimate interest in analyzing user behavior in order to optimize both its website and its advertising.',
           'The information generated by the cookies about your use of this website will not be disclosed to third parties. You can prevent these cookies being stored by selecting the appropriate settings in your browser. However, we wish to point out that doing so may mean you will not be able to enjoy the full functionality of this website.',
-          'If you do not agree with the storage and use of your data, you can disable this feature here. In this case, an opt-out cookie will be stored in your browser to prevent Matomo from storing your usage data. If you delete your cookies, this will mean that the opt-out cookie will also be deleted. You will then need to reactivate it when you return to our site if you wish your activity not to be tracked.',
         ],
-        optOut: true,
       },
     ],
   },

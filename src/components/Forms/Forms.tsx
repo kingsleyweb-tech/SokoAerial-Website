@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from 'react'
+import type { CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { contact, paths } from '../../data/site'
 import styles from '../../styles/Forms.module.css'
@@ -55,14 +55,5 @@ export function SentNote({ sent, tone = 'light' }: { sent: boolean; tone?: 'ligh
         </>
       )}
     </p>
-  )
-}
-
-export function Field({ label, children, className }: { label: ReactNode; children: ReactNode; className?: string }) {
-  return (
-    <label className={[styles.field, className].filter(Boolean).join(' ')}>
-      <span>{label}</span>
-      {children}
-    </label>
   )
 }

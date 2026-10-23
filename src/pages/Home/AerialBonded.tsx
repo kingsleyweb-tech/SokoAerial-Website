@@ -1,6 +1,6 @@
-import helicopterTest from '../../assets/images/aerial-helicopter-test.jpg'
-import starlinkMount from '../../assets/images/aerial-starlink-mount.jpg'
-import transmitter from '../../assets/images/aerial-transmitter.jpg'
+import helicopterTest from '../../assets/images/aerial-helicopter-test.webp'
+import starlinkMount from '../../assets/images/aerial-starlink-mount.webp'
+import transmitter from '../../assets/images/aerial-transmitter.webp'
 import { Reveal } from '../../components/Reveal/Reveal'
 import styles from '../../styles/HomeSections.module.css'
 

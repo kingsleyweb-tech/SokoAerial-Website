@@ -41,7 +41,7 @@ export function AboutPage() {
       </section>
 
       <section className={`${styles.band} topo photo`}>
-        <img src={images.meshtasticSetup} alt="Configuring a Meshtastic radio beside a laptop in the field" />
+        <img src={images.meshtasticSetup} alt="Configuring a Meshtastic radio beside a laptop in the field" loading="lazy" />
         <div className={styles.addressCard}>
           <span className="label">Listed address</span>
           <span className={styles.address}>

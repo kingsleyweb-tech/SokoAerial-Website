@@ -16,7 +16,6 @@ export const paths = {
   flash: '/flash',
   legal: '/legal-notice',
   privacy: '/privacy',
-  plans: '/plans',
 } as const
 
 export const contact = {
@@ -72,17 +71,8 @@ export const footerColumns = [
   {
     title: 'Get Sigtrack',
     links: [
-      { label: 'Plans', to: paths.plans },
-      { label: 'Payment', to: `${paths.plans}?plan=pro` },
+      { label: 'Contact sales', to: paths.contact },
       { label: 'Try the demo', to: `${paths.web}#demo` },
     ],
   },
 ]
-
-/** Software options offered on the live sigtrackapp.com payment form. */
-export const softwareOptions = ['Sigtrack Desktop Professional', 'Sigtrack Mobile', 'Sigtrack Web']
-
-export const plans = {
-  basic: { label: 'Basic plan', monthly: 0, yearly: 0 },
-  pro: { label: 'Professional plan', monthly: 50, yearlyLabel: 'USD 6K', yearly: 6000 },
-} as const

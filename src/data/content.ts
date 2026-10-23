@@ -5,50 +5,6 @@ import { watchScreens } from './watch'
 
 // ---------- Home ----------
 
-export interface HeroSlide {
-  name: string
-  lead: string
-  accent: string
-  body: string
-  mobileBody: string
-  media: { type: 'image'; src: string; alt: string } | { type: 'video'; src: string; label: string }
-}
-
-export const heroSlides: HeroSlide[] = [
-  {
-    name: 'Sigtrack Web',
-    lead: 'Every teammate,',
-    accent: 'on the map.',
-    body: 'Group operatives, see each one as a marker and track them in real time.',
-    mobileBody: 'See each operative as a marker and track them in real time.',
-    media: { type: 'image', src: images.webMarkers, alt: 'Sigtrack Web showing team members as markers' },
-  },
-  {
-    name: 'Radios',
-    lead: 'Chat without',
-    accent: 'the internet.',
-    body: 'Silvus and Meshtastic integration keeps teams connected in forests, urban canyons and remote terrain.',
-    mobileBody: 'Silvus and Meshtastic keep teams connected in remote terrain.',
-    media: { type: 'image', src: images.silvusRadio, alt: 'Silvus radio in the field' },
-  },
-  {
-    name: 'Desktop',
-    lead: 'Track live.',
-    accent: 'Replay later.',
-    body: 'Real-time tracking, data visualization and history playback for debriefing.',
-    mobileBody: 'Real-time tracking and history playback for debriefing.',
-    media: { type: 'image', src: images.desktopTracking, alt: 'Sigtrack Desktop tracking view' },
-  },
-  {
-    name: 'Response',
-    lead: 'All-in-one',
-    accent: 'response.',
-    body: 'Connect radios, command trailers and drones seamlessly. Empowering emergency response anywhere.',
-    mobileBody: 'Connect radios, command trailers and drones, anywhere.',
-    media: { type: 'image', src: images.webCommandWall, alt: 'Briefing at a command-centre video wall running Sigtrack Web' },
-  },
-]
-
 export const facts = [
   { n: '03', t: 'Platforms', d: 'Web, Android and Windows, with a dedicated version for each.', short: 'Web, Android, Windows' },
   { n: '02', t: 'Radio systems', d: 'Silvus for bandwidth, Meshtastic for reach.', short: 'Silvus and Meshtastic' },

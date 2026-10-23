@@ -39,7 +39,6 @@ export const WatcherPage = lazyPage(() => import('./Products/WatcherPage'), 'Wat
 export const FlashPage = lazyPage(() => import('./Products/FlashPage'), 'FlashPage')
 export const WatchPage = lazyPage(() => import('./Products/WatchPage'), 'WatchPage')
 export const WebPage = lazyPage(() => import('./Products/WebPage'), 'WebPage')
-export const PlansPage = lazyPage(() => import('./Plans/PlansPage'), 'PlansPage')
 
 const pages = [
   AboutPage,
@@ -55,7 +54,6 @@ const pages = [
   FlashPage,
   WatchPage,
   WebPage,
-  PlansPage,
 ]
 
 /** Fetches every page chunk (a few KB each) so later navigation is instant. */
