@@ -34,6 +34,12 @@ export function LegalPage() {
                 <a href={`mailto:${contact.email}`}>{contact.email}</a>
               </dd>
             </div>
+            <div>
+              <dt>Sales</dt>
+              <dd>
+                <a href={`mailto:${contact.salesEmail}`}>{contact.salesEmail}</a>
+              </dd>
+            </div>
           </dl>
         </Reveal>
       </section>

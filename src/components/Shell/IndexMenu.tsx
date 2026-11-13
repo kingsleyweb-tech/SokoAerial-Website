@@ -127,6 +127,8 @@ export function IndexMenu({ open, onClose }: IndexMenuProps) {
                   <a href={contact.phoneHref}>{contact.phoneDisplay}</a>
                   <br />
                   <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                  <br />
+                  <a href={`mailto:${contact.salesEmail}`}>Sales: {contact.salesEmail}</a>
                 </span>
                 <span>
                   <Link to={paths.legal} onClick={onClose}>
@@ -172,6 +174,7 @@ export function IndexMenu({ open, onClose }: IndexMenuProps) {
               <div className={styles.mobileContact}>
                 <a href={contact.phoneHref}>{contact.phoneDisplay}</a>
                 <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                <a href={`mailto:${contact.salesEmail}`}>Sales: {contact.salesEmail}</a>
               </div>
             </div>
           </div>

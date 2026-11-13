@@ -17,6 +17,7 @@ const mapQuery = encodeURIComponent(`Burma Camp, Accra, Ghana`)
 const rows = [
   { label: 'Call', value: contact.phoneDisplay, href: contact.phoneHref },
   { label: 'Write', value: contact.email, href: `mailto:${contact.email}` },
+  { label: 'Sales', value: contact.salesEmail, href: `mailto:${contact.salesEmail}` },
   { label: 'Visit', value: contact.address, href: '#map' },
 ]
 

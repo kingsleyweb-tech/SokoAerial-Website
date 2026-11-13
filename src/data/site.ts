@@ -19,12 +19,13 @@ export const paths = {
 } as const
 
 export const contact = {
-  addressLines: ['Burma Camp', 'Accra 12345'],
-  address: 'Burma Camp, Accra 12345',
+  addressLines: ['Burma Camp', 'Supply Bus Stop - Accra'],
+  address: 'Burma Camp, Supply Bus Stop - Accra',
   phoneDisplay: '+233 24 324 9309',
   phoneLegal: '+233243249309',
   phoneHref: 'tel:+233243249309',
-  email: 'sokoaerial@gmail.com',
+  email: 'business@sokoaerial.com',
+  salesEmail: 'sales@sokoaerial.com',
   site: 'sigtrackapp.com',
 }
 

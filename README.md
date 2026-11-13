@@ -41,6 +41,7 @@ The finished site is written to the `dist` folder, ready to upload to any static
 
 ## Contact
 
-- **Address:** Soko Aerial, Burma Camp, Accra, Ghana
+- **Address:** Soko Aerial, Burma Camp, Supply Bus Stop - Accra, Ghana
 - **Phone:** +233 24 324 9309
-- **Email:** sokoaerial@gmail.com
+- **Email:** business@sokoaerial.com
+- **Sales:** sales@sokoaerial.com

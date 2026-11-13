@@ -28,6 +28,7 @@ export function Footer() {
           <span>{contact.address}</span>
           <a href={contact.phoneHref}>{contact.phoneDisplay}</a>
           <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          <a href={`mailto:${contact.salesEmail}`}>Sales: {contact.salesEmail}</a>
         </address>
         {footerColumns.map((column) => (
           <nav key={column.title} aria-label={column.title} className={styles.column} data-column={column.title}>
